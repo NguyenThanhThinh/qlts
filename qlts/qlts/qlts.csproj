@@ -127,6 +127,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Enums\RoleType.cs" />
     <Compile Include="Global.asax.cs">
@@ -1657,6 +1658,7 @@
     <Content Include="Views\Shared\_title_meta.cshtml" />
     <Content Include="Views\Shared\_topbar.cshtml" />
     <Content Include="Views\Shared\_vendor_scripts.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
