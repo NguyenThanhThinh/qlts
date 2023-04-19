@@ -135,11 +135,12 @@
     </Compile>
     <Compile Include="Models\BaseEntity.cs" />
     <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\Field.cs" />
     <Compile Include="Models\FixedAsset.cs" />
-    <Compile Include="Models\FixedAssetCategory.cs" />
-    <Compile Include="Models\Receipt.cs" />
-    <Compile Include="Models\Resource.cs" />
+    <Compile Include="Models\FixedAssetStatus.cs" />
+    <Compile Include="Models\Manufacturer.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Warehouse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
