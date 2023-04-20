@@ -4,7 +4,7 @@ namespace qlts.Models
 {
     public class BaseEntity
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         public DateTime? CreatedDate { get; set; }
 

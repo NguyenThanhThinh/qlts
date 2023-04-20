@@ -129,6 +129,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Datas\AppDbContext.cs" />
     <Compile Include="Enums\RoleType.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -139,6 +141,7 @@
     <Compile Include="Models\FixedAsset.cs" />
     <Compile Include="Models\FixedAssetStatus.cs" />
     <Compile Include="Models\Manufacturer.cs" />
+    <Compile Include="Models\Role.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Warehouse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1660,6 +1663,8 @@
     <Content Include="Views\Shared\_topbar.cshtml" />
     <Content Include="Views\Shared\_vendor_scripts.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Users\CreateUpdate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
