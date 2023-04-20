@@ -170,6 +170,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FixedAssetsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Datas\AppDbContext.cs" />
@@ -178,11 +179,18 @@
     <Compile Include="Datas\DropdownModel.cs" />
     <Compile Include="Datas\JsonResponse.cs" />
     <Compile Include="Enums\RoleType.cs" />
+    <Compile Include="Extensions\DateTimeExtensions.cs" />
+    <Compile Include="Extensions\EntityExtensions.cs" />
+    <Compile Include="Extensions\EnumExtension.cs" />
+    <Compile Include="Extensions\ExceptionExtensions.cs" />
+    <Compile Include="Extensions\MoneyExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Handlers\AuthenHandler.cs" />
+    <Compile Include="Handlers\RoleHandler.cs" />
+    <Compile Include="Helpers\CipherHelper.cs" />
     <Compile Include="Models\BaseEntity.cs" />
-    <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Field.cs" />
     <Compile Include="Models\FixedAsset.cs" />
     <Compile Include="Models\FixedAssetStatus.cs" />
@@ -190,8 +198,26 @@
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Warehouse.cs" />
+    <Compile Include="Models\WareHouseAssetsTransfer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Stores\AuthenStore.cs" />
+    <Compile Include="Stores\RoleStore.cs" />
+    <Compile Include="ViewModels\Accounts\AccountLoginViewModel.cs" />
+    <Compile Include="ViewModels\Accounts\ProfileViewModel.cs" />
+    <Compile Include="ViewModels\Fields\FieldCreateUpdateViewModel.cs" />
+    <Compile Include="ViewModels\Fields\FieldIndexViewModel.cs" />
+    <Compile Include="ViewModels\FixedAssetStatus\FixedAssetStatusCreateUpdateViewModel.cs" />
+    <Compile Include="ViewModels\FixedAssetStatus\FixedAssetStatusIndexViewModel.cs" />
+    <Compile Include="ViewModels\Manufacturers\ManufacturerCreateUpdateViewModel.cs" />
+    <Compile Include="ViewModels\Manufacturers\ManufacturerIndexViewModel.cs" />
+    <Compile Include="ViewModels\Roles\RoleCreateUpdateViewModel.cs" />
+    <Compile Include="ViewModels\Roles\RoleIndexViewModel.cs" />
+    <Compile Include="ViewModels\Users\UserCreateUpdateModel.cs" />
+    <Compile Include="ViewModels\Users\UserIndexViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="ViewModels\Warehouses\WarehouseCreateUpdateViewModel.cs" />
+    <Compile Include="ViewModels\Warehouses\WarehouseIndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\assets\css\app-rtl.min.css" />
@@ -1553,6 +1579,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\toastr.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -1718,6 +1745,7 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\CreateUpdate.cshtml" />
+    <Content Include="Views\FixedAssets\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

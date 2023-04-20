@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace qlts.Models
+namespace qlts.Datas
 {
     public class BusinessException : Exception
     {

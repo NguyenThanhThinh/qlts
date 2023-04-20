@@ -31,6 +31,26 @@
 
     @Html.Partial("~/Views/Shared/_vendor_scripts.cshtml")
     <script src="~/Content/assets/js/app.js"></script>
+    <script src="~/Scripts/jquery.mask.min.js"></script>
+    <script src="~/Scripts/toastr.js"></script>
+    <script src="~/Scripts/bootbox.all.js"></script>
+    <script src="~/Scripts/app/modules.js"></script>
+    <script src="~/Scripts/app/common.js"></script>
+    @{ var hasSystemError = false; }
+    @if (TempData["Exception"] != null && !string.IsNullOrEmpty((string)TempData["Exception"]))
+    {
+        hasSystemError = true;
+
+        @Html.Partial("_ErrorModal")
+    }
+    @if (hasSystemError)
+    {
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#systemErrorModal').modal('show');
+            });
+        </script>
+    }
     @RenderSection("scripts", required: false)
 </body>
 </html>

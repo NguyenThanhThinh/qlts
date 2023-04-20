@@ -22,6 +22,8 @@ namespace qlts.Datas
 
         public DbSet<Warehouse> Warehouses { get; set; }
 
+        public DbSet<WareHouseAssetsTransfer> WareHouseAssetsTransfers { get; set; }
+
         public static AppDbContext Create()
         {
             return new AppDbContext();

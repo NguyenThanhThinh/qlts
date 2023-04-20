@@ -40,6 +40,8 @@ namespace qlts.Models
 
         public DateTime? FixedAssetDate { get; set; }
 
+        public decimal? Price { get; set; }
+
 
     }
 }
