@@ -1,23 +1,25 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using qlts.Enums;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace qlts.Models
 {
     [Table("TBL_Warehouses")]
-    public class Warehouse
+    public class Warehouse:BaseEntity
     {
         [StringLength(200)]
         [Required]
         public string Name { get; set; }
 
-        [StringLength(200)]
         [Required]
-        public string Center { get; set; }
+        public CenterUnit Center { get; set; }
 
         [StringLength(100)]
         public string Unit { get; set; }
 
         [StringLength(200)]
         public string Address { get; set; }
+
+        public string Note { get; set; }
     }
 }

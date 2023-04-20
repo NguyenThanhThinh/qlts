@@ -6,16 +6,17 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using qlts.Datas;
+using System;
 
 namespace qlts.Stores
 {
     public interface IRoleStore
     {
         List<Role> GetAllRoles();
-        Role GetRoleById(int? id);
+        Role GetRoleById(Guid? id);
         Role CreateRole(Role Role);
         Role UpdateRole(Role Role);
-        bool DeleteRole(int? id);
+        bool DeleteRole(Guid? id);
 
         List<DropdownModel> GetRoleDropdown();
 
@@ -39,7 +40,7 @@ namespace qlts.Stores
             return unitOfWork.SaveChanges() > 0 ? result : null;
         }
 
-        public bool DeleteRole(int? id)
+        public bool DeleteRole(Guid? id)
         {
             RoleRepo.Delete(n => n.Id == id);
             return unitOfWork.SaveChanges() > 0;
@@ -50,7 +51,7 @@ namespace qlts.Stores
             return RoleRepo.GetAll(null);
         }
 
-        public Role GetRoleById(int? id)
+        public Role GetRoleById(Guid? id)
         {
             return RoleRepo.Get(n => n.Id == id);
         }

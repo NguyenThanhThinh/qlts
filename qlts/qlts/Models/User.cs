@@ -23,8 +23,6 @@ namespace qlts.Models
         public string UserName { get; set; }
 
 
-        public string Center { get; set; }
-
         [StringLength(12)]
         [Required]
         public string Phone { get; set; }

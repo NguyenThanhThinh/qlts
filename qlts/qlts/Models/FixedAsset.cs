@@ -33,14 +33,13 @@ namespace qlts.Models
 
         public Manufacturer Manufacturer { get; set; }
 
-        public DateTime? DatePurchase { get; set; }
 
         public int FixedAssetStatusId { get; set; }
         public FixedAssetStatus FixedAssetStatus { get; set; }
 
         public DateTime? FixedAssetDate { get; set; }
 
-        public decimal? Price { get; set; }
+        public decimal Price { get; set; }
 
 
     }

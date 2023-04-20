@@ -8,7 +8,7 @@ using System.Web;
 namespace qlts.Models
 {
     [Table("TBL_Manufacturers")]
-    public class Manufacturer
+    public class Manufacturer : BaseEntity
     {
         [StringLength(200)]
         [Required]

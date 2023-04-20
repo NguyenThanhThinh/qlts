@@ -12,9 +12,9 @@ namespace qlts.Handlers
     public interface IRoleHandler
     {
         Role CreateUpdateRole(RoleCreateUpdateViewModel model);
-        RoleCreateUpdateViewModel GetRoleById(int? id);
+        RoleCreateUpdateViewModel GetRoleById(Guid? id);
         List<RoleIndexViewModel> GetAllRoles();
-        bool DeleteRole(int? id);
+        bool DeleteRole(Guid? id);
 
         Task<IEnumerable<RoleIndexViewModel>> GetRoles(string keyword, int page = 1);
     }
@@ -34,8 +34,8 @@ namespace qlts.Handlers
 
             try
             {
-                if (Role.Id > 0) Role.ModifiedDate = DateTime.Now;
-                Role = Role.Id > 0 ? RoleStore.UpdateRole(Role) : RoleStore.CreateRole(Role);
+                if (Role.Id != null) Role.ModifiedDate = DateTime.Now;
+                Role = Role.Id != null ? RoleStore.UpdateRole(Role) : RoleStore.CreateRole(Role);
             }
             catch (Exception ex)
             {
@@ -50,7 +50,7 @@ namespace qlts.Handlers
             return Role;
         }
 
-        public bool DeleteRole(int? id)
+        public bool DeleteRole(Guid? id)
         {
             return RoleStore.DeleteRole(id);
         }
@@ -61,9 +61,9 @@ namespace qlts.Handlers
             return MapperConfig.Factory.Map<List<Role>, List<RoleIndexViewModel>>(roles);
         }
 
-        public RoleCreateUpdateViewModel GetRoleById(int? id)
+        public RoleCreateUpdateViewModel GetRoleById(Guid? id)
         {
-            if (id == null || id == 0)
+            if (id == null || id == null)
                 return new RoleCreateUpdateViewModel();
 
             var role = RoleStore.GetRoleById(id);

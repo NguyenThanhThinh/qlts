@@ -178,6 +178,7 @@
     <Compile Include="Datas\BusinessException.cs" />
     <Compile Include="Datas\DropdownModel.cs" />
     <Compile Include="Datas\JsonResponse.cs" />
+    <Compile Include="Enums\CenterUnit.cs" />
     <Compile Include="Enums\RoleType.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\EntityExtensions.cs" />
@@ -202,6 +203,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Stores\AuthenStore.cs" />
+    <Compile Include="Stores\WareHouseAssetsTransferStore.cs" />
+    <Compile Include="Stores\FixedAssetStore.cs" />
+    <Compile Include="Stores\FixedAssetStatusStore.cs" />
+    <Compile Include="Stores\ManufacturerStore.cs" />
+    <Compile Include="Stores\WarehouseStore.cs" />
+    <Compile Include="Stores\UserStore.cs" />
+    <Compile Include="Stores\FieldStore.cs" />
     <Compile Include="Stores\RoleStore.cs" />
     <Compile Include="ViewModels\Accounts\AccountLoginViewModel.cs" />
     <Compile Include="ViewModels\Accounts\ProfileViewModel.cs" />
@@ -209,6 +217,8 @@
     <Compile Include="ViewModels\Fields\FieldIndexViewModel.cs" />
     <Compile Include="ViewModels\FixedAssetStatus\FixedAssetStatusCreateUpdateViewModel.cs" />
     <Compile Include="ViewModels\FixedAssetStatus\FixedAssetStatusIndexViewModel.cs" />
+    <Compile Include="ViewModels\FixedAssets\FixedAssetCreateUpdateViewModel.cs" />
+    <Compile Include="ViewModels\FixedAssets\FixedAssetIndexViewModel.cs" />
     <Compile Include="ViewModels\Manufacturers\ManufacturerCreateUpdateViewModel.cs" />
     <Compile Include="ViewModels\Manufacturers\ManufacturerIndexViewModel.cs" />
     <Compile Include="ViewModels\Roles\RoleCreateUpdateViewModel.cs" />
@@ -1584,6 +1594,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\app\common.js" />
+    <Content Include="Scripts\app\controllers\fixed-asset.js" />
     <Content Include="Scripts\app\modules.js" />
     <Content Include="Scripts\bootbox.all.js" />
     <Content Include="Scripts\bootbox.min.js" />

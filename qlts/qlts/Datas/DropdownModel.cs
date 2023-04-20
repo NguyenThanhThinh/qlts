@@ -1,8 +1,10 @@
-﻿namespace qlts.Datas
+﻿using System;
+
+namespace qlts.Datas
 {
     public class DropdownModel
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Text { get; set; }
 
         public static string ValueField => nameof(Id);
