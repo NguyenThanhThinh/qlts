@@ -21,5 +21,15 @@ namespace qlts.ViewModels.Manufacturers
         [Display(Name = "Ghi chú")]
         [StringLength(200, MinimumLength = 2, ErrorMessage = ErrorMessageStringLength)]
         public string Note { get; set; }
+
+
+
+        [Display(Name = "Ngày hết hạn")]
+        [Required(ErrorMessage = ErrorMessageRequired)]
+        public string WarrantyPeriodDateFormatted { get; set; } = DateTime.Now.AddMonths(12).ToString("dd/MM/yyyy");
+        public DateTime? WarrantyPeriodDate { get; set; }
+
+        [Display(Name = "Ngày hết hạn")]
+        public string WarrantyPeriodDateFormattedEdit { get; set; }
     }
 }

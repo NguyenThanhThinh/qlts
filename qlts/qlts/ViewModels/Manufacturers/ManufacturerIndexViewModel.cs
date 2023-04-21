@@ -15,5 +15,8 @@ namespace qlts.ViewModels.Manufacturers
 
         [Display(Name = "Ghi chú")]
         public string Note { get; set; }
+
+        [Display(Name = "Ngày hết hạn")]
+        public DateTime? WarrantyPeriodDate { get; set; }
     }
 }
