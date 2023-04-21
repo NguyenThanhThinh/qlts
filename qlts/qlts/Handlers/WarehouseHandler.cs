@@ -2,42 +2,42 @@
 using qlts.Extensions;
 using qlts.Models;
 using qlts.Stores;
-using qlts.ViewModels.FixedAssetStatus;
 using System;
 using System.Collections.Generic;
+using qlts.ViewModels.Warehouses;
 
 namespace qlts.Handlers
 {
     public interface IWarehouseHandler
     {
-        FixedAssetStatus CreateUpdateFixedAssetStatus(FixedAssetStatusCreateUpdateViewModel model);
-        FixedAssetStatusCreateUpdateViewModel GetFixedAssetStatusById(Guid? id);
-        List<FixedAssetStatusIndexViewModel> GetAllFixedAssetStatuss();
-        bool DeleteFixedAssetStatus(Guid? id);
+        Warehouse CreateUpdateWarehouse(WarehouseCreateUpdateViewModel model);
+        WarehouseCreateUpdateViewModel GetWarehouseById(Guid? id);
+        List<WarehouseIndexViewModel> GetAllWarehouses();
+        bool DeleteWarehouse(Guid? id);
 
     }
 
-    public class WarehouseHandler : IFixedAssetStatusHandler
+    public class WarehouseHandler : IWarehouseHandler
     {
-        private readonly IFixedAssetStatusStore _fixedAssetStatusStore;
+        private readonly IWarehouseStore _WarehouseStore;
 
-        public WarehouseHandler(IFixedAssetStatusStore fixedAssetStatusStore)
+        public WarehouseHandler(IWarehouseStore WarehouseStore)
         {
-            this._fixedAssetStatusStore = fixedAssetStatusStore;
+            this._WarehouseStore = WarehouseStore;
         }
 
-        public FixedAssetStatus CreateUpdateFixedAssetStatus( FixedAssetStatusCreateUpdateViewModel model )
+        public Warehouse CreateUpdateWarehouse( WarehouseCreateUpdateViewModel model )
         {
-            var fixedAssetStatus = MapperConfig.Factory.Map<FixedAssetStatusCreateUpdateViewModel, FixedAssetStatus> ( model );
+            var Warehouse = MapperConfig.Factory.Map<WarehouseCreateUpdateViewModel, Warehouse> ( model );
 
             try
             {
-                if ( fixedAssetStatus != null && fixedAssetStatus.Id != null )
-                    fixedAssetStatus.ModifiedDate = DateTime.Now;
+                if ( Warehouse != null && Warehouse.Id != null )
+                    Warehouse.ModifiedDate = DateTime.Now;
 
-                fixedAssetStatus = fixedAssetStatus != null && fixedAssetStatus.Id != null ?
-                                       _fixedAssetStatusStore.UpdateFixedAssetStatus ( fixedAssetStatus ) : 
-                                       _fixedAssetStatusStore.CreateFixedAssetStatus ( fixedAssetStatus );
+                Warehouse = Warehouse != null && Warehouse.Id != null ?
+                                       _WarehouseStore.UpdateWarehouse ( Warehouse ) : 
+                                       _WarehouseStore.CreateWarehouse ( Warehouse );
             }
             catch ( Exception ex )
             {
@@ -46,27 +46,27 @@ namespace qlts.Handlers
                 throw ex;
             }
 
-            return fixedAssetStatus;
+            return Warehouse;
         }
 
-        public bool DeleteFixedAssetStatus(Guid? id)
+        public bool DeleteWarehouse(Guid? id)
         {
-            return _fixedAssetStatusStore.DeleteFixedAssetStatus(id);
+            return _WarehouseStore.DeleteWarehouse(id);
         }
 
-        public List<FixedAssetStatusIndexViewModel> GetAllFixedAssetStatuss()
+        public List<WarehouseIndexViewModel> GetAllWarehouses()
         {
-            var fixedAssetStatuss = _fixedAssetStatusStore.GetAllFixedAssetStatuss();
-            return MapperConfig.Factory.Map<List<FixedAssetStatus>, List<FixedAssetStatusIndexViewModel>>(fixedAssetStatuss);
+            var Warehouses = _WarehouseStore.GetAllWarehouses();
+            return MapperConfig.Factory.Map<List<Warehouse>, List<WarehouseIndexViewModel>>(Warehouses);
         }
 
-        public FixedAssetStatusCreateUpdateViewModel GetFixedAssetStatusById(Guid? id)
+        public WarehouseCreateUpdateViewModel GetWarehouseById(Guid? id)
         {
             if (id == null)
-                return new FixedAssetStatusCreateUpdateViewModel();
+                return new WarehouseCreateUpdateViewModel();
 
-            var fixedAssetStatus = _fixedAssetStatusStore.GetFixedAssetStatusById(id);
-            return fixedAssetStatus == null ? null : MapperConfig.Factory.Map<FixedAssetStatus, FixedAssetStatusCreateUpdateViewModel>(fixedAssetStatus);
+            var Warehouse = _WarehouseStore.GetWarehouseById(id);
+            return Warehouse == null ? null : MapperConfig.Factory.Map<Warehouse, WarehouseCreateUpdateViewModel>(Warehouse);
         }
 
     }

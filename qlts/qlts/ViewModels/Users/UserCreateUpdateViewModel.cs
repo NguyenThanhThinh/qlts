@@ -9,7 +9,7 @@ using System.Xml.Linq;
 
 namespace qlts.ViewModels.Users
 {
-    public class UserCreateUpdateModel :ViewModelBase
+    public class UserCreateUpdateViewModel :ViewModelBase
     {
         [Display(Name = "Tên người dùng")]
         [Required(ErrorMessage = ErrorMessageRequired)]

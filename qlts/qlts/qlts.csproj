@@ -216,6 +216,7 @@
     <Compile Include="Stores\UserStore.cs" />
     <Compile Include="Stores\FieldStore.cs" />
     <Compile Include="Stores\RoleStore.cs" />
+    <Compile Include="ViewModels\Accounts\AccountCreateUpdateViewModel.cs" />
     <Compile Include="ViewModels\Accounts\AccountLoginViewModel.cs" />
     <Compile Include="ViewModels\Accounts\ProfileViewModel.cs" />
     <Compile Include="ViewModels\Fields\FieldCreateUpdateViewModel.cs" />
@@ -228,7 +229,7 @@
     <Compile Include="ViewModels\Manufacturers\ManufacturerIndexViewModel.cs" />
     <Compile Include="ViewModels\Roles\RoleCreateUpdateViewModel.cs" />
     <Compile Include="ViewModels\Roles\RoleIndexViewModel.cs" />
-    <Compile Include="ViewModels\Users\UserCreateUpdateModel.cs" />
+    <Compile Include="ViewModels\Users\UserCreateUpdateViewModel.cs" />
     <Compile Include="ViewModels\Users\UserIndexViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\Warehouses\WarehouseCreateUpdateViewModel.cs" />
