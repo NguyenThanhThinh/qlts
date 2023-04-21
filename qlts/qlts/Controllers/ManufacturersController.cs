@@ -6,15 +6,15 @@ using System.Web.Mvc;
 
 namespace qlts.Controllers
 {
-    public class FixedAssetsController : Controller
+    public class ManufacturersController : Controller
     {
-        // GET: FixedAssets
+        // GET: Manufacturers
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult CreateModal()
+        public ActionResult CreateUpdate()
         {
             return View();
         }
