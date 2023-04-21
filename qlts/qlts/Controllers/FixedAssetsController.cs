@@ -13,5 +13,10 @@ namespace qlts.Controllers
         {
             return View();
         }
+
+        public PartialViewResult CreateModal()
+        {
+            return PartialView();
+        }
     }
 }

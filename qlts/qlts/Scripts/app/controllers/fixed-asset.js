@@ -33,6 +33,8 @@
                         }
                     });
                     console.info(checkedRowIndices);
+                    var $Modal = $('#myModal');     
+                    $Modal.modal('show');
                 };
             });
 

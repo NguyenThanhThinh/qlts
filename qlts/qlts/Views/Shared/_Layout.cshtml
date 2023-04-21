@@ -1,56 +1,46 @@
 ﻿<!doctype html>
 <html lang="en">
+
 <head>
-    @Html.Partial("~/Views/Shared/_title_meta.cshtml")
-    @RenderSection("styles", required: false)
-    @Html.Partial("~/Views/Shared/_head_css.cshtml")
+    @Html.Partial( "~/Views/Shared/_title_meta.cshtml" )
+    @RenderSection( "styles", false )
+    @Html.Partial( "~/Views/Shared/_head_css.cshtml" )
 </head>
+
 <body>
-    <!-- Begin page -->
-    <div id="layout-wrapper">
-        @Html.Partial("~/Views/Shared/_menu.cshtml")
 
-        <!-- ============================================================== -->
-        <!-- Start right Content here -->
-        <!-- ============================================================== -->
-        <div class="main-content">
+<div class="wrapper">
 
-            <div class="page-content">
-                <div class="container-fluid">
-                    @Html.Partial("~/Views/Shared/_page_title.cshtml")
+    <div class="header-wrapper">
 
-                    @RenderBody()
-                </div>
-            </div>
-            @Html.Partial("~/Views/Shared/_footer.cshtml")
-        </div>
+        <header>
+            @Html.Partial( "_topbar" )
+        </header>
+
+        @Html.Partial( "_menu" )
 
     </div>
-    <!-- END layout-wrapper -->
-    @Html.Partial("~/Views/Shared/_right_sidebar.cshtml")
 
-    @Html.Partial("~/Views/Shared/_vendor_scripts.cshtml")
-    <script src="~/Content/assets/js/app.js"></script>
-    <script src="~/Scripts/jquery.mask.min.js"></script>
-    <script src="~/Scripts/toastr.js"></script>
-    <script src="~/Scripts/bootbox.all.js"></script>
-    <script src="~/Scripts/app/modules.js"></script>
-    <script src="~/Scripts/app/common.js"></script>
-    @{ var hasSystemError = false; }
-    @if (TempData["Exception"] != null && !string.IsNullOrEmpty((string)TempData["Exception"]))
-    {
-        hasSystemError = true;
+    <div class="page-wrapper">
+        <div class="page-content">
+            @Html.Partial( "~/Views/Shared/_page_title.cshtml" )
 
-        @Html.Partial("_ErrorModal")
-    }
-    @if (hasSystemError)
-    {
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $('#systemErrorModal').modal('show');
-            });
-        </script>
-    }
-    @RenderSection("scripts", required: false)
+            @RenderBody()
+
+        </div>
+    </div>
+
+    <div class="overlay toggle-icon"></div>
+    <a href="javaScript:;" class="back-to-top">
+        <i class="bx bxs-up-arrow-alt"></i>
+    </a>
+
+    @Html.Partial( "~/Views/Shared/_footer.cshtml" )
+</div>
+
+@Html.Partial( "~/Views/Shared/_vendor_scripts.cshtml" )
+
+@RenderSection( "scripts", false )
 </body>
+
 </html>

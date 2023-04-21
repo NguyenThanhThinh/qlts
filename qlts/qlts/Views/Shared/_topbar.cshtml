@@ -1,65 +1,40 @@
-﻿<header id="page-topbar">
-    <div class="navbar-header">
-        <div class="d-flex">
-            <!-- LOGO -->
-            <div class="navbar-brand-box">
-                <a href="@Url.Action("Index", "Dashboard")" class="logo logo-dark">
-                    <span class="logo-sm">
-                        <img src="~/Content/assets/images/logo-sm.svg" alt="" height="24">
-                    </span>
-                    <span class="logo-lg">
-                        <img src="~/Content/assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">VNPT</span>
-                    </span>
-                </a>
-
-                <a href="@Url.Action("Index", "Dashboard")" class="logo logo-light">
-                    <span class="logo-sm">
-                        <img src="~/Content/assets/images/logo-sm.svg" alt="" height="24">
-                    </span>
-                    <span class="logo-lg">
-                        <img src="~/Content/assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">VNPT</span>
-                    </span>
-                </a>
+﻿<div class="topbar d-flex align-items-center">
+    <nav class="navbar navbar-expand">
+        <div class="topbar-logo-header">
+            <div class="">
+                <img src="~/Content/assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
             </div>
-
-            <button type="button" class="btn btn-sm px-3 font-size-16 header-item" id="vertical-menu-btn">
-                <i class="fa fa-fw fa-bars"></i>
-            </button>
-
-           
+            <div class="">
+                <h4 class="logo-text">VNPT</h4>
+            </div>
         </div>
-
-        <div class="d-flex">
-
+        <div class="mobile-toggle-menu"><i class='bx bx-menu'></i></div>
+        <div class="search-bar flex-grow-1">
             
-
-            <div class="dropdown d-none d-sm-inline-block">
-             
-            </div>
-
-            <div class="dropdown d-none d-sm-inline-block">
-                <button type="button" class="btn header-item" id="mode-setting-btn">
-                    <i data-feather="moon" class="icon-lg layout-mode-dark"></i>
-                    <i data-feather="sun" class="icon-lg layout-mode-light"></i>
-                </button>
-            </div>
-
-            <div class="dropdown d-inline-block">
-                <button type="button" class="btn header-item bg-soft-light border-start border-end" id="page-header-user-dropdown"
-                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle header-profile-user" src="~/Content/assets/images/users/avatar-1.jpg"
-                        alt="Header Avatar">
-                    <span class="d-none d-xl-inline-block ms-1 fw-medium">Shawn L.</span>
-                    <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
-                </button>
-                <div class="dropdown-menu dropdown-menu-end">
-                    <!-- item-->
-                    <a class="dropdown-item" href="@Url.Action("Profile", "Contacts")"><i class="mdi mdi-face-profile font-size-16 align-middle me-1"></i> Thông tin</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="@Url.Action("LogOut", "Auth")"><i class="mdi mdi-logout font-size-16 align-middle me-1"></i> Đăng xuất</a>
-                </div>
-            </div>
-
         </div>
-    </div>
-</header>
+        <div class="top-menu ms-auto">
+            
+        </div>
+        <div class="user-box dropdown">
+            <a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="~/Content/assets/images/avatars/avatar-9.png" class="user-img" alt="user avatar">
+                <div class="user-info ps-3">
+                    <p class="user-name mb-0">Nguyễn Văn A</p>
+     
+                </div>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                    <a class="dropdown-item" href="javascript:;"><i class="bx bx-user"></i><span>Đổi mật khẩu</span></a>
+                </li>
+               
+                <li>
+                    <div class="dropdown-divider mb-0"></div>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="javascript:;"><i class='bx bx-log-out-circle'></i><span>Đăng xuất</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>

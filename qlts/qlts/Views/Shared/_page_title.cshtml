@@ -1,17 +1,13 @@
-﻿<!-- start page title -->
-<div class="row">
-    <div class="col-12">
-        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0 font-size-18">@ViewBag.ptitle</h4>
-
-            <div class="page-title-right">
-                <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item"><a href="javascript: void(0);">@ViewBag.pagetitle</a></li>
-                    <li class="breadcrumb-item active">@ViewBag.ptitle</li>
-                </ol>
-            </div>
-
-        </div>
+﻿
+<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3 justify-content-end">
+    @*<div class="breadcrumb-title pe-3">@ViewBag.ptitle</div>*@
+    <div class="ps-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 p-0">
+                <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i>@ViewBag.pagetitle</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">@ViewBag.ptitle</li>
+            </ol>
+        </nav>
     </div>
 </div>
-<!-- end page title -->
