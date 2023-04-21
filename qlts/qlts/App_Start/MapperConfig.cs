@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using qlts.Extensions;
 using qlts.Models;
 using qlts.ViewModels.Accounts;
 using qlts.ViewModels.Users;
@@ -22,7 +23,13 @@ namespace qlts
 
                 config.CreateMap<User, ProfileViewModel>();
 
-                config.CreateMap<User, UserIndexViewModel>();
+                config.CreateMap<User, UserIndexViewModel>()
+                 .ForMember(x => x.WarehouseName,
+                        map => map.MapFrom(x => x.Warehouse == null ? string.Empty : x.Warehouse.Name))
+                  .ForMember(x => x.WarehouseCenter,
+                        map => map.MapFrom(x => x.Warehouse == null ? string.Empty : x.Warehouse.Center.GetDisplayName()))
+                       .ForMember(x => x.WarehouseUnit,
+                        map => map.MapFrom(x => x.Warehouse == null ? string.Empty : x.Warehouse.Unit.GetDisplayName()));
                 config.CreateMap<User, UserCreateUpdateViewModel>();
                 config.CreateMap<UserCreateUpdateViewModel, User>();
 

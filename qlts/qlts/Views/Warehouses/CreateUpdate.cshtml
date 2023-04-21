@@ -6,7 +6,7 @@
 
     var isUpdate = Model != null && Model.Id != null;
     ViewBag.Title = isUpdate ? "kho " + Model.Name : "Thêm mới kho";
-    string controller = "Users";
+    string controller = "Warehouses";
 }
 
 @section styles {
@@ -62,7 +62,7 @@
                     </div>
 
                     <div class="col-12">
-                        <a href="@Url.Action("Index","Home")" class="btn btn-outline-secondary px-4"><i class="bx bx-left-arrow-alt me-2"></i>Quay về</a>
+                        <a href="@Url.Action("Index",controller)" class="btn btn-outline-secondary px-4"><i class="bx bx-left-arrow-alt me-2"></i>Quay về</a>
                         <button type="submit" class="btn btn-primary px-5"> <i class="bx bx-save me-2"></i>Lưu</button>
 
                     </div>

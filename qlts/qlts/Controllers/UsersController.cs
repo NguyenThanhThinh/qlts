@@ -1,14 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using qlts.Extensions;
 using qlts.Handlers;
+using qlts.Models;
 using qlts.ViewModels.Users;
 
 namespace qlts.Controllers
 {
-    public class UsersController : Controller
+    public class UsersController : BaseController
     {
 
         private readonly IUserHandler _userHandler;
@@ -19,7 +19,11 @@ namespace qlts.Controllers
         }
         public ActionResult Index()
         {
-            return View();
+            var data = _userHandler.GetAllUsers();
+            if (data != null && data.Count > 0)
+                data = data.OrderByDescending(x => x.CreatedDate).ToList();
+
+            return View(data);
         }
 
         public ActionResult CreateUpdate(Guid? id)
@@ -38,7 +42,44 @@ namespace qlts.Controllers
             if (!ModelState.IsValid)
                 return View(_userHandler.UserWithDropdown(model));
 
+            User user = null;
+
+            try
+            {
+                user = _userHandler.CreateUpdateUser(model);
+            }
+            catch (Exception ex)
+            {
+                ShowError(ex);
+                return View(_userHandler.UserWithDropdown(model));
+            }
+
+            if (user.IsSuccess())
+            {
+                Alert("Lưu thành công!");
+                return RedirectToAction(nameof(Index));
+            }
+
+            Alert("Lưu không thành công", true);
             return View(model);
         }
+
+        [HttpPost]
+        public JsonResult Delete(Guid? id)
+        {
+            var success = false;
+
+            try
+            {
+                success = _userHandler.DeleteUser(id);
+            }
+            catch (Exception ex)
+            {
+                return Json(GetResponse(false, "Xóa không thành công !"));
+            }
+
+            return Json(GetResponse(success), JsonRequestBehavior.DenyGet);
+        }
     }
+
 }

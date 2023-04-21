@@ -10,13 +10,16 @@ namespace qlts.ViewModels.Manufacturers
         public string Name { get; set; }
 
         [Display(Name = "Ngày sản xuất")]
+        public string DateFormatted => Date.ToString("dd/MM/yyyy");
+        public DateTime Date { get; set; }
 
-        public DateTime? Date { get; set; }
+       
 
         [Display(Name = "Ghi chú")]
         public string Note { get; set; }
 
         [Display(Name = "Ngày hết hạn")]
-        public DateTime? WarrantyPeriodDate { get; set; }
+        public string WarrantyPeriodDateFormatted => WarrantyPeriodDate.ToString("dd/MM/yyyy");
+        public DateTime WarrantyPeriodDate { get; set; }
     }
 }

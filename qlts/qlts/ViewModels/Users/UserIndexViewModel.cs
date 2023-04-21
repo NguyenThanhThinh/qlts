@@ -32,6 +32,14 @@ namespace qlts.ViewModels.Users
         
         public int WarehouseId { get; set; }
 
+        [Display(Name = "Trung tâm")]
+
+        public string WarehouseCenter { get; set; }
+
+        [Display(Name = "Đơn vị")]
+
+        public string WarehouseUnit { get; set; }
+
         [Display(Name = "Tên Kho")]
 
         public int WarehouseName { get; set; }

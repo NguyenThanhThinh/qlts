@@ -11,10 +11,10 @@ namespace qlts.Models
         [Required]
         public string Name { get; set; }
 
-        public DateTime? Date { get; set; }
+        public DateTime Date { get; set; }
 
         public string Note { get; set; }
 
-        public DateTime? WarrantyPeriodDate { get; set; }
+        public DateTime WarrantyPeriodDate { get; set; }
     }
 }

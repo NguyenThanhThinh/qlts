@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using qlts.Datas;
 using System;
+using System.Data.Entity;
 
 namespace qlts.Stores
 {
@@ -44,7 +45,7 @@ namespace qlts.Stores
 
         public List<User> GetAllUsers()
         {
-            return _userRepo.GetAll(null);
+            return _userRepo.All.Include(n=>n.Warehouse).ToList();
         }
 
         public User GetUserById(Guid? id)

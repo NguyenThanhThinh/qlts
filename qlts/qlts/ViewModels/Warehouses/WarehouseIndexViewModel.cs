@@ -15,7 +15,7 @@ namespace qlts.ViewModels.Warehouses
 
         [Display(Name = "Đơn vị")]
    
-        public string Unit { get; set; }
+        public WarehouseUnit Unit { get; set; }
 
         [Display(Name = "Địa chỉ")]
 
@@ -24,5 +24,9 @@ namespace qlts.ViewModels.Warehouses
         [Display(Name = "Ghi chú")]
 
         public string Note { get; set; }
+
+        [Display(Name = "Loại kho")]
+
+        public WarehouseType WarehouseType { get; set; }
     }
 }

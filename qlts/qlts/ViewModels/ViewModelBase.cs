@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.Xml.Linq;
 
 namespace qlts.ViewModels
 {
@@ -9,10 +8,10 @@ namespace qlts.ViewModels
         public Guid Id { get; set; }
 
         [Display(Name = "Ngày tạo")]
-        public DateTime? CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; } = DateTime.Now;
 
         [Display(Name = "Ngày cập nhật")]
-        public DateTime? ModifiedDate { get; set; }
+        public DateTime? ModifiedDate { get; set; } = DateTime.Now;
 
         [Display(Name = "Người tạo")]
         public string CreatedBy { get; set; }

@@ -13,7 +13,7 @@ namespace qlts.ViewModels.Manufacturers
         [Display(Name = "Ngày sản xuất")]
         [Required(ErrorMessage = ErrorMessageRequired)]
         public string DateFormatted { get; set; } = DateTime.Now.ToString("dd/MM/yyyy");
-        public DateTime? Date { get; set; }
+        public DateTime Date { get; set; }
 
         [Display(Name = "Ngày sản xuất")]
         public string DateFormattedEdit { get; set; }
@@ -27,7 +27,7 @@ namespace qlts.ViewModels.Manufacturers
         [Display(Name = "Ngày hết hạn")]
         [Required(ErrorMessage = ErrorMessageRequired)]
         public string WarrantyPeriodDateFormatted { get; set; } = DateTime.Now.AddMonths(12).ToString("dd/MM/yyyy");
-        public DateTime? WarrantyPeriodDate { get; set; }
+        public DateTime WarrantyPeriodDate { get; set; }
 
         [Display(Name = "Ngày hết hạn")]
         public string WarrantyPeriodDateFormattedEdit { get; set; }

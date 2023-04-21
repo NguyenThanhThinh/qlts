@@ -1100,6 +1100,8 @@
     <Content Include="Views\FixedAssetStatus\CreateUpdate.cshtml" />
     <Content Include="Views\Warehouses\CreateUpdate.cshtml" />
     <Content Include="Views\Manufacturers\CreateUpdate.cshtml" />
+    <Content Include="Views\Warehouses\Index.cshtml" />
+    <Content Include="Views\Manufacturers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

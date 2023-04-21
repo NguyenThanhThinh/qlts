@@ -1,8 +1,8 @@
 ﻿@using qlts.Extensions;
-@model List<qlts.ViewModels.FixedAssetStatus.FixedAssetStatusIndexViewModel>
+@model List<qlts.ViewModels.Manufacturers.ManufacturerIndexViewModel>
 @{
-    ViewBag.Title = "Danh sách Tình trạng tài sản";
-    ViewBag.pTitle = "Tình trạng tài sản";
+    ViewBag.Title = "Danh sách Hãng sản xuất";
+    ViewBag.pTitle = "Hãng sản xuất";
     ViewBag.pageTitle = "Trang chủ";
     var stt = 1;
     const string controller = "Warehouses";
@@ -33,8 +33,10 @@
                             <tr>
                                 <th class="text-center align-middle" style="min-width: 5px;">STT</th>
                                 <th class="text-center align-middle" style="min-width: 70px;">@Html.DisplayNameFor(n => n.FirstOrDefault().Name)</th>
-                                <th class="text-center align-middle" style="min-width: 70px;">@Html.DisplayNameFor(n => n.FirstOrDefault().ModifiedDate)</th>
-                                <th class="text-center align-middle" style="min-width: 140px;">@Html.DisplayNameFor(n => n.FirstOrDefault().Note)</th>
+                                <th class="text-center align-middle" style="min-width: 70px;">@Html.DisplayNameFor(n => n.FirstOrDefault().DateFormatted)</th>
+                                <th class="text-center align-middle" style="min-width: 100px;">@Html.DisplayNameFor(n => n.FirstOrDefault().WarrantyPeriodDateFormatted)</th>
+                                <th class="text-center align-middle" style="min-width: 100px;">@Html.DisplayNameFor(n => n.FirstOrDefault().Note)</th>
+             
                                 <th></th>
 
                             </tr>
@@ -46,9 +48,10 @@
                             {
                                 <tr>
                                     <td>@(stt++)</td>
-                                    <td>@item.Name</td>
-                                    <td>@item.ModifiedDate</td>
                                     <td>@item.Note</td>
+                                    <td>@item.DateFormatted</td>
+                                    <td>@item.WarrantyPeriodDateFormatted</td>
+                                    
                                     <td class="text-center">
                                         <div class="d-flex order-actions justify-content-center">
                                             <a href="@Url.Action("CreateUpdate", controller, new { id = item.Id })" class=""><i class='mdi mdi-square-edit-outline'></i></a>
