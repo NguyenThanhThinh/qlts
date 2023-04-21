@@ -14,8 +14,8 @@ namespace qlts.Models
         [Required]
         public CenterUnit Center { get; set; }
 
-        [StringLength(100)]
-        public string Unit { get; set; }
+
+        public WarehouseUnit Unit { get; set; }
 
         [StringLength(200)]
         public string Address { get; set; }

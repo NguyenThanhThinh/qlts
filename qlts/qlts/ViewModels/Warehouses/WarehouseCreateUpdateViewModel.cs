@@ -17,8 +17,9 @@ namespace qlts.ViewModels.Warehouses
 
         [Display(Name = "Đơn vị")]
         [Required(ErrorMessage = ErrorMessageRequired)]
-        [StringLength(200, MinimumLength = 2, ErrorMessage = ErrorMessageStringLength)]
-        public string Unit { get; set; }
+        [Range(1, 10, ErrorMessage = "Vui lòng chọn đơn vị")]
+
+        public WarehouseUnit Unit { get; set; }
 
         [Display(Name = "Địa chỉ")]
         [Required(ErrorMessage = ErrorMessageRequired)]

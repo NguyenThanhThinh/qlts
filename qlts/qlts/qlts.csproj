@@ -186,6 +186,7 @@
     <Compile Include="Enums\FixedAssetUnit.cs" />
     <Compile Include="Enums\PositionType.cs" />
     <Compile Include="Enums\WarehouseType.cs" />
+    <Compile Include="Enums\WarehouseUnit.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\EntityExtensions.cs" />
     <Compile Include="Extensions\EnumExtension.cs" />
@@ -201,6 +202,15 @@
     <Compile Include="Handlers\FixedAssetStatusHandler.cs" />
     <Compile Include="Handlers\FieldHandler.cs" />
     <Compile Include="Helpers\CipherHelper.cs" />
+    <Compile Include="Migrations\202304210634584_InitialCreate.cs" />
+    <Compile Include="Migrations\202304210634584_InitialCreate.designer.cs">
+      <DependentUpon>202304210634584_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304210819238_init.cs" />
+    <Compile Include="Migrations\202304210819238_init.designer.cs">
+      <DependentUpon>202304210819238_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseEntity.cs" />
     <Compile Include="Models\Field.cs" />
     <Compile Include="Models\FixedAsset.cs" />
@@ -1117,6 +1127,14 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202304210634584_InitialCreate.resx">
+      <DependentUpon>202304210634584_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304210819238_init.resx">
+      <DependentUpon>202304210819238_init.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,7 +1,9 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace qlts.Models
 {
+    [Table("TBL_WareHouseAssetsExports")]
     public class WareHouseAssetsExport : BaseEntity
     {
         public int FixedAssetId { get; set; }
