@@ -1,4 +1,5 @@
 ﻿using qlts.Enums;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -29,7 +30,7 @@ namespace qlts.Models
         [Required]
         public string Phone { get; set; }
 
-        public int WarehouseId { get; set; }
+        public string WarehouseId { get; set; }
         public Warehouse Warehouse { get; set; }
 
         [StringLength(500)]

@@ -1,4 +1,5 @@
 ﻿using qlts.Enums;
+using qlts.Extensions;
 using System;
 using System.ComponentModel.DataAnnotations;
 
@@ -55,14 +56,17 @@ namespace qlts.ViewModels.FixedAssets
 
 
         [Display(Name = "Ngày thực hiện")]
-        public string FixedAssetDateFormatted { get; set; } = DateTime.Now.ToString("dd/MM/yyyy");
-        public DateTime? FixedAssetDate { get; set; }
+        public string FixedAssetDateFormatted => FixedAssetDate.ToString("dd/MM/yyyy");
+        public DateTime FixedAssetDate { get; set; }
 
         [Display(Name = "Ngày thực hiện")]
         public string FixedAssetDateFormattedEdit { get; set; }
 
         [Display(Name = "Đơn giá")]
-        public string CostFormatted { get; set; }
+        public string CostFormatted => Price.ToMoneyFormatted("đ");
         public decimal Price { get; set; }
+
+        [Display(Name = "Thành tiền")]
+        public string Total => (Price * Quantity).ToMoneyFormatted("đ");
     }
 }

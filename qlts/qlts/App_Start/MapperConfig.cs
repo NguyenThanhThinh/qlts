@@ -2,6 +2,7 @@
 using qlts.Extensions;
 using qlts.Models;
 using qlts.ViewModels.Accounts;
+using qlts.ViewModels.FixedAssets;
 using qlts.ViewModels.Users;
 using qlts.ViewModels.Warehouses;
 
@@ -43,6 +44,19 @@ namespace qlts
                 config.CreateMap<Warehouse, WarehouseIndexViewModel>();
                 config.CreateMap<Warehouse, WarehouseCreateUpdateViewModel>();
                 config.CreateMap<WarehouseCreateUpdateViewModel, Warehouse>();
+
+
+                config.CreateMap<FixedAsset, FixedAssetIndexViewModel>();
+                config.CreateMap<FixedAsset, FixedAssetCreateUpdateViewModel>()
+                 .AfterMap((m, vm) =>
+                 {
+                     vm.CostFormatted = vm.Price.ToMoneyFormatted();
+                 });
+                config.CreateMap<FixedAssetCreateUpdateViewModel, FixedAsset>()
+                 .BeforeMap((vm, m) =>
+                 {
+                     vm.Price = vm.CostFormatted.ToMoney();
+                 });
             });
 
             Factory = op.CreateMapper();

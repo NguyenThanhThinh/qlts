@@ -10,7 +10,6 @@
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "qlts.Datas.AppDbContext";
         }
 
         protected override void Seed(qlts.Datas.AppDbContext context)
