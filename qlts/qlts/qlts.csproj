@@ -179,6 +179,7 @@
     <Compile Include="Datas\DropdownModel.cs" />
     <Compile Include="Datas\JsonResponse.cs" />
     <Compile Include="Enums\CenterUnit.cs" />
+    <Compile Include="Enums\FixedAssetType.cs" />
     <Compile Include="Enums\RoleType.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\EntityExtensions.cs" />
@@ -189,6 +190,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Handlers\AuthenHandler.cs" />
+    <Compile Include="Handlers\ManufacturerHandler.cs" />
+    <Compile Include="Handlers\WarehouseHandler.cs" />
+    <Compile Include="Handlers\FixedAssetStatusHandler.cs" />
+    <Compile Include="Handlers\FieldHandler.cs" />
     <Compile Include="Handlers\RoleHandler.cs" />
     <Compile Include="Helpers\CipherHelper.cs" />
     <Compile Include="Models\BaseEntity.cs" />
@@ -1757,6 +1762,7 @@
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\CreateUpdate.cshtml" />
     <Content Include="Views\FixedAssets\Index.cshtml" />
+    <Content Include="Views\Shared\_ErrorModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

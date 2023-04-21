@@ -5,7 +5,6 @@ using qlts.Stores;
 using qlts.ViewModels.Roles;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace qlts.Handlers
 {
@@ -16,26 +15,25 @@ namespace qlts.Handlers
         List<RoleIndexViewModel> GetAllRoles();
         bool DeleteRole(Guid? id);
 
-        Task<IEnumerable<RoleIndexViewModel>> GetRoles(string keyword, int page = 1);
     }
 
     public class RoleHandler : IRoleHandler
     {
-        private readonly IRoleStore RoleStore;
+        private readonly IRoleStore _roleStore;
 
-        public RoleHandler(IRoleStore RoleStore)
+        public RoleHandler(IRoleStore roleStore)
         {
-            this.RoleStore = RoleStore;
+            this._roleStore = roleStore;
         }
 
         public Role CreateUpdateRole(RoleCreateUpdateViewModel model)
         {
-            var Role = MapperConfig.Factory.Map<RoleCreateUpdateViewModel, Role>(model);
+            var role = MapperConfig.Factory.Map<RoleCreateUpdateViewModel, Role>(model);
 
             try
             {
-                if (Role.Id != null) Role.ModifiedDate = DateTime.Now;
-                Role = Role.Id != null ? RoleStore.UpdateRole(Role) : RoleStore.CreateRole(Role);
+                if (role != null && role.Id != null) role.ModifiedDate = DateTime.Now;
+                role = role != null && role.Id != null ? _roleStore.UpdateRole(role) : _roleStore.CreateRole(role);
             }
             catch (Exception ex)
             {
@@ -47,32 +45,28 @@ namespace qlts.Handlers
                 throw ex;
             }
 
-            return Role;
+            return role;
         }
 
         public bool DeleteRole(Guid? id)
         {
-            return RoleStore.DeleteRole(id);
+            return _roleStore.DeleteRole(id);
         }
 
         public List<RoleIndexViewModel> GetAllRoles()
         {
-            var roles = RoleStore.GetAllRoles();
+            var roles = _roleStore.GetAllRoles();
             return MapperConfig.Factory.Map<List<Role>, List<RoleIndexViewModel>>(roles);
         }
 
         public RoleCreateUpdateViewModel GetRoleById(Guid? id)
         {
-            if (id == null || id == null)
+            if (id == null)
                 return new RoleCreateUpdateViewModel();
 
-            var role = RoleStore.GetRoleById(id);
+            var role = _roleStore.GetRoleById(id);
             return role == null ? null : MapperConfig.Factory.Map<Role, RoleCreateUpdateViewModel>(role);
         }
 
-        public async Task<IEnumerable<RoleIndexViewModel>> GetRoles(string keyword, int page = 1)
-        {
-            return await RoleStore.GetRoles(keyword, page);
-        }
     }
 }

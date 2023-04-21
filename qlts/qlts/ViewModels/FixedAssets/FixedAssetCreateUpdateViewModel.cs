@@ -1,4 +1,5 @@
 ﻿using qlts.Datas;
+using qlts.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -77,5 +78,7 @@ namespace qlts.ViewModels.FixedAssets
         [Display(Name = "Đơn giá")]
         public string CostFormatted { get; set; }
         public decimal Price { get; set; }
+
+        public FixedAssetType FixedAssetType { get; set; } = FixedAssetType.UseAsset;
     }
 }

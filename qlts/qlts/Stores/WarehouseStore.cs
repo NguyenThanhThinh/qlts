@@ -11,8 +11,8 @@ namespace qlts.Stores
     {
         List<Warehouse> GetAllWarehouses();
         Warehouse GetWarehouseById(Guid? id);
-        Warehouse CreateWarehouse(Warehouse Warehouse);
-        Warehouse UpdateWarehouse(Warehouse Warehouse);
+        Warehouse CreateWarehouse(Warehouse warehouse);
+        Warehouse UpdateWarehouse(Warehouse warehouse);
         bool DeleteWarehouse(Guid? id);
 
         List<DropdownModel> GetWarehouseDropdown();
@@ -22,39 +22,39 @@ namespace qlts.Stores
     public class WarehouseStore : IWarehouseStore
     {
         private readonly IUnitOfWork unitOfWork;
-        private readonly IRepository<Warehouse> WarehouseRepo;
+        private readonly IRepository<Warehouse> _warehouseRepo;
 
         public WarehouseStore(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
-            WarehouseRepo = unitOfWork.Get<Warehouse>();
+            _warehouseRepo = unitOfWork.Get<Warehouse>();
         }
 
         public Warehouse CreateWarehouse(Warehouse Warehouse)
         {
-            var result = WarehouseRepo.Create(Warehouse);
+            var result = _warehouseRepo.Create(Warehouse);
             return unitOfWork.SaveChanges() > 0 ? result : null;
         }
 
         public bool DeleteWarehouse(Guid? id)
         {
-            WarehouseRepo.Delete(n => n.Id == id);
+            _warehouseRepo.Delete(n => n.Id == id);
             return unitOfWork.SaveChanges() > 0;
         }
 
         public List<Warehouse> GetAllWarehouses()
         {
-            return WarehouseRepo.GetAll(null);
+            return _warehouseRepo.GetAll(null);
         }
 
         public Warehouse GetWarehouseById(Guid? id)
         {
-            return WarehouseRepo.Get(n => n.Id == id);
+            return _warehouseRepo.Get(n => n.Id == id);
         }
 
         public List<DropdownModel> GetWarehouseDropdown()
         {
-            return WarehouseRepo.GetAll(null).OrderBy(x => x.Name)
+            return _warehouseRepo.GetAll(null).OrderBy(x => x.Name)
                 .Select(x => new DropdownModel
                 {
                     Id = x.Id,
@@ -64,7 +64,7 @@ namespace qlts.Stores
 
         public Warehouse UpdateWarehouse(Warehouse Warehouse)
         {
-            var result = WarehouseRepo.Update(Warehouse);
+            var result = _warehouseRepo.Update(Warehouse);
             return unitOfWork.SaveChanges() > 0 ? result : null;
         }
     }

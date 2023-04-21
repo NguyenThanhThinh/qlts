@@ -11,8 +11,8 @@ namespace qlts.Stores
     {
         List<User> GetAllUsers();
         User GetUserById(Guid? id);
-        User CreateUser(User User);
-        User UpdateUser(User User);
+        User CreateUser(User user);
+        User UpdateUser(User user);
         bool DeleteUser(Guid? id);
 
         List<DropdownModel> GetUserDropdown();
@@ -22,39 +22,39 @@ namespace qlts.Stores
     public class UserStore : IUserStore
     {
         private readonly IUnitOfWork unitOfWork;
-        private readonly IRepository<User> UserRepo;
+        private readonly IRepository<User> _userRepo;
 
         public UserStore(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
-            UserRepo = unitOfWork.Get<User>();
+            _userRepo = unitOfWork.Get<User>();
         }
 
-        public User CreateUser(User User)
+        public User CreateUser(User user)
         {
-            var result = UserRepo.Create(User);
+            var result = _userRepo.Create(user);
             return unitOfWork.SaveChanges() > 0 ? result : null;
         }
 
         public bool DeleteUser(Guid? id)
         {
-            UserRepo.Delete(n => n.Id == id);
+            _userRepo.Delete(n => n.Id == id);
             return unitOfWork.SaveChanges() > 0;
         }
 
         public List<User> GetAllUsers()
         {
-            return UserRepo.GetAll(null);
+            return _userRepo.GetAll(null);
         }
 
         public User GetUserById(Guid? id)
         {
-            return UserRepo.Get(n => n.Id == id);
+            return _userRepo.Get(n => n.Id == id);
         }
 
         public List<DropdownModel> GetUserDropdown()
         {
-            return UserRepo.GetAll(null).OrderBy(x => x.Name)
+            return _userRepo.GetAll(null).OrderBy(x => x.Name)
                 .Select(x => new DropdownModel
                 {
                     Id = x.Id,
@@ -62,9 +62,9 @@ namespace qlts.Stores
                 }).ToList();
         }
 
-        public User UpdateUser(User User)
+        public User UpdateUser(User user)
         {
-            var result = UserRepo.Update(User);
+            var result = _userRepo.Update(user);
             return unitOfWork.SaveChanges() > 0 ? result : null;
         }
     }

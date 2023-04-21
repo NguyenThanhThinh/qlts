@@ -11,8 +11,8 @@ namespace qlts.Stores
     {
         List<FixedAsset> GetAllFixedAssets();
         FixedAsset GetFixedAssetById(Guid? id);
-        FixedAsset CreateFixedAsset(FixedAsset FixedAsset);
-        FixedAsset UpdateFixedAsset(FixedAsset FixedAsset);
+        FixedAsset CreateFixedAsset(FixedAsset fixedAsset);
+        FixedAsset UpdateFixedAsset(FixedAsset fixedAsset);
         bool DeleteFixedAsset(Guid? id);
 
         List<DropdownModel> GetFixedAssetDropdown();
@@ -22,39 +22,39 @@ namespace qlts.Stores
     public class FixedAssetStore : IFixedAssetStore
     {
         private readonly IUnitOfWork unitOfWork;
-        private readonly IRepository<FixedAsset> FixedAssetRepo;
+        private readonly IRepository<FixedAsset> _fixedAssetRepo;
 
         public FixedAssetStore(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
-            FixedAssetRepo = unitOfWork.Get<FixedAsset>();
+            _fixedAssetRepo = unitOfWork.Get<FixedAsset>();
         }
 
-        public FixedAsset CreateFixedAsset(FixedAsset FixedAsset)
+        public FixedAsset CreateFixedAsset(FixedAsset fixedAsset)
         {
-            var result = FixedAssetRepo.Create(FixedAsset);
+            var result = _fixedAssetRepo.Create(fixedAsset);
             return unitOfWork.SaveChanges() > 0 ? result : null;
         }
 
         public bool DeleteFixedAsset(Guid? id)
         {
-            FixedAssetRepo.Delete(n => n.Id == id);
+            _fixedAssetRepo.Delete(n => n.Id == id);
             return unitOfWork.SaveChanges() > 0;
         }
 
         public List<FixedAsset> GetAllFixedAssets()
         {
-            return FixedAssetRepo.GetAll(null);
+            return _fixedAssetRepo.GetAll(null);
         }
 
         public FixedAsset GetFixedAssetById(Guid? id)
         {
-            return FixedAssetRepo.Get(n => n.Id == id);
+            return _fixedAssetRepo.Get(n => n.Id == id);
         }
 
         public List<DropdownModel> GetFixedAssetDropdown()
         {
-            return FixedAssetRepo.GetAll(null).OrderBy(x => x.Name)
+            return _fixedAssetRepo.GetAll(null).OrderBy(x => x.Name)
                 .Select(x => new DropdownModel
                 {
                     Id = x.Id,
@@ -62,9 +62,9 @@ namespace qlts.Stores
                 }).ToList();
         }
 
-        public FixedAsset UpdateFixedAsset(FixedAsset FixedAsset)
+        public FixedAsset UpdateFixedAsset(FixedAsset fixedAsset)
         {
-            var result = FixedAssetRepo.Update(FixedAsset);
+            var result = _fixedAssetRepo.Update(fixedAsset);
             return unitOfWork.SaveChanges() > 0 ? result : null;
         }
     }

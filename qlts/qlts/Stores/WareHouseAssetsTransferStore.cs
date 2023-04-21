@@ -11,8 +11,8 @@ namespace qlts.Stores
     {
         List<WareHouseAssetsTransfer> GetAllWareHouseAssetsTransfers();
         WareHouseAssetsTransfer GetWareHouseAssetsTransferById(Guid? id);
-        WareHouseAssetsTransfer CreateWareHouseAssetsTransfer(WareHouseAssetsTransfer WareHouseAssetsTransfer);
-        WareHouseAssetsTransfer UpdateWareHouseAssetsTransfer(WareHouseAssetsTransfer WareHouseAssetsTransfer);
+        WareHouseAssetsTransfer CreateWareHouseAssetsTransfer(WareHouseAssetsTransfer wareHouseAssetsTransfer);
+        WareHouseAssetsTransfer UpdateWareHouseAssetsTransfer(WareHouseAssetsTransfer wareHouseAssetsTransfer);
         bool DeleteWareHouseAssetsTransfer(Guid? id);
 
 
@@ -21,40 +21,40 @@ namespace qlts.Stores
     public class WareHouseAssetsTransferStore : IWareHouseAssetsTransferStore
     {
         private readonly IUnitOfWork unitOfWork;
-        private readonly IRepository<WareHouseAssetsTransfer> WareHouseAssetsTransferRepo;
+        private readonly IRepository<WareHouseAssetsTransfer> _wareHouseAssetsTransferRepo;
 
         public WareHouseAssetsTransferStore(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
-            WareHouseAssetsTransferRepo = unitOfWork.Get<WareHouseAssetsTransfer>();
+            _wareHouseAssetsTransferRepo = unitOfWork.Get<WareHouseAssetsTransfer>();
         }
 
-        public WareHouseAssetsTransfer CreateWareHouseAssetsTransfer(WareHouseAssetsTransfer WareHouseAssetsTransfer)
+        public WareHouseAssetsTransfer CreateWareHouseAssetsTransfer(WareHouseAssetsTransfer wareHouseAssetsTransfer)
         {
-            var result = WareHouseAssetsTransferRepo.Create(WareHouseAssetsTransfer);
+            var result = _wareHouseAssetsTransferRepo.Create(wareHouseAssetsTransfer);
             return unitOfWork.SaveChanges() > 0 ? result : null;
         }
 
         public bool DeleteWareHouseAssetsTransfer(Guid? id)
         {
-            WareHouseAssetsTransferRepo.Delete(n => n.Id == id);
+            _wareHouseAssetsTransferRepo.Delete(n => n.Id == id);
             return unitOfWork.SaveChanges() > 0;
         }
 
         public List<WareHouseAssetsTransfer> GetAllWareHouseAssetsTransfers()
         {
-            return WareHouseAssetsTransferRepo.GetAll(null);
+            return _wareHouseAssetsTransferRepo.GetAll(null);
         }
 
         public WareHouseAssetsTransfer GetWareHouseAssetsTransferById(Guid? id)
         {
-            return WareHouseAssetsTransferRepo.Get(n => n.Id == id);
+            return _wareHouseAssetsTransferRepo.Get(n => n.Id == id);
         }
 
        
-        public WareHouseAssetsTransfer UpdateWareHouseAssetsTransfer(WareHouseAssetsTransfer WareHouseAssetsTransfer)
+        public WareHouseAssetsTransfer UpdateWareHouseAssetsTransfer(WareHouseAssetsTransfer wareHouseAssetsTransfer)
         {
-            var result = WareHouseAssetsTransferRepo.Update(WareHouseAssetsTransfer);
+            var result = _wareHouseAssetsTransferRepo.Update(wareHouseAssetsTransfer);
             return unitOfWork.SaveChanges() > 0 ? result : null;
         }
     }

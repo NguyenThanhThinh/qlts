@@ -8,6 +8,7 @@ namespace qlts.Models
     {
         [StringLength(100)]
         [Required]
+        [Index(IsUnique = true)]
         public string Name { get; set; }
 
         public string Description { get; set; }

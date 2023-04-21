@@ -14,8 +14,8 @@ namespace qlts.Stores
     {
         List<Role> GetAllRoles();
         Role GetRoleById(Guid? id);
-        Role CreateRole(Role Role);
-        Role UpdateRole(Role Role);
+        Role CreateRole(Role role);
+        Role UpdateRole(Role role);
         bool DeleteRole(Guid? id);
 
         List<DropdownModel> GetRoleDropdown();
@@ -25,40 +25,40 @@ namespace qlts.Stores
 
     public class RoleStore : IRoleStore
     {
-        private readonly IUnitOfWork unitOfWork;
-        private readonly IRepository<Role> RoleRepo;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IRepository<Role> _roleRepo;
 
         public RoleStore(IUnitOfWork unitOfWork)
         {
-            this.unitOfWork = unitOfWork;
-            RoleRepo = unitOfWork.Get<Role>();
+            this._unitOfWork = unitOfWork;
+            _roleRepo = unitOfWork.Get<Role>();
         }
 
         public Role CreateRole(Role Role)
         {
-            var result = RoleRepo.Create(Role);
-            return unitOfWork.SaveChanges() > 0 ? result : null;
+            var result = _roleRepo.Create(Role);
+            return _unitOfWork.SaveChanges() > 0 ? result : null;
         }
 
         public bool DeleteRole(Guid? id)
         {
-            RoleRepo.Delete(n => n.Id == id);
-            return unitOfWork.SaveChanges() > 0;
+            _roleRepo.Delete(n => n.Id == id);
+            return _unitOfWork.SaveChanges() > 0;
         }
 
         public List<Role> GetAllRoles()
         {
-            return RoleRepo.GetAll(null);
+            return _roleRepo.GetAll(null);
         }
 
         public Role GetRoleById(Guid? id)
         {
-            return RoleRepo.Get(n => n.Id == id);
+            return _roleRepo.Get(n => n.Id == id);
         }
 
         public List<DropdownModel> GetRoleDropdown()
         {
-            return RoleRepo.GetAll(null).OrderBy(x => x.Name)
+            return _roleRepo.GetAll(null).OrderBy(x => x.Name)
                 .Select(x => new DropdownModel
                 {
                     Id = x.Id,
@@ -69,7 +69,7 @@ namespace qlts.Stores
         public async Task<List<RoleIndexViewModel>> GetRoles(string keyword, int page = 1)
         {
             const int pageSize = 10;
-            var data = await this.RoleRepo.All
+            var data = await this._roleRepo.All
                 .OrderByDescending(x => x.CreatedDate)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
@@ -81,10 +81,10 @@ namespace qlts.Stores
             return MapperConfig.Factory.Map<List<Role>, List<RoleIndexViewModel>>(data);
         }
 
-        public Role UpdateRole(Role Role)
+        public Role UpdateRole(Role role)
         {
-            var result = RoleRepo.Update(Role);
-            return unitOfWork.SaveChanges() > 0 ? result : null;
+            var result = _roleRepo.Update(role);
+            return _unitOfWork.SaveChanges() > 0 ? result : null;
         }
     }
 }

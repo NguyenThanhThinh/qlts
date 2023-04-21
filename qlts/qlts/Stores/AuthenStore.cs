@@ -12,17 +12,17 @@ namespace qlts.Stores
 
     public class AuthenStore : IAuthenStore
     {
-        private readonly IUnitOfWork unitOfWork;
-        private readonly IRepository<User> authenRepo;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IRepository<User> _authenRepo;
         public AuthenStore(IUnitOfWork unitOfWork)
         {
-            this.unitOfWork = unitOfWork;
-            authenRepo = unitOfWork.Get<User>();
+            this._unitOfWork = unitOfWork;
+            _authenRepo = unitOfWork.Get<User>();
         }
 
         public async Task<User> CheckLogin(string username, string password)
         {
-            return await authenRepo.All.Include(n => n.Role).SingleOrDefaultAsync(n => n.UserName == username && n.Password == password);
+            return await _authenRepo.All.Include(n => n.Role).SingleOrDefaultAsync(n => n.UserName == username && n.Password == password);
         }
     }
 }

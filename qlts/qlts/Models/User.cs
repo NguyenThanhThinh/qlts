@@ -19,6 +19,7 @@ namespace qlts.Models
         public string Password { get; set; }
 
         [StringLength(100)]
+        [Index(IsUnique = true)]
         [Required]
         public string UserName { get; set; }
 

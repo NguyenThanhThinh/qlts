@@ -11,8 +11,8 @@ namespace qlts.Stores
     {
         List<Field> GetAllFields();
         Field GetFieldById(Guid? id);
-        Field CreateField(Field Field);
-        Field UpdateField(Field Field);
+        Field CreateField(Field field);
+        Field UpdateField(Field field);
         bool DeleteField(Guid? id);
 
         List<DropdownModel> GetFieldDropdown();
@@ -21,40 +21,40 @@ namespace qlts.Stores
 
     public class FieldStore : IFieldStore
     {
-        private readonly IUnitOfWork unitOfWork;
-        private readonly IRepository<Field> FieldRepo;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IRepository<Field> _fieldRepo;
 
         public FieldStore(IUnitOfWork unitOfWork)
         {
-            this.unitOfWork = unitOfWork;
-            FieldRepo = unitOfWork.Get<Field>();
+            this._unitOfWork = unitOfWork;
+            _fieldRepo = unitOfWork.Get<Field>();
         }
 
         public Field CreateField(Field Field)
         {
-            var result = FieldRepo.Create(Field);
-            return unitOfWork.SaveChanges() > 0 ? result : null;
+            var result = _fieldRepo.Create(Field);
+            return _unitOfWork.SaveChanges() > 0 ? result : null;
         }
 
         public bool DeleteField(Guid? id)
         {
-            FieldRepo.Delete(n => n.Id == id);
-            return unitOfWork.SaveChanges() > 0;
+            _fieldRepo.Delete(n => n.Id == id);
+            return _unitOfWork.SaveChanges() > 0;
         }
 
         public List<Field> GetAllFields()
         {
-            return FieldRepo.GetAll(null);
+            return _fieldRepo.GetAll(null);
         }
 
         public Field GetFieldById(Guid? id)
         {
-            return FieldRepo.Get(n => n.Id == id);
+            return _fieldRepo.Get(n => n.Id == id);
         }
 
         public List<DropdownModel> GetFieldDropdown()
         {
-            return FieldRepo.GetAll(null).OrderBy(x => x.Name)
+            return _fieldRepo.GetAll(null).OrderBy(x => x.Name)
                 .Select(x => new DropdownModel
                 {
                     Id = x.Id,
@@ -62,10 +62,10 @@ namespace qlts.Stores
                 }).ToList();
         }
 
-        public Field UpdateField(Field Field)
+        public Field UpdateField(Field field)
         {
-            var result = FieldRepo.Update(Field);
-            return unitOfWork.SaveChanges() > 0 ? result : null;
+            var result = _fieldRepo.Update(field);
+            return _unitOfWork.SaveChanges() > 0 ? result : null;
         }
     }
 }

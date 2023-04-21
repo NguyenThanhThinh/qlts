@@ -11,8 +11,8 @@ namespace qlts.Stores
     {
         List<Manufacturer> GetAllManufacturers();
         Manufacturer GetManufacturerById(Guid? id);
-        Manufacturer CreateManufacturer(Manufacturer Manufacturer);
-        Manufacturer UpdateManufacturer(Manufacturer Manufacturer);
+        Manufacturer CreateManufacturer(Manufacturer manufacturer);
+        Manufacturer UpdateManufacturer(Manufacturer manufacturer);
         bool DeleteManufacturer(Guid? id);
 
         List<DropdownModel> GetManufacturerDropdown();
@@ -22,39 +22,39 @@ namespace qlts.Stores
     public class ManufacturerStore : IManufacturerStore
     {
         private readonly IUnitOfWork unitOfWork;
-        private readonly IRepository<Manufacturer> ManufacturerRepo;
+        private readonly IRepository<Manufacturer> _manufacturerRepo;
 
         public ManufacturerStore(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
-            ManufacturerRepo = unitOfWork.Get<Manufacturer>();
+            _manufacturerRepo = unitOfWork.Get<Manufacturer>();
         }
 
-        public Manufacturer CreateManufacturer(Manufacturer Manufacturer)
+        public Manufacturer CreateManufacturer(Manufacturer manufacturer)
         {
-            var result = ManufacturerRepo.Create(Manufacturer);
+            var result = _manufacturerRepo.Create(manufacturer);
             return unitOfWork.SaveChanges() > 0 ? result : null;
         }
 
         public bool DeleteManufacturer(Guid? id)
         {
-            ManufacturerRepo.Delete(n => n.Id == id);
+            _manufacturerRepo.Delete(n => n.Id == id);
             return unitOfWork.SaveChanges() > 0;
         }
 
         public List<Manufacturer> GetAllManufacturers()
         {
-            return ManufacturerRepo.GetAll(null);
+            return _manufacturerRepo.GetAll(null);
         }
 
         public Manufacturer GetManufacturerById(Guid? id)
         {
-            return ManufacturerRepo.Get(n => n.Id == id);
+            return _manufacturerRepo.Get(n => n.Id == id);
         }
 
         public List<DropdownModel> GetManufacturerDropdown()
         {
-            return ManufacturerRepo.GetAll(null).OrderBy(x => x.Name)
+            return _manufacturerRepo.GetAll(null).OrderBy(x => x.Name)
                 .Select(x => new DropdownModel
                 {
                     Id = x.Id,
@@ -62,9 +62,9 @@ namespace qlts.Stores
                 }).ToList();
         }
 
-        public Manufacturer UpdateManufacturer(Manufacturer Manufacturer)
+        public Manufacturer UpdateManufacturer(Manufacturer manufacturer)
         {
-            var result = ManufacturerRepo.Update(Manufacturer);
+            var result = _manufacturerRepo.Update(manufacturer);
             return unitOfWork.SaveChanges() > 0 ? result : null;
         }
     }
