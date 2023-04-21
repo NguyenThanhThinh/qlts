@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading;
-using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Newtonsoft.Json;
@@ -48,26 +46,19 @@ namespace qlts.Controllers
             }
         }
 
-        protected PositionType GetCurrentUserPosition()
+        protected PositionType GetCurrentUserPosition( )
         {
-            var identity = (ClaimsPrincipal)Thread.CurrentPrincipal;
-            var value = identity.Claims.Where(c => c.Type == ClaimTypes.Role)
-                                .Select(c => c.Value).SingleOrDefault();
+            var identity = ( ClaimsPrincipal )Thread.CurrentPrincipal;
+            var value    = identity.Claims.Where ( c => c.Type == ClaimTypes.Role ).Select ( c => c.Value ).SingleOrDefault();
 
-            if (value == null) return PositionType.Warehouseman;
+            if ( value == null ) return PositionType.Warehouseman;
 
             if ( value == PositionType.AccountingManager.ToString() )
-            {
                 return PositionType.AccountingManager;
-            }
             else if ( value == PositionType.UnitManager.ToString() )
-            {
                 return PositionType.UnitManager;
-            }
             else
-            {
                 return PositionType.Warehouseman;
-            }
         }
 
         protected JsonResponse GetResponse(bool success, string message = "", object data = null)
