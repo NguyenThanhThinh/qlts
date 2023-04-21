@@ -28,5 +28,10 @@ namespace qlts.ViewModels.Warehouses
         [Display(Name = "Ghi chú")]
         [StringLength(200, MinimumLength = 2, ErrorMessage = ErrorMessageStringLength)]
         public string Note { get; set; }
+
+        [Display(Name = "Loại kho")]
+        [Required(ErrorMessage = ErrorMessageRequired)]
+        [Range(1, 5, ErrorMessage = "Vui lòng chọn loại kho")]
+        public WarehouseType WarehouseType { get; set; }
     }
 }

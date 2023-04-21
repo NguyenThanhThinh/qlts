@@ -185,6 +185,7 @@
     <Compile Include="Enums\FixedAssetType.cs" />
     <Compile Include="Enums\FixedAssetUnit.cs" />
     <Compile Include="Enums\PositionType.cs" />
+    <Compile Include="Enums\WarehouseType.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\EntityExtensions.cs" />
     <Compile Include="Extensions\EnumExtension.cs" />
@@ -207,6 +208,7 @@
     <Compile Include="Models\Manufacturer.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Warehouse.cs" />
+    <Compile Include="Models\WareHouseAssetsExport.cs" />
     <Compile Include="Models\WareHouseAssetsTransfer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
