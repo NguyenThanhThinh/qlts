@@ -1,88 +1,120 @@
-﻿@{
-    ViewBag.Title = "Đăng nhập hệ thống";
+﻿@model qlts.ViewModels.Accounts.AccountLoginViewModel
+@{
     Layout = null;
 }
-
 <!doctype html>
-<html lang="vi">
+<html lang="en">
+
 <head>
-    @Html.Partial("~/Views/Shared/_title_meta.cshtml")
-    @Html.Partial("~/Views/Shared/_head_css.cshtml")
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--favicon-->
+    <link rel="icon" href="~/Content/assets/images/favicon-32x32.png" type="image/png"/>
+    <!--plugins-->
+    <link href="~/Content/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet"/>
+    <link href="~/Content/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet"/>
+    <link href="~/Content/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet"/>
+    <!-- loader-->
+    <link href="~/Content/assets/css/pace.min.css" rel="stylesheet"/>
+    <script src="~/Content/assets/js/pace.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link href="~/Content/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/assets/css/bootstrap-extended.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="~/Content/assets/css/app.css" rel="stylesheet">
+    <link href="~/Content/assets/css/icons.css" rel="stylesheet">
+    <title>Đăng nhập hệ thống</title>
 </head>
-<body>
 
-    <div class="auth-page">
-        <div class="container-fluid p-0">
-            <div class="row g-0">
-                <div class="auth-full-page-content d-flex align-items-center justify-content-center">
-                    <div class="w-25">
-                        <div class="d-flex flex-column h-50">
-
-                            <div class="auth-content my-auto">
-                                <div class="text-center">
-                                    <h5 class="mb-0">Welcome Back !</h5>
-                                    <p class="text-muted mt-2">Sign in to continue to Minia.</p>
+<body class="">
+<!--wrapper-->
+<div class="wrapper">
+    <div class="section-authentication-signin d-flex align-items-center justify-content-center my-5 my-lg-0">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
+                <div class="col mx-auto">
+                    <div class="card mb-0">
+                        <div class="card-body">
+                            <div class="p-4">
+                                <div class="mb-3 text-center">
+                                    <img src="~/Content/assets/images/logo-img.png" alt=""/>
                                 </div>
-                                <form class="mt-4 pt-2" action="">
-                                    <div class="mb-3">
-                                        <label class="form-label">Username</label>
-                                        <input type="text" class="form-control" id="username" placeholder="Enter username">
-                                    </div>
-                                    <div class="mb-3">
-                                        <div class="d-flex align-items-start">
-                                            <div class="flex-grow-1">
-                                                <label class="form-label">Password</label>
+                                <div class="text-center mb-4">
+                                    <h5 class="">VNPT-NET</h5>
+                                    <h6 class="text-uppercase">Hệ thống quản lý tài sản</h6>
+                                    <div class="text-left m-auto">
+                                        @if ( TempData["error"] != null && !string.IsNullOrEmpty ( TempData["error"].ToString() ) ) {
+                                            <div class="alert alert-danger alert-dismissible bg-danger text-white border-0 fade show" role="alert">
+                                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                <strong>@TempData["error"]</strong>
                                             </div>
-                                            <div class="flex-shrink-0">
-                                                <div class="">
-                                                    <a href="" class="text-muted">Forgot password?</a>
-                                                </div>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="form-body">
+                                    <form method="post" action="@Url.Action( "Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl } )" class="g-3">
+                                        @Html.AntiForgeryToken()
+                                        <div class="col-12">
+                                            @Html.LabelFor( x => x.UserName )
+                                            @Html.TextBoxFor( x => x.UserName, new { @class = "form-control", autocomplete = "off" } )
+                                            @Html.ValidationMessageFor( model => model.UserName, "", new { @class = "text-danger" } )
+                                        </div>
+                                        <div class="col-12">
+                                            @Html.LabelFor( x => x.Password )
+                                            <div class="input-group" id="show_hide_password">
+                                                @Html.PasswordFor( x => x.Password, new { @class = "form-control", autocomplete = "off" } )<a href="javascript:;" class="input-group-text bg-transparent">
+                                                    <i class="bx bx-hide"></i>
+                                                </a>
+                                            </div>
+                                            @Html.ValidationMessageFor( model => model.Password, "", new { @class = "text-danger" } )
+                                        </div>
+
+                                        <div class="col-12 mt-3">
+                                            <div class="d-grid">
+                                                <button type="submit" class="btn btn-primary">Đăng nhập</button>
                                             </div>
                                         </div>
 
-                                        <div class="input-group auth-pass-inputgroup">
-                                            <input type="password" class="form-control" placeholder="Enter password" aria-label="Password" aria-describedby="password-addon">
-                                            <button class="btn btn-light shadow-none ms-0" type="button" id="password-addon"><i class="mdi mdi-eye-outline"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-4">
-                                        <div class="col">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="remember-check">
-                                                <label class="form-check-label" for="remember-check">
-                                                    Remember me
-                                                </label>
-                                            </div>
-                                        </div>
+                                    </form>
+                                </div>
 
-                                    </div>
-                                    <div class="mb-3">
-                                        <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Log In</button>
-                                    </div>
-                                </form>
-
-                        
-                            </div>
-                            <div class="mt-4 mt-md-5 text-center">
-                                <p class="mb-0">
-                                    ©
-                                    <script>document.write(new Date().getFullYear())</script> <i class="mdi mdi-heart text-danger"></i>
-                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- end col -->
             </div>
-            <!-- end row -->
+            <!--end row-->
         </div>
-        <!-- end container fluid -->
     </div>
-
-    @Html.Partial("~/Views/Shared/_vendor_scripts.cshtml")
-
-    <!-- password addon init -->
-    <script src="~/Content/assets/js/pages/pass-addon.init.js"></script>
-
+</div>
+<!--end wrapper-->
+<!-- Bootstrap JS -->
+<script src="~/Content/assets/js/bootstrap.bundle.min.js"></script>
+<!--plugins-->
+<script src="~/Content/assets/js/jquery.min.js"></script>
+<script src="~/Content/assets/plugins/simplebar/js/simplebar.min.js"></script>
+<script src="~/Content/assets/plugins/metismenu/js/metisMenu.min.js"></script>
+<script src="~/Content/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+<!--Password show & hide js -->
+<script>
+        $(document).ready(function () {
+            $("#show_hide_password a").on('click', function (event) {
+                event.preventDefault();
+                if ($('#show_hide_password input').attr("type") == "text") {
+                    $('#show_hide_password input').attr('type', 'password');
+                    $('#show_hide_password i').addClass("bx-hide");
+                    $('#show_hide_password i').removeClass("bx-show");
+                } else if ($('#show_hide_password input').attr("type") == "password") {
+                    $('#show_hide_password input').attr('type', 'text');
+                    $('#show_hide_password i').removeClass("bx-hide");
+                    $('#show_hide_password i').addClass("bx-show");
+                }
+            });
+        });
+    </script>
+<!--app JS-->
+<script src="~/Content/assets/js/app.js"></script>
 </body>
+
 </html>
