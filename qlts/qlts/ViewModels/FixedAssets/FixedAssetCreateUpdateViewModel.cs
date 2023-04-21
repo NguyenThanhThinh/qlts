@@ -30,8 +30,8 @@ namespace qlts.ViewModels.FixedAssets
 
         [Display(Name = "Đơn vị tính")]
         [Required(ErrorMessage = ErrorMessageRequired)]
-        [StringLength(200, MinimumLength = 2, ErrorMessage = ErrorMessageStringLength)]
-        public string Unit { get; set; }
+        [Range(1, 5, ErrorMessage = "Vui lòng chọn đơn vị tính")]
+        public FixedAssetUnit Unit { get; set; }
 
         [Display(Name = "Part Number")]
         [StringLength(200, MinimumLength = 2, ErrorMessage = ErrorMessageStringLength)]

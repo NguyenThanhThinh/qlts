@@ -20,7 +20,7 @@ namespace qlts.Models
 
         public int Quantity { get; set; }
 
-        public string Unit { get; set; }
+        public FixedAssetUnit Unit { get; set; }
 
         public string PartNumber { get; set; }
 

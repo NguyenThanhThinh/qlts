@@ -180,7 +180,8 @@
     <Compile Include="Datas\JsonResponse.cs" />
     <Compile Include="Enums\CenterUnit.cs" />
     <Compile Include="Enums\FixedAssetType.cs" />
-    <Compile Include="Enums\RoleType.cs" />
+    <Compile Include="Enums\FixedAssetUnit.cs" />
+    <Compile Include="Enums\PositionType.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\EntityExtensions.cs" />
     <Compile Include="Extensions\EnumExtension.cs" />
@@ -191,17 +192,16 @@
     </Compile>
     <Compile Include="Handlers\AuthenHandler.cs" />
     <Compile Include="Handlers\ManufacturerHandler.cs" />
+    <Compile Include="Handlers\UserHandler.cs" />
     <Compile Include="Handlers\WarehouseHandler.cs" />
     <Compile Include="Handlers\FixedAssetStatusHandler.cs" />
     <Compile Include="Handlers\FieldHandler.cs" />
-    <Compile Include="Handlers\RoleHandler.cs" />
     <Compile Include="Helpers\CipherHelper.cs" />
     <Compile Include="Models\BaseEntity.cs" />
     <Compile Include="Models\Field.cs" />
     <Compile Include="Models\FixedAsset.cs" />
     <Compile Include="Models\FixedAssetStatus.cs" />
     <Compile Include="Models\Manufacturer.cs" />
-    <Compile Include="Models\Role.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Warehouse.cs" />
     <Compile Include="Models\WareHouseAssetsTransfer.cs" />
@@ -215,7 +215,6 @@
     <Compile Include="Stores\WarehouseStore.cs" />
     <Compile Include="Stores\UserStore.cs" />
     <Compile Include="Stores\FieldStore.cs" />
-    <Compile Include="Stores\RoleStore.cs" />
     <Compile Include="ViewModels\Accounts\AccountCreateUpdateViewModel.cs" />
     <Compile Include="ViewModels\Accounts\AccountLoginViewModel.cs" />
     <Compile Include="ViewModels\Accounts\ProfileViewModel.cs" />
@@ -227,8 +226,6 @@
     <Compile Include="ViewModels\FixedAssets\FixedAssetIndexViewModel.cs" />
     <Compile Include="ViewModels\Manufacturers\ManufacturerCreateUpdateViewModel.cs" />
     <Compile Include="ViewModels\Manufacturers\ManufacturerIndexViewModel.cs" />
-    <Compile Include="ViewModels\Roles\RoleCreateUpdateViewModel.cs" />
-    <Compile Include="ViewModels\Roles\RoleIndexViewModel.cs" />
     <Compile Include="ViewModels\Users\UserCreateUpdateViewModel.cs" />
     <Compile Include="ViewModels\Users\UserIndexViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
@@ -872,6 +869,12 @@
     <Content Include="Content\assets\plugins\apexcharts-bundle\js\apex-custom.js" />
     <Content Include="Content\assets\plugins\apexcharts-bundle\js\apexcharts.js" />
     <Content Include="Content\assets\plugins\apexcharts-bundle\js\apexcharts.min.js" />
+    <Content Include="Content\assets\plugins\bootstrap-datepicker\css\bootstrap-datepicker.min.css" />
+    <Content Include="Content\assets\plugins\bootstrap-datepicker\css\bootstrap-datepicker.standalone.min.css" />
+    <Content Include="Content\assets\plugins\bootstrap-datepicker\css\bootstrap-datepicker3.min.css" />
+    <Content Include="Content\assets\plugins\bootstrap-datepicker\css\bootstrap-datepicker3.standalone.min.css" />
+    <Content Include="Content\assets\plugins\bootstrap-datepicker\js\bootstrap-datepicker.min.js" />
+    <Content Include="Content\assets\plugins\bootstrap-datepicker\locales\bootstrap-datepicker.vi.min.js" />
     <Content Include="Content\assets\plugins\bootstrap-material-datetimepicker\css\bootstrap-material-datetimepicker.min.css" />
     <Content Include="Content\assets\plugins\bootstrap-material-datetimepicker\js\bootstrap-material-datetimepicker.min.js" />
     <Content Include="Content\assets\plugins\bootstrap-material-datetimepicker\js\moment.min.js" />

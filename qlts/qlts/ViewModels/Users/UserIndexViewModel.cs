@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using qlts.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace qlts.ViewModels.Users
 {
@@ -21,19 +22,12 @@ namespace qlts.ViewModels.Users
         [Display(Name = "Địa chỉ")]
         public string Address { get; set; }
 
-        [Display(Name = "Quyền")]
-
-        public string RoleName { get; set; }
-        public int RoleId { get; set; }
-
-
-
 
         [Display(Name = "Ghi chú")]
         public string Note { get; set; }
 
         [Display(Name = "Chức vụ")]
-        public string Position { get; set; }
+        public PositionType Position { get; set; }
 
         
         public int WarehouseId { get; set; }

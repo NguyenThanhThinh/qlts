@@ -1,4 +1,5 @@
 ﻿using qlts.Datas;
+using qlts.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -42,15 +43,7 @@ namespace qlts.ViewModels.Users
         [Display(Name = "Địa chỉ")]
         public string Address { get; set; }
 
-        [Display(Name = "Quyền")]
-        [Required(ErrorMessage = ErrorMessageRequired)]
-        public int RoleId { get; set; }
-
-
-        public List<DropdownModel> Roles { get; set; } = new List<DropdownModel>();
-
-        public IEnumerable<SelectListItem> RoleDropdown =>
-            new SelectList(Roles, DropdownModel.ValueField, DropdownModel.DisplayField);
+        
 
 
         [Display(Name = "Ghi chú")]
@@ -59,8 +52,8 @@ namespace qlts.ViewModels.Users
 
         [Display(Name = "Chức vụ")]
         [Required(ErrorMessage = ErrorMessageRequired)]
-        [StringLength(100, MinimumLength = 2, ErrorMessage = ErrorMessageStringLength)]
-        public string Position { get; set; }
+        [Range(1, 3, ErrorMessage = "Vui lòng chọn chức vụ")]
+        public PositionType Position { get; set; }
 
         [Display(Name = "Kho")]
         [Required(ErrorMessage = ErrorMessageRequired)]
@@ -69,7 +62,7 @@ namespace qlts.ViewModels.Users
         public List<DropdownModel> Warehouses { get; set; } = new List<DropdownModel>();
 
         public IEnumerable<SelectListItem> WarehouseDropdown =>
-            new SelectList(Roles, DropdownModel.ValueField, DropdownModel.DisplayField);
+            new SelectList(Warehouses, DropdownModel.ValueField, DropdownModel.DisplayField);
 
         [Display(Name = "Số điện thoại")]
         [Required(ErrorMessage = ErrorMessageRequired)]

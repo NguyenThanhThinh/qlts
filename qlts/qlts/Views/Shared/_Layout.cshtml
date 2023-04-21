@@ -40,7 +40,29 @@
 
 @Html.Partial( "~/Views/Shared/_vendor_scripts.cshtml" )
 
-@RenderSection( "scripts", false )
+<script src="~/Content/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="~/Content/assets/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.vi.min.js"></script>
+<script src="~/Scripts/jquery.mask.min.js"></script>
+<script src="~/Scripts/toastr.js"></script>
+<script src="~/Scripts/bootbox.all.js"></script>
+<script src="~/Scripts/app/modules.js"></script>
+<script src="~/Scripts/app/common.js"></script>
+@RenderSection("scripts", required: false)
+@{ var hasSystemError = false; }
+@if (TempData["Exception"] != null && !string.IsNullOrEmpty((string)TempData["Exception"]))
+{
+    hasSystemError = true;
+
+    @Html.Partial("_ErrorModal")
+}
+@if (hasSystemError)
+{
+    <script type="text/javascript">
+            $(document).ready(function () {
+                $('#systemErrorModal').modal('show');
+            });
+        </script>
+}
 </body>
 
 </html>

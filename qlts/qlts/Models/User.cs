@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using qlts.Enums;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace qlts.Models
@@ -34,12 +35,7 @@ namespace qlts.Models
         [StringLength(500)]
         public string Note { get; set; }
 
-        public string Position { get; set; }
-
-        [Required]
-        public int RoleId { get; set; }
-
-        public Role Role { get; set; }
+        public PositionType Position { get; set; }
 
         
     }

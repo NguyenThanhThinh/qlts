@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using qlts.Models;
 using qlts.ViewModels.Accounts;
-using qlts.ViewModels.Roles;
 using qlts.ViewModels.Users;
 using qlts.ViewModels.Warehouses;
 
@@ -22,10 +21,6 @@ namespace qlts
                 config.CreateMap<ProfileViewModel, User>();
 
                 config.CreateMap<User, ProfileViewModel>();
-
-                config.CreateMap<Role, RoleIndexViewModel>();
-                config.CreateMap<Role, RoleCreateUpdateViewModel>();
-                config.CreateMap<RoleCreateUpdateViewModel, Role>();
 
                 config.CreateMap<User, UserIndexViewModel>();
                 config.CreateMap<User, UserCreateUpdateViewModel>();

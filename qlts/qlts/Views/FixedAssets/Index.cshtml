@@ -4,12 +4,7 @@
     ViewBag.pageTitle = "Trang chủ";
 }
 @section styles{
-    <!-- DataTables -->
-    <link href="~/Content/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
-
-    <!-- Responsive datatable examples -->
-    <link href="~/Content/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
 }
 
 <div class="row">
@@ -19,20 +14,21 @@
                 <button type="button" class="btn btn-info" id="btn_sent">Chuyển kho</button>
             </div>
             <div class="card-body">
-                <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100">
-                    <thead>
+                <div class="table-responsive-lg">
+                    <table id="datatable-buttons" class="table table-striped table-bordered mb-0 delete-container">
+                        <thead class="table-light">
                         <tr>
                             <th scope="col">
                                 <input type="checkbox" class="form-check-input" id="checkbox-all">
                             </th>
                             <th>Tài sản</th>
                             <th>Kho</th>
-                           
+
                         </tr>
-                    </thead>
+                        </thead>
 
 
-                    <tbody>
+                        <tbody>
                         @for (int i = 0; i < 10; i++)
                         {
                             <tr>
@@ -43,11 +39,12 @@
                                 </td>
                                 <td>Tài sản @i</td>
                                 <td>Kho @i</td>
-                               
+
                             </tr>
                         }
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         <!-- end cardaa -->
@@ -57,21 +54,8 @@
 @Html.Partial("CreateModal")
 @section scripts{
     <!-- Required datatable js -->
-    <script src="~/Content/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="~/Content/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <!-- Buttons examples -->
-    <script src="~/Content/assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="~/Content/assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
-    <script src="~/Content/assets/libs/jszip/jszip.min.js"></script>
-    <script src="~/Content/assets/libs/pdfmake/build/pdfmake.min.js"></script>
-    <script src="~/Content/assets/libs/pdfmake/build/vfs_fonts.js"></script>
-    <script src="~/Content/assets/libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
-    <script src="~/Content/assets/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
-    <script src="~/Content/assets/libs/datatables.net-buttons/js/buttons.colVis.min.js"></script>
-
-    <!-- Responsive examples -->
-    <script src="~/Content/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="~/Content/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+    <script src="~/Content/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+    <script src="~/Content/assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
 
     <!-- Datatable init js -->
     <script>
