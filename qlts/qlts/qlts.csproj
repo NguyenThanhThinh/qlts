@@ -170,9 +170,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FeildsController.cs" />
     <Compile Include="Controllers\FixedAssetsController.cs" />
+    <Compile Include="Controllers\FixedAssetStatusController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\WarehousesController.cs" />
     <Compile Include="Datas\AppDbContext.cs" />
     <Compile Include="Datas\BusinessErrorMessages.cs" />
     <Compile Include="Datas\BusinessException.cs" />
@@ -1077,6 +1080,11 @@
     <Content Include="Views\FixedAssets\Index.cshtml" />
     <Content Include="Views\Shared\_ErrorModal.cshtml" />
     <Content Include="Views\FixedAssets\CreateModal.cshtml" />
+    <Content Include="Views\Feilds\Index.cshtml" />
+    <Content Include="Views\Feilds\CreateUpdate.cshtml" />
+    <Content Include="Views\FixedAssetStatus\Index.cshtml" />
+    <Content Include="Views\FixedAssetStatus\CreateUpdate.cshtml" />
+    <Content Include="Views\Warehouses\CreateUpdate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

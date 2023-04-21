@@ -1,0 +1,51 @@
+﻿@using qlts.Enums
+@model qlts.ViewModels.Fields.FieldCreateUpdateViewModel
+@{
+    ViewBag.pTitle = "Thêm lĩnh vực";
+    ViewBag.pageTitle = "Trang chủ";
+
+    var isUpdate = Model != null && Model.Id != null;
+    ViewBag.Title = isUpdate ? "Lĩnh vực " + Model.Name : "Thêm mới Lĩnh vực";
+    string controller = "Fiedls";
+}
+
+
+<div class="row">
+    <div class="col-xl-7 mx-auto">
+        <h6 class="mb-0 text-uppercase">@ViewBag.Title</h6>
+        <hr>
+        <div class="card border-top border-0 border-4 border-primary">
+            <div class="card-body p-5">
+                <div class="card-title d-flex align-items-center">
+
+                </div>
+                <hr>
+                <form method="post" action="@Url.Action( "CreateUpdate", controller )" autocomplete="off" class="row g-3">
+                    @Html.AntiForgeryToken()
+                    @if (isUpdate)
+                    {
+                        @Html.HiddenFor(x => x.Id)
+                    }
+                    <div class="col-12">
+                        @Html.LabelFor(x => x.Name)
+                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control", autocomplete = "off" })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                   
+                    <div class="col-12">
+                        @Html.LabelFor(x => x.Note)
+                        @Html.TextAreaFor(x => x.Note, new { @class = "form-control", autocomplete = "off", @rows = 3 })
+                        @Html.ValidationMessageFor(model => model.Note, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-12">
+                        <a href="@Url.Action("Index","Home")" class="btn btn-outline-secondary px-4"><i class="bx bx-left-arrow-alt me-2"></i>Quay về</a>
+                        <button type="submit" class="btn btn-primary px-5"> <i class="bx bx-save me-2"></i>Lưu</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
