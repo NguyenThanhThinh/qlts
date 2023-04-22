@@ -32,10 +32,10 @@ namespace qlts.Handlers
 
             try
             {
-                if ( fixedAssetStatus != null && fixedAssetStatus.Id != null )
+                if ( fixedAssetStatus != null && fixedAssetStatus.Id != Guid.Empty )
                     fixedAssetStatus.ModifiedDate = DateTime.Now;
 
-                fixedAssetStatus = fixedAssetStatus != null && fixedAssetStatus.Id != null ?
+                fixedAssetStatus = fixedAssetStatus != null && fixedAssetStatus.Id != Guid.Empty ?
                                        _FixedAssetStatusStore.UpdateFixedAssetStatus ( fixedAssetStatus ) : 
                                        _FixedAssetStatusStore.CreateFixedAssetStatus ( fixedAssetStatus );
             }

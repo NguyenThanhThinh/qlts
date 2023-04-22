@@ -10,7 +10,7 @@ namespace qlts.ViewModels.FixedAssets
     public class FixedAssetCreateUpdateViewModel :ViewModelBase
     {
         [Display(Name = "Mã tài sản")]
-        [Required(ErrorMessage = ErrorMessageRequired)]
+        //[Required(ErrorMessage = ErrorMessageRequired)]
         [StringLength(100, MinimumLength = 2, ErrorMessage = ErrorMessageStringLength)]
         public string Code { get; set; }
 
@@ -26,7 +26,7 @@ namespace qlts.ViewModels.FixedAssets
         [Display(Name = "Số lượng")]
         [Required(ErrorMessage = ErrorMessageRequired)]
         [Range(1, 10000, ErrorMessage = "Số lượng phải lớn hơn 0 và nhỏ hơn 10000")]
-        public int Quantity { get; set; }
+        public int Quantity { get; set; } = 1;
 
         [Display(Name = "Đơn vị tính")]
         [Required(ErrorMessage = ErrorMessageRequired)]
@@ -37,13 +37,13 @@ namespace qlts.ViewModels.FixedAssets
         [StringLength(200, MinimumLength = 2, ErrorMessage = ErrorMessageStringLength)]
         public string PartNumber { get; set; }
 
-        [Display(Name = "Part Number")]
+        [Display(Name = "Serial Number")]
         [StringLength(200, MinimumLength = 2, ErrorMessage = ErrorMessageStringLength)]
         public string SerialNumber { get; set; }
 
         [Display(Name = "Lĩnh vực")]
         [Required(ErrorMessage = ErrorMessageRequired)]
-        public int FieldId { get; set; }
+        public string FieldId { get; set; }
 
         public List<DropdownModel> Fields { get; set; } = new List<DropdownModel>();
 
@@ -53,7 +53,7 @@ namespace qlts.ViewModels.FixedAssets
 
         [Display(Name = "Hãng sản xuất")]
         [Required(ErrorMessage = ErrorMessageRequired)]
-        public int ManufacturerId { get; set; }
+        public string ManufacturerId { get; set; }
         public List<DropdownModel> Manufacturers { get; set; } = new List<DropdownModel>();
 
         public IEnumerable<SelectListItem> ManufacturerDropdown =>
@@ -80,5 +80,17 @@ namespace qlts.ViewModels.FixedAssets
         public decimal Price { get; set; }
 
         public FixedAssetType FixedAssetType { get; set; } = FixedAssetType.UseAsset;
+
+        [Display(Name = "Ghi chú")]
+        [StringLength(500, MinimumLength = 2, ErrorMessage = ErrorMessageStringLength)]
+        public string Note { get; set; }
+
+        [Display(Name = "Kho")]
+        public string WarehouseId { get; set; }
+
+        public List<DropdownModel> Warehouses { get; set; } = new List<DropdownModel>();
+
+        public IEnumerable<SelectListItem> WarehouseDropdown =>
+            new SelectList(Warehouses, DropdownModel.ValueField, DropdownModel.DisplayField);
     }
 }

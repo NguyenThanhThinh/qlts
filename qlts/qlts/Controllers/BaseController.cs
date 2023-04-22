@@ -15,20 +15,20 @@ namespace qlts.Controllers
     {
         protected string UserId => User.Identity.GetUserId<string>();
 
-        protected void Alert( string message, bool isError = false )
+        protected void Alert(string message, bool isError = false)
         {
-            if ( isError )
+            if (isError)
                 TempData["error"] = message;
             else
                 TempData["success"] = message;
         }
 
-        protected User GetCurrentUser( )
+        protected User GetCurrentUser()
         {
-            var identity = ( ClaimsPrincipal )Thread.CurrentPrincipal;
-            var value    = identity.Claims.Where ( c => c.Type == ClaimTypes.UserData ).Select ( c => c.Value ).SingleOrDefault();
+            var identity = (ClaimsPrincipal)Thread.CurrentPrincipal;
+            var value = identity.Claims.Where(c => c.Type == ClaimTypes.UserData).Select(c => c.Value).SingleOrDefault();
 
-            return value == null ? new User() : JsonConvert.DeserializeObject<User> ( value );
+            return value == null ? new User() : JsonConvert.DeserializeObject<User>(value);
         }
 
         protected void ShowError(Exception exception)
@@ -46,16 +46,16 @@ namespace qlts.Controllers
             }
         }
 
-        protected PositionType GetCurrentUserPosition( )
+        protected PositionType GetCurrentUserPosition()
         {
-            var identity = ( ClaimsPrincipal )Thread.CurrentPrincipal;
-            var value    = identity.Claims.Where ( c => c.Type == ClaimTypes.Role ).Select ( c => c.Value ).SingleOrDefault();
+            var identity = (ClaimsPrincipal)Thread.CurrentPrincipal;
+            var value = identity.Claims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value).SingleOrDefault();
 
-            if ( value == null ) return PositionType.Warehouseman;
+            if (value == null) return PositionType.Warehouseman;
 
-            if ( value == PositionType.AccountingManager.ToString() )
+            if (value == PositionType.AccountingManager.ToString())
                 return PositionType.AccountingManager;
-            else if ( value == PositionType.UnitManager.ToString() )
+            else if (value == PositionType.UnitManager.ToString())
                 return PositionType.UnitManager;
             else
                 return PositionType.Warehouseman;
@@ -64,16 +64,16 @@ namespace qlts.Controllers
         protected JsonResponse GetResponse(bool success, string message = "", object data = null)
         {
             return new JsonResponse
-                   {
-                       Success = success,
-                       Message = message,
-                       Data = data
-                   };
+            {
+                Success = success,
+                Message = message,
+                Data = data
+            };
         }
 
-        protected string GenerateCode(string alias, int countCode)
+        protected string GenerateCode(string w, string m, int countCode)
         {
-            string code = $"{alias}-{(++countCode):D4}";
+            string code = $"{w}.{m}.{(++countCode):D5}";
             return code;
         }
     }

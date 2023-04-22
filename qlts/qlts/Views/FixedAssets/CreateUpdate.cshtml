@@ -1,0 +1,133 @@
+﻿@using qlts.Enums
+@model qlts.ViewModels.FixedAssets.FixedAssetCreateUpdateViewModel
+@{
+    ViewBag.pTitle = "Thêm Tài sản";
+    ViewBag.pageTitle = "Trang chủ";
+
+    var isUpdate = Model != null && Model.Id != null;
+    ViewBag.Title = isUpdate ? "Tài sản " + Model.Name : "Thêm mới Tài sản";
+    string controller = "FixedAssets";
+}
+
+@section styles {
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+}
+<div class="row">
+    <div class="col-xl-10 mx-auto">
+        <h6 class="mb-0 text-uppercase">@ViewBag.Title</h6>
+        <hr>
+        <div class="card border-top border-0 border-4 border-primary">
+            <div class="card-body p-5">
+                <div class="card-title d-flex align-items-center">
+
+                </div>
+                <form method="post" action="@Url.Action( "CreateUpdate", controller )" autocomplete="off" class="row g-3">
+                    @Html.AntiForgeryToken()
+                    @if (isUpdate)
+                    {
+                        @Html.HiddenFor(x => x.Id)
+                    }
+                    <div class="col-md-9">
+                        @Html.LabelFor(x => x.Name)
+                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control", autocomplete = "off" })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.LabelFor(x => x.Unit)
+                        @Html.EnumDropDownListFor(x => x.Unit, new { @class = "form-control form-select" })
+                        @Html.ValidationMessageFor(model => model.Unit, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(x => x.WarehouseId)
+                        @Html.DropDownListFor(x => x.WarehouseId, Model.WarehouseDropdown, "--Chọn--", new { @class = "form-control form-select" })
+                        @Html.ValidationMessageFor(model => model.WarehouseId, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(x => x.FieldId)
+                        @Html.DropDownListFor(x => x.FieldId, Model.FieldDropdown, "--Chọn--", new { @class = "form-control form-select" })
+                        @Html.ValidationMessageFor(model => model.FieldId, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(x => x.ManufacturerId)
+                        @Html.DropDownListFor(x => x.ManufacturerId, Model.ManufacturerDropdown, "--Chọn--", new { @class = "form-control form-select" })
+                        @Html.ValidationMessageFor(model => model.ManufacturerId, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(x => x.FixedAssetStatusId)
+                        @Html.DropDownListFor(x => x.FixedAssetStatusId, Model.FixedAssetStatusDropdown, "--Chọn--", new { @class = "form-control form-select" })
+                        @Html.ValidationMessageFor(model => model.FixedAssetStatusId, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(x => x.Quantity)
+                        @Html.TextBoxFor(x => x.Quantity, new { @class = "form-control", autocomplete = "off", @type = "number" })
+                        @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(x => x.CostFormatted)
+                        @Html.TextBoxFor(x => x.CostFormatted, new { @class = "form-control money", autocomplete = "off" })
+                        @Html.ValidationMessageFor(model => model.CostFormatted, "", new { @class = "text-danger" })
+                    </div>
+                    @if (Model.Id != Guid.Empty)
+                    {
+                        <div class="col-md-4">
+                            @Html.LabelFor(x => x.FixedAssetDateFormattedEdit)
+                            @Html.TextBoxFor(x => x.FixedAssetDateFormattedEdit, new { @class = "form-control datepicker", autocomplete = "off" })
+                            @Html.ValidationMessageFor(model => model.FixedAssetDateFormattedEdit, "", new { @class = "text-danger" })
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-md-4">
+                            @Html.LabelFor(x => x.FixedAssetDateFormatted)
+                            @Html.TextBoxFor(x => x.FixedAssetDateFormatted, new { @class = "form-control datepicker", autocomplete = "off" })
+                            @Html.ValidationMessageFor(model => model.FixedAssetDateFormatted, "", new { @class = "text-danger" })
+                        </div>
+
+                    }
+                    <div class="col-md-4">
+                        @Html.LabelFor(x => x.PartNumber)
+                        @Html.TextBoxFor(x => x.PartNumber, new { @class = "form-control", autocomplete = "off" })
+                        @Html.ValidationMessageFor(model => model.PartNumber, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.LabelFor(x => x.SerialNumber)
+                        @Html.TextBoxFor(x => x.SerialNumber, new { @class = "form-control", autocomplete = "off" })
+                        @Html.ValidationMessageFor(model => model.SerialNumber, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-12">
+                        @Html.LabelFor(x => x.Description)
+                        @Html.TextAreaFor(x => x.Description, new { @class = "form-control", autocomplete = "off", @rows = 3 })
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-12">
+                        @Html.LabelFor(x => x.Note)
+                        @Html.TextAreaFor(x => x.Note, new { @class = "form-control", autocomplete = "off", @rows = 3 })
+                        @Html.ValidationMessageFor(model => model.Note, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-12">
+                        <a href="@Url.Action("Index",controller)" class="btn btn-outline-secondary px-4"><i class="bx bx-left-arrow-alt me-2"></i>Quay về</a>
+                        <button type="submit" class="btn btn-primary px-5"> <i class="bx bx-save me-2"></i>Lưu</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(function () {
+            "use strict";
+            $('.form-select').select2({
+                theme: "bootstrap-5",
+                width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+                placeholder: $(this).data('placeholder'),
+            });
+        });
+    </script>
+}

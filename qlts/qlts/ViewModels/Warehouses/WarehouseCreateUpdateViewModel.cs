@@ -32,7 +32,7 @@ namespace qlts.ViewModels.Warehouses
 
         [Display(Name = "Loại kho")]
         [Required(ErrorMessage = ErrorMessageRequired)]
-        [Range(1, 5, ErrorMessage = "Vui lòng chọn loại kho")]
+        [Range(1, 6, ErrorMessage = "Vui lòng chọn loại kho")]
         public WarehouseType WarehouseType { get; set; }
     }
 }

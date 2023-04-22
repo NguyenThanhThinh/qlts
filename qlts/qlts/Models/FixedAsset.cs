@@ -5,7 +5,6 @@ using qlts.Enums;
 
 namespace qlts.Models
 {
-    [Table ( "TBL_FixedAssets" )]
     public class FixedAsset : BaseEntity
     {
         [StringLength ( 100 )]
@@ -47,5 +46,7 @@ namespace qlts.Models
         public string WarehouseId { get; set; }
 
         public Warehouse Warehouse { get; set; }
+
+        public string Note { get; set; }
     }
 }

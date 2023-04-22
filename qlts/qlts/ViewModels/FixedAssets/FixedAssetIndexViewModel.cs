@@ -31,7 +31,7 @@ namespace qlts.ViewModels.FixedAssets
 
         public string PartNumber { get; set; }
 
-        [Display(Name = "Part Number")]
+        [Display(Name = "Serial Number")]
 
         public string SerialNumber { get; set; }
 
@@ -59,8 +59,6 @@ namespace qlts.ViewModels.FixedAssets
         public string FixedAssetDateFormatted => FixedAssetDate.ToString("dd/MM/yyyy");
         public DateTime FixedAssetDate { get; set; }
 
-        [Display(Name = "Ngày thực hiện")]
-        public string FixedAssetDateFormattedEdit { get; set; }
 
         [Display(Name = "Đơn giá")]
         public string CostFormatted => Price.ToMoneyFormatted("đ");
@@ -68,5 +66,15 @@ namespace qlts.ViewModels.FixedAssets
 
         [Display(Name = "Thành tiền")]
         public string Total => (Price * Quantity).ToMoneyFormatted("đ");
+
+        [Display(Name = "Ngày sản xuất")]
+        public DateTime ManufacturerDate { get; set; }
+
+        [Display(Name = "Hạn bảo hành")]
+        public DateTime WarrantyPeriodDate { get; set; }
+
+        public string WarehouseName { get; set; }
+        [Display(Name = "Ghi chú")]
+        public string Note { get; set; }
     }
 }

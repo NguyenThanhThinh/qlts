@@ -1,0 +1,93 @@
+﻿@{
+    ViewBag.Title = "Danh sách tài sản";
+    ViewBag.pTitle = "Tài sản";
+    ViewBag.pageTitle = "Trang chủ";
+}
+@section styles{
+    <link href="~/Content/assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <button type="button" class="btn btn-info" id="btn_sent">Chuyển kho</button>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive-lg">
+                    <table id="datatable-buttons" class="table table-striped table-bordered mb-0 delete-container">
+                        <thead class="table-light">
+                        <tr>
+                            <th scope="col">
+                                <input type="checkbox" class="form-check-input" id="checkbox-all">
+                            </th>
+                            <th>Tài sản</th>
+                            <th>Kho</th>
+
+                        </tr>
+                        </thead>
+
+
+                        <tbody>
+                        @for (int i = 0; i < 10; i++)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="form-check">
+                                        <input type="checkbox" data-id="8" class="form-check-input" name="checklist[]">
+                                    </div>
+                                </td>
+                                <td>Tài sản @i</td>
+                                <td>Kho @i</td>
+
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- end cardaa -->
+    </div> <!-- end col -->
+</div> <!-- end row -->
+
+@Html.Partial("CreateModal")
+@section scripts{
+    <!-- Required datatable js -->
+    <script src="~/Content/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+    <script src="~/Content/assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
+
+    <!-- Datatable init js -->
+    <script>
+        $(document).ready(function () {
+            var table = $('#datatable-buttons').DataTable({
+                lengthChange: false,
+                language: {
+                    searchPlaceholder: "Tìm kiếm",
+                    info: "Hiển thị _START_ tới _END_ của _TOTAL_ dữ liệu",
+                    infoEmpty: "Hiển thị 0 tới 0 của 0 dữ liệu",
+                    search: "_INPUT_",
+                    zeroRecords: "Không tìm thấy dữ liệu",
+                    emptyTable: "Chưa có dữ liệu",
+                    paginate: {
+                        first: "Trang đầu",
+                        previous: "Trang trước",
+                        next: "Trang kế",
+                        last: "Trang cuối"
+                    }
+                },
+                buttons: ['excel', 'pdf'],
+
+            });
+
+            table.buttons().container()
+                .appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
+        });
+    </script>
+    <script src="~/Scripts/app/controllers/fixed-asset.js"></script>
+    <script>
+        var fixedAssets = new fixedAssetsController();
+        fixedAssets.initialize();
+    </script>
+
+}

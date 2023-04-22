@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using qlts.Datas;
 using System;
+using System.Data.Entity;
 
 namespace qlts.Stores
 {
@@ -44,7 +45,7 @@ namespace qlts.Stores
 
         public List<FixedAsset> GetAllFixedAssets()
         {
-            return _fixedAssetRepo.GetAll(null);
+            return _fixedAssetRepo.All.Include(n => n.Field).Include(n => n.FixedAssetStatus).Include(n => n.Manufacturer).Include(n=>n.Warehouse).ToList();
         }
 
         public FixedAsset GetFixedAssetById(Guid? id)

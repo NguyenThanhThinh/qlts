@@ -1,10 +1,11 @@
 ﻿using qlts.Enums;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace qlts.Models
 {
-    [Table("TBL_Warehouses")]
+  
     public class Warehouse:BaseEntity
     {
         [StringLength(200)]
@@ -23,5 +24,7 @@ namespace qlts.Models
         public string Note { get; set; }
 
         public WarehouseType WarehouseType { get; set; }
+
+        public List<User> Users { get; set; } = new List<User>();
     }
 }

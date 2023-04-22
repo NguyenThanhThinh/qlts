@@ -45,7 +45,7 @@ namespace qlts.Stores
 
         public List<User> GetAllUsers()
         {
-            return _userRepo.All.Include(n=>n.Warehouse).ToList();
+            return _userRepo.All.Include(n => n.Warehouse).Where(p => p.Warehouse != null).AsNoTracking().ToList();
         }
 
         public User GetUserById(Guid? id)

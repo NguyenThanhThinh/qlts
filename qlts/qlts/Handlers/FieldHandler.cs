@@ -32,8 +32,8 @@ namespace qlts.Handlers
 
             try
             {
-                if (field != null && field.Id != null) field.ModifiedDate = DateTime.Now;
-                field = field != null && field.Id != null ? _fieldStore.UpdateField(field) : _fieldStore.CreateField(field);
+                if (field != null && field.Id != Guid.Empty) field.ModifiedDate = DateTime.Now;
+                field = field != null && field.Id != Guid.Empty ? _fieldStore.UpdateField(field) : _fieldStore.CreateField(field);
             }
             catch (Exception ex)
             {

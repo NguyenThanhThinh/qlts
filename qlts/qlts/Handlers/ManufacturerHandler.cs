@@ -32,10 +32,10 @@ namespace qlts.Handlers
 
             try
             {
-                if ( manufacturer != null && manufacturer.Id != null )
+                if ( manufacturer != null && manufacturer.Id != Guid.Empty )
                     manufacturer.ModifiedDate = DateTime.Now;
 
-                manufacturer = manufacturer != null && manufacturer.Id != null ?
+                manufacturer = manufacturer != null && manufacturer.Id != Guid.Empty ?
                                        _manufacturerStore.UpdateManufacturer ( manufacturer ) : 
                                        _manufacturerStore.CreateManufacturer ( manufacturer );
             }

@@ -209,6 +209,18 @@
     <Compile Include="Migrations\202304211948313_init.designer.cs">
       <DependentUpon>202304211948313_init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202304221657104_init33.cs" />
+    <Compile Include="Migrations\202304221657104_init33.designer.cs">
+      <DependentUpon>202304221657104_init33.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304221829289_init333.cs" />
+    <Compile Include="Migrations\202304221829289_init333.designer.cs">
+      <DependentUpon>202304221829289_init333.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304221841282_init33356.cs" />
+    <Compile Include="Migrations\202304221841282_init33356.designer.cs">
+      <DependentUpon>202304221841282_init33356.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseEntity.cs" />
     <Compile Include="Models\Field.cs" />
@@ -249,7 +261,6 @@
   <ItemGroup>
     <Content Include="Content\assets\css\app.css" />
     <Content Include="Content\assets\css\bootstrap-extended.css" />
-    <Content Include="Content\assets\css\bootstrap.css" />
     <Content Include="Content\assets\css\bootstrap.min.css" />
     <Content Include="Content\assets\css\dark-theme.css" />
     <Content Include="Content\assets\css\header-colors.css" />
@@ -1026,8 +1037,6 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Content\assets\css\bootstrap.css.map" />
-    <Content Include="Content\assets\css\bootstrap.min.css.map" />
     <Content Include="Content\assets\fonts\boxicons.eot" />
     <Content Include="Content\assets\fonts\boxicons.ttf" />
     <Content Include="Content\assets\fonts\boxicons.woff" />
@@ -1051,6 +1060,7 @@
     <Content Include="Content\assets\plugins\highcharts\js\variable-pie.js.map" />
     <Content Include="Content\assets\plugins\metismenu\css\metisMenu.min.css.map" />
     <Content Include="Content\assets\plugins\metismenu\js\metisMenu.min.js.map" />
+    <Content Include="Content\assets\css\bootstrap.min.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -1088,7 +1098,7 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\CreateUpdate.cshtml" />
-    <Content Include="Views\FixedAssets\Index.cshtml" />
+    <Content Include="Views\FixedAssets\Index1.cshtml" />
     <Content Include="Views\Shared\_ErrorModal.cshtml" />
     <Content Include="Views\FixedAssets\CreateModal.cshtml" />
     <Content Include="Views\Fields\Index.cshtml" />
@@ -1099,6 +1109,8 @@
     <Content Include="Views\Manufacturers\CreateUpdate.cshtml" />
     <Content Include="Views\Warehouses\Index.cshtml" />
     <Content Include="Views\Manufacturers\Index.cshtml" />
+    <Content Include="Views\FixedAssets\CreateUpdate.cshtml" />
+    <Content Include="Views\FixedAssets\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1134,6 +1146,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202304211948313_init.resx">
       <DependentUpon>202304211948313_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304221657104_init33.resx">
+      <DependentUpon>202304221657104_init33.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304221829289_init333.resx">
+      <DependentUpon>202304221829289_init333.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304221841282_init33356.resx">
+      <DependentUpon>202304221841282_init33356.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

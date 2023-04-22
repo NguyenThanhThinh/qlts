@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace qlts.Models
 {
-    [Table("TBL_FixedAssetStatus")]
+
     public class FixedAssetStatus : BaseEntity
     {
         [StringLength(200)]

@@ -5,7 +5,7 @@ using qlts.ViewModels.Accounts;
 using qlts.ViewModels.FixedAssets;
 using qlts.ViewModels.Users;
 using qlts.ViewModels.Warehouses;
-
+using System;
 
 namespace qlts
 {
@@ -46,7 +46,19 @@ namespace qlts
                 config.CreateMap<WarehouseCreateUpdateViewModel, Warehouse>();
 
 
-                config.CreateMap<FixedAsset, FixedAssetIndexViewModel>();
+                config.CreateMap<FixedAsset, FixedAssetIndexViewModel>()
+                 .ForMember(x => x.WarehouseName,
+                        map => map.MapFrom(x => x.Warehouse == null ? string.Empty : x.Warehouse.Name))
+                         .ForMember(x => x.FieldName,
+                        map => map.MapFrom(x => x.Field == null ? string.Empty : x.Field.Name))
+                         .ForMember(x => x.ManufacturerName,
+                        map => map.MapFrom(x => x.Manufacturer == null ? string.Empty : x.Manufacturer.Name))
+                         .ForMember(x => x.FixedAssetStatusName,
+                        map => map.MapFrom(x => x.FixedAssetStatus == null ? string.Empty : x.FixedAssetStatus.Name))
+                         .ForMember(x => x.ManufacturerDate,
+                        map => map.MapFrom(x => x.Manufacturer == null ? DateTime.Now : x.Manufacturer.Date))
+                        .ForMember(x => x.WarrantyPeriodDate,
+                        map => map.MapFrom(x => x.Manufacturer == null ? DateTime.Now : x.Manufacturer.WarrantyPeriodDate));
                 config.CreateMap<FixedAsset, FixedAssetCreateUpdateViewModel>()
                  .AfterMap((m, vm) =>
                  {

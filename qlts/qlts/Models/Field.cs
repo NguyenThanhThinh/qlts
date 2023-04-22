@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace qlts.Models
 {
-    [Table("TBL_Fields")]
+  
     public class Field : BaseEntity
     {
         [StringLength(200)]

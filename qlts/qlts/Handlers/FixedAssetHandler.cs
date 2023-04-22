@@ -48,12 +48,12 @@ namespace qlts.Handlers
 
             try
             {
-                if (FixedAsset != null && FixedAsset.Id != null)
+                if (FixedAsset != null && FixedAsset.Id != Guid.Empty)
                 {
                     FixedAsset.ModifiedDate = DateTime.Now;
                 }
 
-                FixedAsset = FixedAsset != null && FixedAsset.Id != null ? _FixedAssetStore.UpdateFixedAsset(FixedAsset) : _FixedAssetStore.CreateFixedAsset(FixedAsset);
+                FixedAsset = FixedAsset != null && FixedAsset.Id != Guid.Empty ? _FixedAssetStore.UpdateFixedAsset(FixedAsset) : _FixedAssetStore.CreateFixedAsset(FixedAsset);
             }
             catch (Exception ex)
             {

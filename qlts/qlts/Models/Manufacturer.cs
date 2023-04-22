@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace qlts.Models
 {
-    [Table("TBL_Manufacturers")]
+ 
     public class Manufacturer : BaseEntity
     {
         [StringLength(200)]

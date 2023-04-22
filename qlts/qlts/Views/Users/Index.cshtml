@@ -12,71 +12,66 @@
     <link href="~/Content/assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
 }
 
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-          
-            <div class="card-body">
-                <div class="row mb-2">
-                    <div class="col-sm-10">
-                        <a href="@Url.Action("CreateUpdate",controller)" class="btn btn-primary mb-2">
-                            <i class="mdi mdi-plus-circle me-2"></i>Thêm
-                        </a>
-                    </div>
-                    <div class="col-sm-2">
+<div class="card">
 
-                    </div><!-- end col-->
-                </div>
-                <div class="table-responsive-lg">
-                    <table id="datatable-buttons" class="table table-striped table-bordered mb-0 delete-container">
-                        <thead class="table-light">
-                            <tr>
-                                <th class="text-center align-middle" style="min-width: 5px;">STT</th>
-                                <th class="text-center align-middle" style="min-width: 70px;">@Html.DisplayNameFor(n => n.FirstOrDefault().WarehouseCenter)</th>
-                                <th class="text-center align-middle" style="min-width: 70px;">@Html.DisplayNameFor(n => n.FirstOrDefault().WarehouseUnit)</th>
-                                <th class="text-center align-middle" style="min-width: 100px;">@Html.DisplayNameFor(n => n.FirstOrDefault().WarehouseName)</th>
-                                <th class="text-center align-middle" style="min-width: 120px;">@Html.DisplayNameFor(n => n.FirstOrDefault().Name)</th>
-                                <th class="text-center align-middle" style="min-width: 100px;">@Html.DisplayNameFor(n => n.FirstOrDefault().UserName)</th>
-                                <th class="text-center align-middle" style="min-width: 100px;">@Html.DisplayNameFor(n => n.FirstOrDefault().Email)</th>
-                                <th class="text-center align-middle" style="min-width: 100px;">@Html.DisplayNameFor(n => n.FirstOrDefault().Phone)</th>
-                                <th class="text-center align-middle" style="min-width: 60px;">@Html.DisplayNameFor(n => n.FirstOrDefault().Position)</th>
-                                <th class="text-center align-middle" style="min-width: 100px;">@Html.DisplayNameFor(n => n.FirstOrDefault().Note)</th>
-                                <th></th>
-
-                            </tr>
-                        </thead>
-
-
-                        <tbody>
-                            @foreach (var item in data)
-                            {
-                                <tr>
-                                    <td>@(stt++)</td>
-                                    <td>@item.WarehouseCenter</td>
-                                    <td>@item.WarehouseUnit</td>
-                                    <td>@item.WarehouseName</td>
-                                    <td>@item.Name</td>
-                                    <td>@item.UserName</td>
-                                    <td>@item.Email</td>
-                                    <td>@item.Phone</td>
-                                    <th>@item.Position.GetDisplayName()</th>
-                                    <th>@item.Note</th>
-                                    <td class="text-center">
-                                        <div class="d-flex order-actions justify-content-center">
-                                            <a href="@Url.Action("CreateUpdate", controller, new { id = item.Id })" class=""><i class='mdi mdi-square-edit-outline'></i></a>
-                                            <a data-url='@Url.Action("Delete", controller, new { id = item.Id })' class="ms-3 delete-button"><i class='mdi mdi-delete'></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
+    <div class="card-body">
+        <div class="row mb-2">
+            <div class="col-sm-10">
+                <a href="@Url.Action("CreateUpdate",controller)" class="btn btn-primary mb-2">
+                    <i class="mdi mdi-plus-circle me-2"></i>Thêm
+                </a>
             </div>
+            <div class="col-sm-2">
+
+            </div><!-- end col-->
         </div>
-        <!-- end cardaa -->
-    </div> <!-- end col -->
-</div> <!-- end row -->
+        <div class="table-responsive">
+            <table id="datatable-buttons" class="table table-striped table-bordered mb-0 delete-container">
+                <thead class="table-light">
+                    <tr>
+                        <th class="text-center align-middle" style="min-width: 3px;">STT</th>
+                        <th class="text-center align-middle" style="min-width: 70px;">@Html.DisplayNameFor(n => n.FirstOrDefault().WarehouseCenter)</th>
+                        <th class="text-center align-middle" style="min-width: 70px;">@Html.DisplayNameFor(n => n.FirstOrDefault().WarehouseUnit)</th>
+                        <th class="text-center align-middle" style="min-width: 100px;">@Html.DisplayNameFor(n => n.FirstOrDefault().WarehouseName)</th>
+                        <th class="text-center align-middle" style="min-width: 120px;">@Html.DisplayNameFor(n => n.FirstOrDefault().Name)</th>
+                        <th class="text-center align-middle" style="min-width: 100px;">@Html.DisplayNameFor(n => n.FirstOrDefault().UserName)</th>
+                        <th class="text-center align-middle" style="min-width: 100px;">@Html.DisplayNameFor(n => n.FirstOrDefault().Email)</th>
+                        <th class="text-center align-middle" style="min-width: 160px;">@Html.DisplayNameFor(n => n.FirstOrDefault().Phone)</th>
+                        <th class="text-center align-middle" style="min-width: 150px;">@Html.DisplayNameFor(n => n.FirstOrDefault().Position)</th>
+                        <th class="text-center align-middle" style="min-width: 60px;">@Html.DisplayNameFor(n => n.FirstOrDefault().Note)</th>
+                        <th></th>
+
+                    </tr>
+                </thead>
+
+
+                <tbody>
+                    @foreach (var item in data)
+                    {
+                        <tr>
+                            <td>@(stt++)</td>
+                            <td>@item.WarehouseCenter</td>
+                            <td>@item.WarehouseUnit</td>
+                            <td>@item.WarehouseName</td>
+                            <td>@item.Name</td>
+                            <td>@item.UserName</td>
+                            <td>@item.Email</td>
+                            <td>@item.Phone</td>
+                            <th>@item.Position.GetDisplayName()</th>
+                            <th>@item.Note</th>
+                            <td class="text-center">
+                                <div class="d-flex order-actions justify-content-center">
+                                    <a href="@Url.Action("CreateUpdate", controller, new { id = item.Id })" class=""><i class='bx bxs-edit'></i></a>
+                                    <a data-url='@Url.Action("Delete", controller, new { id = item.Id })' class="ms-3 delete-button"><i class='bx bxs-trash'></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
 @section scripts{
     <!-- Required datatable js -->
@@ -91,6 +86,7 @@
                 filter: false,
                 info: false,
                 scrollY: '50vh',
+                screenX: true,
                 scrollCollapse: true,
                 paging: false,
                 language: {
@@ -115,10 +111,6 @@
                 .appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
         });
     </script>
-    <script src="~/Scripts/app/controllers/fixed-asset.js"></script>
-    <script>
-        var fixedAssets = new fixedAssetsController();
-        fixedAssets.initialize();
-    </script>
+   
 
 }

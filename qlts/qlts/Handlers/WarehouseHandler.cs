@@ -32,10 +32,10 @@ namespace qlts.Handlers
 
             try
             {
-                if ( Warehouse != null && Warehouse.Id != null )
+                if ( Warehouse != null && Warehouse.Id != Guid.Empty )
                     Warehouse.ModifiedDate = DateTime.Now;
 
-                Warehouse = Warehouse != null && Warehouse.Id != null ?
+                Warehouse = Warehouse != null && Warehouse.Id != Guid.Empty ?
                                        _WarehouseStore.UpdateWarehouse ( Warehouse ) : 
                                        _WarehouseStore.CreateWarehouse ( Warehouse );
             }

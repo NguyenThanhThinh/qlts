@@ -13,7 +13,9 @@ namespace qlts.Enums
         [Display(Name = "Sửa chữa")]
         SC = 4,
         [Display(Name = "Thanh lý")]
-        TL = 5
+        TL = 5,
+        [Display(Name = "Dự phòng")]
+        DP = 6
 
     }
 }

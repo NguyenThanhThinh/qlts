@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace qlts.Models
 {
-    [Table("TBL_WareHouseAssetsTransfers")]
+ 
     public class WareHouseAssetsTransfer : BaseEntity
     {
         public string FixedAssetId { get; set; }
