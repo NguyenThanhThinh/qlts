@@ -61,15 +61,16 @@ namespace qlts.Controllers
 
             var data = _fixedAssetHandler.GetAllFixedAssets();
 
-            var warehouse = _warehouseHandler.GetWarehouseById(Guid.Parse(model.WarehouseId));
-            var manufacturer = _manufacturerHandler.GetManufacturerById(Guid.Parse(model.ManufacturerId));
+            var warehouse = _warehouseHandler.GetWarehouseById(model.WarehouseId);
+            var manufacturer = _manufacturerHandler.GetManufacturerById(model.ManufacturerId);
 
-            if (warehouse != null && manufacturer != null)
+            if (warehouse != null && manufacturer != null && model.Id == Guid.Empty)
             {
-                fixedAsset.Code = GenerateCode(warehouse.Name, manufacturer.Name, data.Count == 0 ? 0 : data.Count);
+                model.Code = GenerateCode(warehouse.Name, manufacturer.Name, data.Count == 0 ? 0 : data.Count);
+                model.FixedAssetType = Enums.FixedAssetType.UseAsset;
             }
 
-            model.FixedAssetDate = model.Id != null
+            model.FixedAssetDate = model.Id != Guid.Empty
             ? (DateTime)DateTimeExtensions.ToDateTime(model.FixedAssetDateFormattedEdit)
             : (DateTime)DateTimeExtensions.ToDateTime(model.FixedAssetDateFormatted);
 

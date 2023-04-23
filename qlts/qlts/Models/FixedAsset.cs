@@ -25,16 +25,16 @@ namespace qlts.Models
 
         public string SerialNumber { get; set; }
 
-        public string FieldId { get; set; }
+        public Guid FieldId { get; set; }
 
         public Field Field { get; set; }
 
-        public string ManufacturerId { get; set; }
+        public Guid ManufacturerId { get; set; }
 
         public Manufacturer Manufacturer { get; set; }
 
 
-        public string FixedAssetStatusId { get; set; }
+        public Guid FixedAssetStatusId { get; set; }
         public FixedAssetStatus FixedAssetStatus { get; set; }
 
         public DateTime FixedAssetDate { get; set; }
@@ -43,7 +43,7 @@ namespace qlts.Models
 
         public FixedAssetType FixedAssetType { get; set; }
 
-        public string WarehouseId { get; set; }
+        public Guid WarehouseId { get; set; }
 
         public Warehouse Warehouse { get; set; }
 

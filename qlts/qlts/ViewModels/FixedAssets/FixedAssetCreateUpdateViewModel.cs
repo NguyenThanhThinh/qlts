@@ -43,7 +43,7 @@ namespace qlts.ViewModels.FixedAssets
 
         [Display(Name = "Lĩnh vực")]
         [Required(ErrorMessage = ErrorMessageRequired)]
-        public string FieldId { get; set; }
+        public Guid FieldId { get; set; }
 
         public List<DropdownModel> Fields { get; set; } = new List<DropdownModel>();
 
@@ -53,7 +53,7 @@ namespace qlts.ViewModels.FixedAssets
 
         [Display(Name = "Hãng sản xuất")]
         [Required(ErrorMessage = ErrorMessageRequired)]
-        public string ManufacturerId { get; set; }
+        public Guid ManufacturerId { get; set; }
         public List<DropdownModel> Manufacturers { get; set; } = new List<DropdownModel>();
 
         public IEnumerable<SelectListItem> ManufacturerDropdown =>
@@ -61,16 +61,16 @@ namespace qlts.ViewModels.FixedAssets
 
 
         [Display(Name = "Tình trạng")]
-        public int FixedAssetStatusId { get; set; }
+        public Guid FixedAssetStatusId { get; set; }
 
-        public List<DropdownModel> FixedAssetStatus { get; set; } = new List<DropdownModel>();
+        public List<DropdownModel> FixedAssetStatuss { get; set; } = new List<DropdownModel>();
 
         public IEnumerable<SelectListItem> FixedAssetStatusDropdown =>
-            new SelectList(FixedAssetStatus, DropdownModel.ValueField, DropdownModel.DisplayField);
+            new SelectList(FixedAssetStatuss, DropdownModel.ValueField, DropdownModel.DisplayField);
 
         [Display(Name = "Ngày thực hiện")]
         public string FixedAssetDateFormatted { get; set; } = DateTime.Now.ToString("dd/MM/yyyy");
-        public DateTime? FixedAssetDate { get; set; }
+        public DateTime FixedAssetDate { get; set; }
 
         [Display(Name = "Ngày thực hiện")]
         public string FixedAssetDateFormattedEdit { get; set; }
@@ -86,7 +86,7 @@ namespace qlts.ViewModels.FixedAssets
         public string Note { get; set; }
 
         [Display(Name = "Kho")]
-        public string WarehouseId { get; set; }
+        public Guid WarehouseId { get; set; }
 
         public List<DropdownModel> Warehouses { get; set; } = new List<DropdownModel>();
 

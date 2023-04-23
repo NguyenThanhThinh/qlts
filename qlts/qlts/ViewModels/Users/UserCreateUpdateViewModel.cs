@@ -57,7 +57,7 @@ namespace qlts.ViewModels.Users
 
         [Display(Name = "Kho")]
         [Required(ErrorMessage = ErrorMessageRequired)]
-        public string WarehouseId { get; set; }
+        public Guid WarehouseId { get; set; }
 
         public List<DropdownModel> Warehouses { get; set; } = new List<DropdownModel>();
 

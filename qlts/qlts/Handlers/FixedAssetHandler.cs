@@ -30,16 +30,19 @@ namespace qlts.Handlers
         private readonly IFieldStore _fieldStore;
         private readonly IFixedAssetStatusStore _fixedAssetStatusStore;
         private readonly IManufacturerStore _manufacturerStore;
+        private readonly IWarehouseStore _warehouseStore;
 
         public FixedAssetHandler(IFixedAssetStore FixedAssetStore,
             IFieldStore fieldStore,
             IFixedAssetStatusStore fixedAssetStatusStore,
-            IManufacturerStore manufacturerStore)
+            IManufacturerStore manufacturerStore,
+            IWarehouseStore warehouseStore)
         {
             this._FixedAssetStore = FixedAssetStore;
             _fieldStore = fieldStore;
             _fixedAssetStatusStore = fixedAssetStatusStore;
             _manufacturerStore = manufacturerStore;
+            this._warehouseStore = warehouseStore;
         }
 
         public FixedAsset CreateUpdateFixedAsset(FixedAssetCreateUpdateViewModel model)
@@ -91,7 +94,7 @@ namespace qlts.Handlers
             if (FixedAsset == null) return null;
 
             var model = MapperConfig.Factory.Map<FixedAsset, FixedAssetCreateUpdateViewModel>(FixedAsset);
-
+            model.FixedAssetDateFormattedEdit = model.FixedAssetDate.ToString("dd/MM/yyyy");
             return FixedAssetWithDropdown(model);
         }
 
@@ -102,8 +105,9 @@ namespace qlts.Handlers
                 throw new BusinessException("Không có dữ liệu");
 
             model.Fields = _fieldStore.GetFieldDropdown();
-            model.FixedAssetStatus = _fixedAssetStatusStore.GetFixedAssetStatusDropdown();
+            model.FixedAssetStatuss = _fixedAssetStatusStore.GetFixedAssetStatusDropdown();
             model.Manufacturers = _manufacturerStore.GetManufacturerDropdown();
+            model.Warehouses = _warehouseStore.GetWarehouseDropdown();
             return model;
         }
     }

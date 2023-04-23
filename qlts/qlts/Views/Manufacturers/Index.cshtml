@@ -32,10 +32,10 @@
                         <thead class="table-light">
                             <tr>
                                 <th class="text-center align-middle" style="min-width: 5px;">STT</th>
-                                <th class="text-center align-middle" style="min-width: 70px;">@Html.DisplayNameFor(n => n.FirstOrDefault().Name)</th>
-                                <th class="text-center align-middle" style="min-width: 70px;">@Html.DisplayNameFor(n => n.FirstOrDefault().DateFormatted)</th>
-                                <th class="text-center align-middle" style="min-width: 100px;">@Html.DisplayNameFor(n => n.FirstOrDefault().WarrantyPeriodDateFormatted)</th>
-                                <th class="text-center align-middle" style="min-width: 100px;">@Html.DisplayNameFor(n => n.FirstOrDefault().Note)</th>
+                                <th class="text-center align-middle" style="min-width: 200px;">@Html.DisplayNameFor(n => n.FirstOrDefault().Name)</th>
+                                <th class="text-center align-middle" style="min-width: 200px;">@Html.DisplayNameFor(n => n.FirstOrDefault().DateFormatted)</th>
+                                <th class="text-center align-middle" style="min-width: 200px;">@Html.DisplayNameFor(n => n.FirstOrDefault().WarrantyPeriodDateFormatted)</th>
+                                <th class="text-center align-middle" style="min-width: 200px;">@Html.DisplayNameFor(n => n.FirstOrDefault().Note)</th>
              
                                 <th></th>
 
@@ -54,8 +54,8 @@
                                     
                                     <td class="text-center">
                                         <div class="d-flex order-actions justify-content-center">
-                                            <a href="@Url.Action("CreateUpdate", controller, new { id = item.Id })" class=""><i class='mdi mdi-square-edit-outline'></i></a>
-                                            <a data-url='@Url.Action("Delete", controller, new { id = item.Id })' class="ms-3 delete-button"><i class='mdi mdi-delete'></i></a>
+                                            <a href="@Url.Action("CreateUpdate", controller, new { id = item.Id })" class=""><i class='bx bxs-edit'></i></a>
+                                            <a data-url='@Url.Action("Delete", controller, new { id = item.Id })' class="ms-3 delete-button"><i class='bx bxs-trash'></i></a>
                                         </div>
                                     </td>
                                 </tr>
@@ -106,10 +106,6 @@
                 .appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
         });
     </script>
-    <script src="~/Scripts/app/controllers/fixed-asset.js"></script>
-    <script>
-        var fixedAssets = new fixedAssetsController();
-        fixedAssets.initialize();
-    </script>
+  
 
 }

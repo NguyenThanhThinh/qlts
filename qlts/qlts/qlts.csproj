@@ -221,6 +221,10 @@
     <Compile Include="Migrations\202304221841282_init33356.designer.cs">
       <DependentUpon>202304221841282_init33356.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202304230322595_init333567.cs" />
+    <Compile Include="Migrations\202304230322595_init333567.designer.cs">
+      <DependentUpon>202304230322595_init333567.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseEntity.cs" />
     <Compile Include="Models\Field.cs" />
@@ -1155,6 +1159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202304221841282_init33356.resx">
       <DependentUpon>202304221841282_init33356.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304230322595_init333567.resx">
+      <DependentUpon>202304230322595_init333567.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -45,12 +45,12 @@ namespace qlts.Stores
 
         public List<FixedAsset> GetAllFixedAssets()
         {
-            return _fixedAssetRepo.All.Include(n => n.Field).Include(n => n.FixedAssetStatus).Include(n => n.Manufacturer).Include(n=>n.Warehouse).ToList();
+            return _fixedAssetRepo.All.Include(n => n.Field).Include(n => n.FixedAssetStatus).Include(n => n.Manufacturer).Include(n => n.Warehouse).AsNoTracking().ToList();
         }
 
         public FixedAsset GetFixedAssetById(Guid? id)
         {
-            return _fixedAssetRepo.Get(n => n.Id == id);
+            return _fixedAssetRepo.All.AsNoTracking().SingleOrDefault(n => n.Id == id);
         }
 
         public List<DropdownModel> GetFixedAssetDropdown()

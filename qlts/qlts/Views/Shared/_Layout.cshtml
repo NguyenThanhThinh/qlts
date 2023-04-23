@@ -23,10 +23,11 @@
 
     <div class="page-wrapper">
         <div class="page-content">
-            @Html.Partial( "~/Views/Shared/_page_title.cshtml" )
+            @Html.Partial("~/Views/Shared/_page_title.cshtml")
 
             @RenderBody()
-
+            <input type="hidden" class="toast-server" data-type="success" id="success" value="@TempData["success"]" />
+            <input type="hidden" class="toast-server" data-type="error" id="error" value="@TempData["error"]" />
         </div>
     </div>
 

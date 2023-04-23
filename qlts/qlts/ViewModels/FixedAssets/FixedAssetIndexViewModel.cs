@@ -37,7 +37,7 @@ namespace qlts.ViewModels.FixedAssets
 
         [Display(Name = "Lĩnh vực")]
         public string FieldName { get; set; }
-        public int FieldId { get; set; }
+        public Guid FieldId { get; set; }
 
 
 
@@ -45,13 +45,13 @@ namespace qlts.ViewModels.FixedAssets
         [Display(Name = "Hãng sản xuất")]
 
         public string ManufacturerName { get; set; }
-        public int ManufacturerId { get; set; }
+        public Guid ManufacturerId { get; set; }
 
 
         [Display(Name = "Tình trạng")]
 
         public string FixedAssetStatusName { get; set; }
-        public int FixedAssetStatusId { get; set; }
+        public Guid FixedAssetStatusId { get; set; }
 
 
 

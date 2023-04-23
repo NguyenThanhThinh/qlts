@@ -10,7 +10,7 @@ namespace qlts.Models
 
         public FixedAsset FixedAsset { get; set; }
 
-        public string UserId { get; set; }
+        public Guid UserId { get; set; }
 
         public User User { get; set; }
 
@@ -18,7 +18,7 @@ namespace qlts.Models
 
         public DateTime Date { get; set; }
 
-        public string WarehouseId { get; set; }
+        public Guid? WarehouseId { get; set; }
 
         public Warehouse Warehouse { get; set; }
 

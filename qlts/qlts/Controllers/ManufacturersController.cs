@@ -43,6 +43,13 @@ namespace qlts.Controllers
 
             Manufacturer manufacturer = null;
 
+            model.Date = model.Id != Guid.Empty
+           ? (DateTime)DateTimeExtensions.ToDateTime(model.DateFormattedEdit)
+           : (DateTime)DateTimeExtensions.ToDateTime(model.DateFormatted);
+
+            model.WarrantyPeriodDate = model.Id != Guid.Empty
+                 ? (DateTime)DateTimeExtensions.ToDateTime(model.WarrantyPeriodDateFormattedEdit)
+                 : (DateTime)DateTimeExtensions.ToDateTime(model.WarrantyPeriodDateFormatted);
             try
             {
                 manufacturer = _ManufacturerHandler.CreateUpdateManufacturer(model);
