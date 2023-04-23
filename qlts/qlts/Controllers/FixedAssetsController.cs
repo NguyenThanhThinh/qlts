@@ -36,11 +36,6 @@ namespace qlts.Controllers
             return View(data);
         }
 
-        public ActionResult CreateModal()
-        {
-            return View();
-        }
-
         public ActionResult CreateUpdate(Guid? id)
         {
             var data = _fixedAssetHandler.GetFixedAssetById(id);
@@ -59,7 +54,7 @@ namespace qlts.Controllers
 
             FixedAsset fixedAsset = null;
 
-            var data = _fixedAssetHandler.GetAllFixedAssets();
+            var data = _fixedAssetHandler.GetAllFixedAssets().Where(n => n.FixedAssetType == Enums.FixedAssetType.UseAsset).ToList();
 
             var warehouse = _warehouseHandler.GetWarehouseById(model.WarehouseId);
             var manufacturer = _manufacturerHandler.GetManufacturerById(model.ManufacturerId);
@@ -92,6 +87,24 @@ namespace qlts.Controllers
 
             Alert("Lưu không thành công", true);
             return View(_fixedAssetHandler.FixedAssetWithDropdown(model));
+        }
+
+
+        [HttpPost]
+        public JsonResult Delete(Guid? id)
+        {
+            var success = false;
+
+            try
+            {
+                success = _fixedAssetHandler.DeleteFixedAsset(id);
+            }
+            catch (Exception ex)
+            {
+                return Json(GetResponse(false, "Xóa không thành công !"));
+            }
+
+            return Json(GetResponse(success), JsonRequestBehavior.DenyGet);
         }
     }
 }

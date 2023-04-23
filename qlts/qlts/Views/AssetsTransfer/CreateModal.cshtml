@@ -18,15 +18,26 @@
                         <div class="modal-body">
                             <div class="mb-3">
                                 <label class="form-label" for="formrow-firstname-input">Đơn vị chuyển đến</label>
-                                <select class="form-control select-control">
-                                    <option>1</option>
-                                    <option>2</option>
+                                <select class="form-control form-select" name="WarehouseId" id="WarehouseId">
+                                    <option value="0">Tất cả</option>
+                                    @foreach (var option in (List<qlts.ViewModels.Warehouses.WarehouseIndexViewModel>)TempData["Warehouses"])
+                                    {
+                                        <option value="@option.Id"> @option.Name</option>
+                                    }
                                 </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Ngày thực hiện</label>
+                                <input class="form-control datepicker" name="FixedAssetDate" id="FixedAssetDate" value="@TempData["FixedAssetDate"].ToString()" />
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Nội dung thực hiện</label>
+                                <textarea class="form-control" rows="3" name="Note" id="Note"></textarea>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Đóng</button>
-                            <button type="button" class="btn btn-primary waves-effect waves-light">Lưu</button>
+                            <button type="button" class="btn btn-primary waves-effect waves-light btn_save">Lưu</button>
                         </div>
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->

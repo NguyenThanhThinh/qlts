@@ -76,5 +76,9 @@ namespace qlts.ViewModels.FixedAssets
         public string WarehouseName { get; set; }
         [Display(Name = "Ghi chú")]
         public string Note { get; set; }
+
+        public FixedAssetType FixedAssetType { get; set; }
+
+        public Guid WarehouseId { get; set; }
     }
 }

@@ -170,12 +170,17 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AssetsExportController.cs" />
+    <Compile Include="Controllers\AssetsTransferController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\FieldsController.cs" />
     <Compile Include="Controllers\FixedAssetsController.cs" />
     <Compile Include="Controllers\FixedAssetStatusController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LiquidationAssetController.cs" />
     <Compile Include="Controllers\ManufacturersController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\WarehousesController.cs" />
     <Compile Include="Datas\AppDbContext.cs" />
@@ -248,6 +253,7 @@
     <Compile Include="ViewModels\Accounts\AccountCreateUpdateViewModel.cs" />
     <Compile Include="ViewModels\Accounts\AccountLoginViewModel.cs" />
     <Compile Include="ViewModels\Accounts\ProfileViewModel.cs" />
+    <Compile Include="ViewModels\AssetsTransfers\CreateTransferViewModel.cs" />
     <Compile Include="ViewModels\Fields\FieldCreateUpdateViewModel.cs" />
     <Compile Include="ViewModels\Fields\FieldIndexViewModel.cs" />
     <Compile Include="ViewModels\FixedAssetStatus\FixedAssetStatusCreateUpdateViewModel.cs" />
@@ -1104,7 +1110,7 @@
     <Content Include="Views\Users\CreateUpdate.cshtml" />
     <Content Include="Views\FixedAssets\Index1.cshtml" />
     <Content Include="Views\Shared\_ErrorModal.cshtml" />
-    <Content Include="Views\FixedAssets\CreateModal.cshtml" />
+    <Content Include="Views\AssetsTransfer\CreateModal.cshtml" />
     <Content Include="Views\Fields\Index.cshtml" />
     <Content Include="Views\Fields\CreateUpdate.cshtml" />
     <Content Include="Views\FixedAssetStatus\Index.cshtml" />
@@ -1115,6 +1121,13 @@
     <Content Include="Views\Manufacturers\Index.cshtml" />
     <Content Include="Views\FixedAssets\CreateUpdate.cshtml" />
     <Content Include="Views\FixedAssets\Index.cshtml" />
+    <Content Include="Views\AssetsTransfer\Index.cshtml" />
+    <Content Include="Views\AssetsExport\Index.cshtml" />
+    <Content Include="Views\AssetsExport\CreateModal.cshtml" />
+    <Content Include="Views\LiquidationAsset\Index.cshtml" />
+    <Content Include="Views\LiquidationAsset\CreateModal.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\Reports\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

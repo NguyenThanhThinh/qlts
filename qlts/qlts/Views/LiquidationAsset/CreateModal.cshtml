@@ -1,0 +1,51 @@
+﻿@{
+    var data = (List<qlts.ViewModels.Warehouses.WarehouseIndexViewModel>)TempData["Warehouses"];
+}
+<div class="card">
+    <div class="card-header">
+
+    </div><!-- end card header -->
+
+    <div class="card-body">
+        <div>
+
+
+            <!-- sample modal content -->
+            <div id="myModal" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" data-bs-scroll="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="myModalLabel">Chuyển tài sản sang kho thanh lý</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label class="form-label" for="formrow-firstname-input">Đơn vị chuyển đến</label>
+                                <select class="form-control form-select" name="WarehouseId" id="WarehouseId">
+                                    <option value="0">Tất cả</option>
+                                    @foreach (var option in data.Where(n => n.WarehouseType == qlts.Enums.WarehouseType.TL))
+                                    {
+                                        <option value="@option.Id"> @option.Name</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Ngày thực hiện</label>
+                                <input class="form-control datepicker" name="FixedAssetDate" id="FixedAssetDate" value="@TempData["FixedAssetDate"].ToString()" />
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Nội dung thực hiện</label>
+                                <textarea class="form-control" rows="3" name="Note" id="Note"></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Đóng</button>
+                            <button type="button" class="btn btn-primary waves-effect waves-light btn_save">Lưu</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+        </div> <!-- end preview-->
+
+    </div><!-- end card-body -->
+</div><!-- end card -->
