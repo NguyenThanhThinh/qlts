@@ -24,7 +24,7 @@ namespace qlts.Controllers
             TempData["Warehouse"] = GetCurrentWarehouseId();
             TempData["FixedAssetTypeId"] = 0;
             var data = _fixedAssetHandler.GetAllFixedAssets().Where(n => n.Center == GetCurrentUnitForUser()).ToList();
-            if (data != null && data.Count > 0)
+            if (data.Count > 0)
                 data = data.OrderByDescending(x => x.CreatedDate).ToList();
 
             return View(data);
