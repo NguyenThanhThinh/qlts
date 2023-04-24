@@ -66,7 +66,7 @@ namespace qlts.Controllers
                 }
             }
 
-            if ( data != null && data.Count > 0 )
+            if ( data.Count > 0 )
                 data = data.OrderByDescending ( x => x.CreatedDate ).ToList();
 
             return View ( data );
@@ -74,7 +74,7 @@ namespace qlts.Controllers
 
         private void GetData()
         {
-            TempData["Warehouses"] = _warehouseHandler.GetAllWarehouses();
+            TempData["Warehouses"] = _warehouseHandler.GetAllWarehouses().Where(n => n.Center == GetCurrentUnitForUser()).ToList();
 
             var list = new List<KeyValuePair<string, int>>()
             {

@@ -13,12 +13,7 @@ namespace qlts.Extensions
 
             if (decimal.TryParse(money, out val))
                 return val;
-            else
-            {
-                money = money.Replace(',', '.').Replace(',', '.').Replace(',', '.').Replace(',', '.').Replace(',', '.').Replace(',', '.').Replace(',', '.');
-                var price = decimal.TryParse(money, out val);
-                if (price) return val;
-            }
+            
 
             return defaultValue;
         }

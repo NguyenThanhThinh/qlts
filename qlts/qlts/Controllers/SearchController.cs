@@ -47,7 +47,7 @@ namespace qlts.Controllers
         }
         private void GetData()
         {
-            TempData["Warehouses"] = _warehouseHandler.GetAllWarehouses();
+            TempData["Warehouses"] = _warehouseHandler.GetAllWarehouses().Where(n => n.Center == GetCurrentUnitForUser()).ToList();
         }
     }
 }

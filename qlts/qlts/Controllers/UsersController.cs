@@ -8,6 +8,7 @@ using qlts.ViewModels.Users;
 
 namespace qlts.Controllers
 {
+    [Authorize(Roles = "AccountingManager")]
     public class UsersController : BaseController
     {
 

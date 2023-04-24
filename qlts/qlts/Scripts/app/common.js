@@ -43,7 +43,7 @@ function toastServer() {
     }
 
     if ($.fn.mask) {
-        $('.money').mask('000,000,000,000,000', { reverse: true });
+        $('.money').mask('000.000.000.000.000', { reverse: true });
     }
 
     if ($.fn.datepicker) {

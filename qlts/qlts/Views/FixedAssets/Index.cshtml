@@ -36,13 +36,13 @@
                         <thead class="table-light">
                         <tr>
                             <th class="text-center align-middle" style="min-width: 3px;">STT</th>
-                            <th class="text-center align-middle" style="min-width: 80px;">@Html.DisplayNameFor( n => n.FirstOrDefault().FieldName )</th>
-                            <th class="text-center align-middle" style="min-width: 111px;">@Html.DisplayNameFor( n => n.FirstOrDefault().ManufacturerName )</th>
+                            <th class="text-center align-middle" style="min-width: 150px;">@Html.DisplayNameFor( n => n.FirstOrDefault().FieldName )</th>
+                            <th class="text-center align-middle" style="min-width: 150px;">@Html.DisplayNameFor( n => n.FirstOrDefault().ManufacturerName )</th>
                             <th class="text-center align-middle" style="min-width: 110px;">@Html.DisplayNameFor( n => n.FirstOrDefault().ManufacturerDate )</th>
                             <th class="text-center align-middle" style="min-width: 120px;">@Html.DisplayNameFor( n => n.FirstOrDefault().WarrantyPeriodDate )</th>
                             <th class="text-center align-middle" style="min-width: 80px;">@Html.DisplayNameFor( n => n.FirstOrDefault().FixedAssetStatusName )</th>
-                            <th class="text-center align-middle" style="min-width: 260px;">@Html.DisplayNameFor( n => n.FirstOrDefault().FixedAssetDateFormatted )</th>
-                            <th class="text-center align-middle" style="min-width: 150px;">@Html.DisplayNameFor( n => n.FirstOrDefault().Code )</th>
+                            <th class="text-center align-middle" style="min-width: 130px;">@Html.DisplayNameFor( n => n.FirstOrDefault().FixedAssetDateFormatted )</th>
+                            <th class="text-center align-middle" style="min-width: 260px;">@Html.DisplayNameFor( n => n.FirstOrDefault().Code )</th>
                             <th class="text-center align-middle" style="min-width: 90px;">@Html.DisplayNameFor( n => n.FirstOrDefault().Name )</th>
                             <th class="text-center align-middle" style="min-width: 90px;">@Html.DisplayNameFor( n => n.FirstOrDefault().Description )</th>
                             <th class="text-center align-middle" style="min-width: 110px;">@Html.DisplayNameFor( n => n.FirstOrDefault().Quantity )</th>
@@ -65,10 +65,10 @@
                                 <td>@(stt++)</td>
                                 <td>@item.FieldName</td>
                                 <td>@item.ManufacturerName</td>
-                                <td>@item.ManufacturerDate</td>
-                                <td>@item.WarrantyPeriodDate</td>
+                                <td>@item.ManufacturerDate.ToString("dd/MM/yyyy")</td>
+                                <td>@item.WarrantyPeriodDate.ToString("dd/MM/yyyy")</td>
                                 <td>@item.FixedAssetStatusName</td>
-                                <td>@item.FixedAssetDate</td>
+                                <td>@item.FixedAssetDate.ToString("dd/MM/yyyy")</td>
                                 <td>@item.Code</td>
                                 <td>@item.Name</td>
                                 <td>@item.Description</td>

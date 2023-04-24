@@ -18,7 +18,7 @@ namespace qlts.Controllers
         }
         public ActionResult Index()
         {
-            var data = _warehouseHandler.GetAllWarehouses();
+            var data = _warehouseHandler.GetAllWarehouses().Where(n => n.Center == GetCurrentUnitForUser()).ToList();
             if (data != null && data.Count > 0)
                 data = data.OrderByDescending(x => x.CreatedDate).ToList();
 
@@ -45,9 +45,10 @@ namespace qlts.Controllers
 
             try
             {
+                model.CreatedBy = GetCurrentUserName();
+
                 if ( model.Id != Guid.Empty )
-                {
-                    model.CreatedBy = GetCurrentUserName();
+                {                  
                     model.ModifiedBy = GetCurrentUserName();
                 }
                 warehouse = _warehouseHandler.CreateUpdateWarehouse(model);

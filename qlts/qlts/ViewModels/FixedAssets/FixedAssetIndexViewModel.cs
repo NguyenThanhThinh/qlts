@@ -61,11 +61,11 @@ namespace qlts.ViewModels.FixedAssets
 
 
         [Display(Name = "Đơn giá")]
-        public string CostFormatted => Price.ToMoneyFormatted("đ");
+        public string CostFormatted => Price.ToMoneyFormatted();
         public decimal Price { get; set; }
 
         [Display(Name = "Thành tiền")]
-        public string Total => (Price * Quantity).ToMoneyFormatted("đ");
+        public string Total => (Price * Quantity).ToMoneyFormatted();
 
         [Display(Name = "Ngày sản xuất")]
         public DateTime ManufacturerDate { get; set; }

@@ -60,7 +60,8 @@ namespace qlts.Stores
             {
                 Id = n.Id,
                 Name = n.Name,
-                Center = n.Center
+                Center = n.Center,
+                CreatedBy = n.CreatedBy
             }).ToList();
 
             if (isWhere)
@@ -68,7 +69,7 @@ namespace qlts.Stores
                 var data = dataAll.Where(n => n.Center == centerUnit).Select(x => new DropdownModel
                 {
                     Id = x.Id,
-                    Text = x.Name
+                    Text = $"{x.Name} - ${x.CreatedBy}"
                 }).ToList();
 
                 return data;
@@ -77,7 +78,7 @@ namespace qlts.Stores
                                  .Select(x => new DropdownModel
                                  {
                                      Id = x.Id,
-                                     Text = x.Name
+                                     Text = $"{x.Name} - ${x.CreatedBy}"
                                  }).ToList();
         }
 

@@ -11,6 +11,7 @@ using qlts.Models;
 
 namespace qlts.Controllers
 {
+    [Authorize]
     public class BaseController : Controller
     {
         protected string UserId => User.Identity.GetUserId<string>();
