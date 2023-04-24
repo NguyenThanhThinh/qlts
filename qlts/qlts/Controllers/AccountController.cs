@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using qlts.Handlers;
 using qlts.ViewModels.Accounts;
 using System.Security.Claims;
@@ -6,6 +7,9 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using qlts.Enums;
+using qlts.Extensions;
+using qlts.Models;
+using qlts.ViewModels.Users;
 
 namespace qlts.Controllers
 {
@@ -86,6 +90,45 @@ namespace qlts.Controllers
         {
             if (Url.IsLocalUrl(returnUrl)) return Redirect(returnUrl);
             return RedirectToAction("Index", "Home");
+        }
+
+
+        [Authorize]
+        public ActionResult Profile()
+        {
+            var user = _userHandler.GetUserByProfile(Guid.Parse(UserId));
+
+            return View(user);
+        }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public ActionResult Profile(UserCreateUpdateViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            User user = null;
+
+            try
+            {
+                user = _userHandler.CreateUpdateUser(model);
+            }
+            catch (Exception ex)
+            {
+                ShowError(ex);
+                return View(model);
+            }
+
+            if (user.IsSuccess())
+            {
+                Alert("Lưu thành công!");
+                return View();
+            }
+
+            Alert("Lưu không thành công", true);
+            return View(model);
         }
 
     }

@@ -4,7 +4,7 @@
     ViewBag.pTitle = "Thêm Tài sản";
     ViewBag.pageTitle = "Trang chủ";
 
-    var isUpdate = Model != null && Model.Id != null;
+    var isUpdate = Model != null && Model.Id != Guid.Empty;
     ViewBag.Title = isUpdate ? "Tài sản " + Model.Name : "Thêm mới Tài sản";
     string controller = "FixedAssets";
 }

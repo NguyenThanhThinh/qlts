@@ -4,7 +4,7 @@
     ViewBag.pTitle = "Thêm lĩnh vực";
     ViewBag.pageTitle = "Trang chủ";
 
-    var isUpdate = Model != null && Model.Id != null;
+    var isUpdate = Model != null && Model.Id != Guid.Empty;
     ViewBag.Title = isUpdate ? "Lĩnh vực " + Model.Name : "Thêm mới Lĩnh vực";
     string controller = "Fields";
 }
