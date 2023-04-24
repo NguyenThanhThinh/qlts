@@ -20,7 +20,7 @@ namespace qlts.ViewModels.FixedAssets
         public string Name { get; set; }
 
         [Display(Name = "Mô tả")]
-        [StringLength(100, MinimumLength = 2, ErrorMessage = ErrorMessageStringLength)]
+        [StringLength(1000, MinimumLength = 2, ErrorMessage = ErrorMessageStringLength)]
         public string Description { get; set; }
 
         [Display(Name = "Số lượng")]
