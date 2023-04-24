@@ -47,6 +47,11 @@ namespace qlts.Controllers
 
             try
             {
+                if (model.Id != Guid.Empty)
+                {
+                    model.CreatedBy = GetCurrentUserName();
+                    model.ModifiedBy = GetCurrentUserName();
+                }
                 fixedAssetStatus = _FixedAssetStatusHandler.CreateUpdateFixedAssetStatus(model);
             }
             catch (Exception ex)

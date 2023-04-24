@@ -45,7 +45,11 @@ namespace qlts.Stores
 
         public List<FixedAsset> GetAllFixedAssets()
         {
-            return _fixedAssetRepo.All.Include(n => n.Field).Include(n => n.FixedAssetStatus).Include(n => n.Manufacturer).Include(n => n.Warehouse).AsNoTracking().ToList();
+            return _fixedAssetRepo.All.Include(n => n.Field).
+                                   Include(n => n.FixedAssetStatus).
+                                   Include(n => n.Manufacturer).
+                                   Include(n => n.Warehouse).
+                                   AsNoTracking().ToList();
         }
 
         public FixedAsset GetFixedAssetById(Guid? id)

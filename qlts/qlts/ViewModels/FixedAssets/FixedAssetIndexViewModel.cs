@@ -80,5 +80,7 @@ namespace qlts.ViewModels.FixedAssets
         public FixedAssetType FixedAssetType { get; set; }
 
         public Guid WarehouseId { get; set; }
+
+        public CenterUnit Center { get; set; }
     }
 }

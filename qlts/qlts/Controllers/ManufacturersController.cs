@@ -42,7 +42,10 @@ namespace qlts.Controllers
                 return View(model);
 
             Manufacturer manufacturer = null;
-
+            if (model.Id != Guid.Empty)
+            {
+                model.ModifiedBy = GetCurrentUserName();
+            }
             model.Date = model.Id != Guid.Empty
            ? (DateTime)DateTimeExtensions.ToDateTime(model.DateFormattedEdit)
            : (DateTime)DateTimeExtensions.ToDateTime(model.DateFormatted);

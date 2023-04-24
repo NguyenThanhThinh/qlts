@@ -45,6 +45,11 @@ namespace qlts.Controllers
 
             try
             {
+                if (model.Id != Guid.Empty)
+                {
+                    model.CreatedBy = GetCurrentUserName();
+                    model.ModifiedBy = GetCurrentUserName();
+                }
                 Field = _FieldHandler.CreateUpdateField(model);
             }
             catch (Exception ex)

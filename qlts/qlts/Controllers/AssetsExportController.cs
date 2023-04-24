@@ -23,8 +23,8 @@ namespace qlts.Controllers
         {
             GetData();
             TempData["Warehouse"] = GetCurrentWarehouseId();
-            var data = _fixedAssetHandler.GetAllFixedAssets();
-            if (data != null && data.Count > 0)
+            var data = _fixedAssetHandler.GetAllFixedAssets().Where(n => n.Center == GetCurrentUnitForUser()).ToList();
+            if (data.Count > 0)
                 data = data.OrderByDescending(x => x.CreatedDate).ToList();
 
             return View(data);
@@ -33,8 +33,8 @@ namespace qlts.Controllers
         {
             GetData();
             TempData["Warehouse"] = GetCurrentWarehouseId();
-            var data = _fixedAssetHandler.GetAllFixedAssets().Where(n => n.FixedAssetType == FixedAssetType.AssetsExport).ToList();
-            if (data != null && data.Count > 0)
+            var data = _fixedAssetHandler.GetAllFixedAssets().Where(n => n.FixedAssetType == FixedAssetType.AssetsExport && n.Center == GetCurrentUnitForUser()).ToList();
+            if (data.Count > 0)
                 data = data.OrderByDescending(x => x.CreatedDate).ToList();
 
             return View(data);
@@ -46,13 +46,13 @@ namespace qlts.Controllers
             var warehouseId = form.Get("Warehouse");
             GetData();
             TempData["Warehouse"] = warehouseId;
-            var data = _fixedAssetHandler.GetAllFixedAssets();
+            var data = _fixedAssetHandler.GetAllFixedAssets().Where(n => n.Center == GetCurrentUnitForUser()).ToList();
 
             if (warehouseId != null && Guid.Parse(warehouseId) != Guid.Empty)
             {
                 data = data.Where(n => n.WarehouseId == Guid.Parse(warehouseId)).ToList();
             }
-            if (data != null && data.Count > 0)
+            if (data.Count > 0)
                 data = data.OrderByDescending(x => x.CreatedDate).ToList();
 
             return View(data);
@@ -68,7 +68,7 @@ namespace qlts.Controllers
         private void GetData()
         {
             TempData["FixedAssetDate"] = DateTime.Now.ToString("dd/MM/yyyy");
-            TempData["Warehouses"] = _warehouseHandler.GetAllWarehouses();
+            TempData["Warehouses"] = _warehouseHandler.GetAllWarehouses().Where(n => n.Center == GetCurrentUnitForUser()).ToList();
         }
 
         [HttpPost]

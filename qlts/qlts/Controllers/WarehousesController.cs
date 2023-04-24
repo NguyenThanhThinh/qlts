@@ -41,11 +41,16 @@ namespace qlts.Controllers
             if (!ModelState.IsValid)
                 return View(model);
 
-            Warehouse Warehouse = null;
+            Warehouse warehouse = null;
 
             try
             {
-                Warehouse = _warehouseHandler.CreateUpdateWarehouse(model);
+                if ( model.Id != Guid.Empty )
+                {
+                    model.CreatedBy = GetCurrentUserName();
+                    model.ModifiedBy = GetCurrentUserName();
+                }
+                warehouse = _warehouseHandler.CreateUpdateWarehouse(model);
             }
             catch (Exception ex)
             {
@@ -53,7 +58,7 @@ namespace qlts.Controllers
                 return View(model);
             }
 
-            if (Warehouse.IsSuccess())
+            if (warehouse.IsSuccess())
             {
                 Alert("Lưu thành công!");
                 return RedirectToAction(nameof(Index));

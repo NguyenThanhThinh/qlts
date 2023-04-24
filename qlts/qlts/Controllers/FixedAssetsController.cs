@@ -2,11 +2,8 @@
 using qlts.Handlers;
 using qlts.Models;
 using qlts.ViewModels.FixedAssets;
-using qlts.ViewModels.Users;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using qlts.Enums;
 
@@ -30,8 +27,8 @@ namespace qlts.Controllers
         }
         public ActionResult Index()
         {
-            var data = _fixedAssetHandler.GetAllFixedAssets();
-            if (data != null && data.Count > 0)
+            var data = _fixedAssetHandler.GetAllFixedAssets().Where(n => n.Center == GetCurrentUnitForUser()).ToList();
+            if (data.Count > 0)
                 data = data.OrderByDescending(x => x.CreatedDate).ToList();
 
             return View(data);
@@ -39,8 +36,9 @@ namespace qlts.Controllers
 
         public ActionResult ListFixedAssets()
         {
-            var data = _fixedAssetHandler.GetAllFixedAssets().Where ( n=>n.FixedAssetType == FixedAssetType.UseAsset ).ToList();
-            if (data != null && data.Count > 0)
+            var data = _fixedAssetHandler.GetAllFixedAssets().Where(n => n.FixedAssetType == FixedAssetType.UseAsset
+                                                                         && n.Center == GetCurrentUnitForUser()).ToList();
+            if (data.Count > 0)
                 data = data.OrderByDescending(x => x.CreatedDate).ToList();
 
             return View(data);
@@ -75,6 +73,11 @@ namespace qlts.Controllers
             }
 
             model.CreatedBy = GetCurrentUserName();
+
+            if (model.Id != Guid.Empty)
+            {
+                model.ModifiedBy = GetCurrentUserName();
+            }
             model.FixedAssetDate = model.Id != Guid.Empty
             ? (DateTime)DateTimeExtensions.ToDateTime(model.FixedAssetDateFormattedEdit)
             : (DateTime)DateTimeExtensions.ToDateTime(model.FixedAssetDateFormatted);

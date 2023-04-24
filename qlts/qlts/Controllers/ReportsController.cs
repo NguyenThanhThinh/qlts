@@ -23,7 +23,7 @@ namespace qlts.Controllers
             GetData();
             TempData["Warehouse"] = GetCurrentWarehouseId();
             TempData["FixedAssetTypeId"] = 0;
-            var data = _fixedAssetHandler.GetAllFixedAssets();
+            var data = _fixedAssetHandler.GetAllFixedAssets().Where(n => n.Center == GetCurrentUnitForUser()).ToList();
             if (data != null && data.Count > 0)
                 data = data.OrderByDescending(x => x.CreatedDate).ToList();
 
@@ -40,7 +40,7 @@ namespace qlts.Controllers
             TempData["Warehouse"] = warehouseId;
             TempData["FixedAssetTypeId"] = fixedAssetTypeId;
 
-            var data = _fixedAssetHandler.GetAllFixedAssets();
+            var data = _fixedAssetHandler.GetAllFixedAssets().Where(n => n.Center == GetCurrentUnitForUser()).ToList();
 
             if ( warehouseId != null && Guid.Parse ( warehouseId ) != Guid.Empty ) 
                 data = data.Where ( n => n.WarehouseId == Guid.Parse ( warehouseId ) ).ToList();

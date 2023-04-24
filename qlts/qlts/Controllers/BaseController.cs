@@ -41,6 +41,23 @@ namespace qlts.Controllers
             return value.ToUpper();
         }
 
+        protected CenterUnit GetCurrentUnitForUser()
+        {
+            var identity = (ClaimsPrincipal)Thread.CurrentPrincipal;
+            var value = identity.Claims.Where(c => c.Type == ClaimTypes.GroupSid)
+                                .Select(c => c.Value).SingleOrDefault();
+            if (value == null) return 0;
+
+            switch ( value)
+            {
+            case "N1":
+                return CenterUnit.N1;
+            case "N2":
+                return CenterUnit.N2;
+            default:
+                return CenterUnit.N3;
+            }
+        }
         protected string GetCurrentUserName()
         {
             var identity = (ClaimsPrincipal)Thread.CurrentPrincipal;

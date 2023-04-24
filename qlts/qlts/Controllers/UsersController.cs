@@ -46,6 +46,11 @@ namespace qlts.Controllers
 
             try
             {
+                if (model.Id != Guid.Empty)
+                {
+                    model.CreatedBy = GetCurrentUserName();
+                    model.ModifiedBy = GetCurrentUserName();
+                }
                 user = _userHandler.CreateUpdateUser(model);
             }
             catch (Exception ex)

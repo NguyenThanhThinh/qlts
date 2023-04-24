@@ -92,5 +92,7 @@ namespace qlts.ViewModels.FixedAssets
 
         public IEnumerable<SelectListItem> WarehouseDropdown =>
             new SelectList(Warehouses, DropdownModel.ValueField, DropdownModel.DisplayField);
+
+        public CenterUnit Center { get; set; }
     }
 }

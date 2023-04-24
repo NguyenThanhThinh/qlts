@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using qlts.Enums;
 using qlts.Extensions;
 using qlts.Models;
 using qlts.ViewModels.Accounts;
@@ -52,6 +53,8 @@ namespace qlts
                 config.CreateMap<FixedAsset, FixedAssetIndexViewModel>()
                  .ForMember(x => x.WarehouseName,
                         map => map.MapFrom(x => x.Warehouse == null ? string.Empty : x.Warehouse.Name))
+                 .ForMember(x => x.Center,
+                     map => map.MapFrom(x => x.Warehouse == null ? 0 : x.Warehouse.Center))
                          .ForMember(x => x.FieldName,
                         map => map.MapFrom(x => x.Field == null ? string.Empty : x.Field.Name))
                          .ForMember(x => x.ManufacturerName,
