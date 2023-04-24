@@ -45,7 +45,7 @@ namespace qlts.Controllers
         }
         public ActionResult CreateUpdate(Guid? id)
         {
-            var data = _fixedAssetHandler.GetFixedAssetById(id);
+            var data = _fixedAssetHandler.GetFixedAssetById(id, GetCurrentUnitForUser());
             if (data == null)
                 return RedirectToAction("Login", "Account");
 
@@ -57,7 +57,7 @@ namespace qlts.Controllers
         public ActionResult CreateUpdate(FixedAssetCreateUpdateViewModel model)
         {
             if (!ModelState.IsValid)
-                return View(_fixedAssetHandler.FixedAssetWithDropdown(model));
+                return View(_fixedAssetHandler.FixedAssetWithDropdown(model, GetCurrentUnitForUser()));
 
             FixedAsset fixedAsset = null;
 
@@ -89,7 +89,7 @@ namespace qlts.Controllers
             catch (Exception ex)
             {
                 ShowError(ex);
-                return View(_fixedAssetHandler.FixedAssetWithDropdown(model));
+                return View(_fixedAssetHandler.FixedAssetWithDropdown(model, GetCurrentUnitForUser()));
             }
 
             if (fixedAsset.IsSuccess())
@@ -99,7 +99,7 @@ namespace qlts.Controllers
             }
 
             Alert("Lưu không thành công", true);
-            return View(_fixedAssetHandler.FixedAssetWithDropdown(model));
+            return View(_fixedAssetHandler.FixedAssetWithDropdown(model, GetCurrentUnitForUser()));
         }
 
 

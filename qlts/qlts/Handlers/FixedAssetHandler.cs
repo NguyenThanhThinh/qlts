@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using qlts.Helpers;
 using qlts.Stores;
 using System.Configuration;
+using System.Linq;
+using qlts.Enums;
 
 namespace qlts.Handlers
 {
@@ -15,12 +17,12 @@ namespace qlts.Handlers
     {
         FixedAsset CreateUpdateFixedAsset(FixedAssetCreateUpdateViewModel model);
 
-        FixedAssetCreateUpdateViewModel GetFixedAssetById(Guid? id);
+        FixedAssetCreateUpdateViewModel GetFixedAssetById(Guid? id, CenterUnit centerUnit);
 
         List<FixedAssetIndexViewModel> GetAllFixedAssets();
         bool DeleteFixedAsset(Guid? id);
 
-        FixedAssetCreateUpdateViewModel FixedAssetWithDropdown(FixedAssetCreateUpdateViewModel model);
+        FixedAssetCreateUpdateViewModel FixedAssetWithDropdown(FixedAssetCreateUpdateViewModel model, CenterUnit centerUnit);
 
     }
 
@@ -84,10 +86,10 @@ namespace qlts.Handlers
             return MapperConfig.Factory.Map<List<FixedAsset>, List<FixedAssetIndexViewModel>>(FixedAssets);
         }
 
-        public FixedAssetCreateUpdateViewModel GetFixedAssetById(Guid? id)
+        public FixedAssetCreateUpdateViewModel GetFixedAssetById(Guid? id, CenterUnit centerUnit)
         {
             if (id == null)
-                return FixedAssetWithDropdown(new FixedAssetCreateUpdateViewModel());
+                return FixedAssetWithDropdown(new FixedAssetCreateUpdateViewModel(), centerUnit);
 
             var FixedAsset = _FixedAssetStore.GetFixedAssetById(id);
 
@@ -95,11 +97,11 @@ namespace qlts.Handlers
 
             var model = MapperConfig.Factory.Map<FixedAsset, FixedAssetCreateUpdateViewModel>(FixedAsset);
             model.FixedAssetDateFormattedEdit = model.FixedAssetDate.ToString("dd/MM/yyyy");
-            return FixedAssetWithDropdown(model);
+            return FixedAssetWithDropdown(model,centerUnit);
         }
 
 
-        public FixedAssetCreateUpdateViewModel FixedAssetWithDropdown(FixedAssetCreateUpdateViewModel model)
+        public FixedAssetCreateUpdateViewModel FixedAssetWithDropdown(FixedAssetCreateUpdateViewModel model, CenterUnit centerUnit)
         {
             if (model == null)
                 throw new BusinessException("Không có dữ liệu");
@@ -107,7 +109,7 @@ namespace qlts.Handlers
             model.Fields = _fieldStore.GetFieldDropdown();
             model.FixedAssetStatuss = _fixedAssetStatusStore.GetFixedAssetStatusDropdown();
             model.Manufacturers = _manufacturerStore.GetManufacturerDropdown();
-            model.Warehouses = _warehouseStore.GetWarehouseDropdown();
+            model.Warehouses = _warehouseStore.GetWarehouseDropdown(centerUnit, true);
             return model;
         }
     }

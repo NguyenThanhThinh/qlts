@@ -28,7 +28,7 @@ namespace qlts.Controllers
 
         public ActionResult CreateUpdate(Guid? id)
         {
-            var user = _userHandler.GetUserById(id);
+            var user = _userHandler.GetUserById(id, GetCurrentUnitForUser());
             if (user == null)
                 return RedirectToAction("Login", "Account");
 
@@ -40,7 +40,7 @@ namespace qlts.Controllers
         public ActionResult CreateUpdate(UserCreateUpdateViewModel model)
         {
             if (!ModelState.IsValid)
-                return View(_userHandler.UserWithDropdown(model));
+                return View(_userHandler.UserWithDropdown(model,GetCurrentUnitForUser()));
 
             User user = null;
 
@@ -56,7 +56,7 @@ namespace qlts.Controllers
             catch (Exception ex)
             {
                 ShowError(ex);
-                return View(_userHandler.UserWithDropdown(model));
+                return View(_userHandler.UserWithDropdown(model, GetCurrentUnitForUser()));
             }
 
             if (user.IsSuccess())

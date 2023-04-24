@@ -98,7 +98,7 @@ namespace qlts.Controllers
         [Authorize]
         public ActionResult Profile()
         {
-            var user = _userHandler.GetUserById(Guid.Parse(UserId));
+            var user = _userHandler.GetUserById(Guid.Parse(UserId),GetCurrentUnitForUser());
 
             return View(user);
         }

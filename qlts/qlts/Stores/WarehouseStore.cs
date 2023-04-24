@@ -5,6 +5,7 @@ using System.Linq;
 using qlts.Datas;
 using System;
 using System.Data.Entity;
+using qlts.Enums;
 
 namespace qlts.Stores
 {
@@ -16,7 +17,7 @@ namespace qlts.Stores
         Warehouse UpdateWarehouse(Warehouse warehouse);
         bool DeleteWarehouse(Guid? id);
 
-        List<DropdownModel> GetWarehouseDropdown();
+        List<DropdownModel> GetWarehouseDropdown(CenterUnit centerUnit, bool isWhere);
 
     }
 
@@ -53,14 +54,31 @@ namespace qlts.Stores
             return _warehouseRepo.Get(n => n.Id == id);
         }
 
-        public List<DropdownModel> GetWarehouseDropdown()
+        public List<DropdownModel> GetWarehouseDropdown(CenterUnit centerUnit, bool isWhere = false)
         {
-            return _warehouseRepo.GetAll(null).OrderBy(x => x.Name)
-                .Select(x => new DropdownModel
+            var dataAll = _warehouseRepo.GetAll(null).Select(n => new Warehouse
+            {
+                Id = n.Id,
+                Name = n.Name,
+                Center = n.Center
+            }).ToList();
+
+            if (isWhere)
+            {
+                var data = dataAll.Where(n => n.Center == centerUnit).Select(x => new DropdownModel
                 {
                     Id = x.Id,
                     Text = x.Name
                 }).ToList();
+
+                return data;
+            }
+            return _warehouseRepo.GetAll(null).OrderBy(x => x.Name)
+                                 .Select(x => new DropdownModel
+                                 {
+                                     Id = x.Id,
+                                     Text = x.Name
+                                 }).ToList();
         }
 
         public Warehouse UpdateWarehouse(Warehouse Warehouse)

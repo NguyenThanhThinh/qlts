@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using qlts.Helpers;
 using qlts.Stores;
 using System.Configuration;
+using qlts.Enums;
 
 namespace qlts.Handlers
 {
@@ -15,13 +16,13 @@ namespace qlts.Handlers
     {
         User CreateUpdateUser(UserCreateUpdateViewModel model);
 
-        UserCreateUpdateViewModel GetUserById(Guid? id);
+        UserCreateUpdateViewModel GetUserById(Guid? id, CenterUnit centerUnit);
 
         ProfileViewModel GetUserByProfile(Guid? id);
         List<UserIndexViewModel> GetAllUsers();
         bool DeleteUser(Guid? id);
 
-        UserCreateUpdateViewModel UserWithDropdown(UserCreateUpdateViewModel model);
+        UserCreateUpdateViewModel UserWithDropdown(UserCreateUpdateViewModel model, CenterUnit centerUnit);
 
     }
 
@@ -77,10 +78,10 @@ namespace qlts.Handlers
             return MapperConfig.Factory.Map<List<User>, List<UserIndexViewModel>>(users);
         }
 
-        public UserCreateUpdateViewModel GetUserById(Guid? id)
+        public UserCreateUpdateViewModel GetUserById(Guid? id, CenterUnit centerUnit)
         {
             if (id == null)
-                return UserWithDropdown(new UserCreateUpdateViewModel());
+                return UserWithDropdown(new UserCreateUpdateViewModel(),centerUnit);
 
             var user = _UserStore.GetUserById(id);
 
@@ -91,7 +92,7 @@ namespace qlts.Handlers
             var password = CipherHelper.Decrypt(model.Password, ConfigurationManager.AppSettings["HashPassword"]);
             model.Password = password;
             model.ConfirmPassword = password;
-            return UserWithDropdown(model);
+            return UserWithDropdown(model, centerUnit);
         }
 
         public ProfileViewModel GetUserByProfile(Guid? id)
@@ -111,12 +112,12 @@ namespace qlts.Handlers
             return model;
         }
 
-        public UserCreateUpdateViewModel UserWithDropdown(UserCreateUpdateViewModel model)
+        public UserCreateUpdateViewModel UserWithDropdown(UserCreateUpdateViewModel model, CenterUnit centerUnit)
         {
             if (model == null)
                 throw new BusinessException("Không có dữ liệu");
 
-            model.Warehouses = _warehouseStore.GetWarehouseDropdown();
+            model.Warehouses = _warehouseStore.GetWarehouseDropdown(centerUnit, false);
             return model;
         }
     }

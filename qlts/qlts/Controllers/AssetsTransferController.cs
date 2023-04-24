@@ -99,7 +99,7 @@ namespace qlts.Controllers
         private void InsertTransfer(CreateTransferViewModel model, string item)
         {
             ViewModels.FixedAssets.FixedAssetCreateUpdateViewModel asset =
-                _fixedAssetHandler.GetFixedAssetById(Guid.Parse(item.ToUpper().ToString()));
+                _fixedAssetHandler.GetFixedAssetById(Guid.Parse(item.ToUpper().ToString()), GetCurrentUnitForUser());
             if (asset != null)
             {
                 asset.Id = Guid.Empty;
@@ -116,7 +116,7 @@ namespace qlts.Controllers
         private void UpdateTransfer(CreateTransferViewModel model, string item)
         {
             ViewModels.FixedAssets.FixedAssetCreateUpdateViewModel asset =
-                _fixedAssetHandler.GetFixedAssetById(Guid.Parse(item.ToUpper().ToString()));
+                _fixedAssetHandler.GetFixedAssetById(Guid.Parse(item.ToUpper().ToString()), GetCurrentUnitForUser());
             if (asset != null)
             {
                 asset.Quantity = 0;
