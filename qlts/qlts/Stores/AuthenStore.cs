@@ -22,7 +22,7 @@ namespace qlts.Stores
 
         public async Task<User> CheckLogin(string username, string password)
         {
-            return await _authenRepo.All.SingleOrDefaultAsync(n => n.UserName == username && n.Password == password);
+            return await _authenRepo.All.AsNoTracking().Include(n => n.Warehouse).SingleOrDefaultAsync(n => n.UserName == username && n.Password == password);
         }
     }
 }

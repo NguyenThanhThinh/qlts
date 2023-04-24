@@ -74,7 +74,7 @@
                                 <th class="text-center align-middle" style="min-width: 80px;">@Html.DisplayNameFor(n => n.FirstOrDefault().CostFormatted)</th>
                                 <th class="text-center align-middle" style="min-width: 100px;">@Html.DisplayNameFor(n => n.FirstOrDefault().Total)</th>
                                 <th class="text-center align-middle" style="min-width: 110px;">@Html.DisplayNameFor(n => n.FirstOrDefault().Note)</th>
-                                <th></th>
+                               
 
                             </tr>
                         </thead>
@@ -106,12 +106,7 @@
                                     <td>@item.CostFormatted</td>
                                     <td>@item.Total</td>
                                     <td>@item.Note</td>
-                                    <td class="text-center">
-                                        <div class="d-flex order-actions justify-content-center">
-                                            <a href="@Url.Action("CreateUpdate", controller, new { id = item.Id })" class=""><i class='bx bxs-edit'></i></a>
-                                            <a data-url='@Url.Action("Delete", controller, new { id = item.Id })' class="ms-3 delete-button"><i class='bx bxs-trash'></i></a>
-                                        </div>
-                                    </td>
+                                   
                                 </tr>
                             }
                         </tbody>
@@ -152,7 +147,6 @@
                         last: "Trang cuối"
                     }
                 },
-                buttons: ['excel', 'pdf'],
 
             });
 

@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace qlts.Controllers
 {
-    public class ReportsController : Controller
+    public class ReportsController : BaseController
     {
         private readonly IFixedAssetHandler _fixedAssetHandler;
 
@@ -21,7 +21,55 @@ namespace qlts.Controllers
         public ActionResult Index()
         {
             GetData();
-            return View();
+            TempData["Warehouse"] = GetCurrentWarehouseId();
+            TempData["FixedAssetTypeId"] = 0;
+            var data = _fixedAssetHandler.GetAllFixedAssets();
+            if (data != null && data.Count > 0)
+                data = data.OrderByDescending(x => x.CreatedDate).ToList();
+
+            return View(data);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Index(FormCollection form)
+        {
+            var warehouseId      = form.Get ( "Warehouse" );
+            var fixedAssetTypeId = form.Get ( "FixedAssetTypeId" );
+            GetData();
+            TempData["Warehouse"] = warehouseId;
+            TempData["FixedAssetTypeId"] = fixedAssetTypeId;
+
+            var data = _fixedAssetHandler.GetAllFixedAssets();
+
+            if ( warehouseId != null && Guid.Parse ( warehouseId ) != Guid.Empty ) 
+                data = data.Where ( n => n.WarehouseId == Guid.Parse ( warehouseId ) ).ToList();
+
+            if ( fixedAssetTypeId != null && Convert.ToInt32 ( fixedAssetTypeId ) != 0 )
+            {
+                var fixedAssetType = Convert.ToInt32 ( fixedAssetTypeId );
+
+                switch ( fixedAssetType )
+                {
+                    case 1:
+                        data = data.Where ( n => n.FixedAssetType == FixedAssetType.LiquidationAsset ).ToList();
+                        break;
+                    case 2:
+                        data = data.Where ( n => n.FixedAssetType == FixedAssetType.UseAsset ).ToList();
+                        break;
+                    case 3:
+                        data = data.Where ( n => n.FixedAssetType == FixedAssetType.AssetsTransfer ).ToList();
+                        break;
+                    case 4:
+                        data = data.Where ( n => n.FixedAssetType == FixedAssetType.AssetsExport ).ToList();
+                        break;
+                }
+            }
+
+            if ( data != null && data.Count > 0 )
+                data = data.OrderByDescending ( x => x.CreatedDate ).ToList();
+
+            return View ( data );
         }
 
         private void GetData()

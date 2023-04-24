@@ -30,7 +30,16 @@ namespace qlts.Controllers
 
             return value == null ? new User() : JsonConvert.DeserializeObject<User>(value);
         }
+        protected string GetCurrentWarehouseId()
+        {
+            var identity = (ClaimsPrincipal)Thread.CurrentPrincipal;
+            var value = identity.Claims.Where(c => c.Type == ClaimTypes.SerialNumber)
+                                .Select(c => c.Value).SingleOrDefault();
 
+            if (value == null) return string.Empty;
+
+            return value.ToUpper();
+        }
         protected void ShowError(Exception exception)
         {
 

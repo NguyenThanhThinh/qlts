@@ -20,7 +20,12 @@
             <a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="~/Content/assets/images/avatars/avatar-9.png" class="user-img" alt="user avatar">
                 <div class="user-info ps-3">
-                    <p class="user-name mb-0">Nguyễn Văn A</p>
+                    @if (User.Identity != null) {
+                        <p class="user-name mb-0">
+                            @User.Identity.Name
+                        </p>
+
+                    }
      
                 </div>
             </a>
@@ -33,7 +38,7 @@
                     <div class="dropdown-divider mb-0"></div>
                 </li>
                 <li>
-                    <a class="dropdown-item" href="javascript:;"><i class='bx bx-log-out-circle'></i><span>Đăng xuất</span></a>
+                    <a class="dropdown-item" href="@Url.Action("Logout","Account")"><i class='bx bx-log-out-circle'></i><span>Đăng xuất</span></a>
                 </li>
             </ul>
         </div>

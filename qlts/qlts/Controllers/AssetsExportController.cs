@@ -21,7 +21,7 @@ namespace qlts.Controllers
         public ActionResult Index()
         {
             GetData();
-            TempData["Warehouse"] = Guid.NewGuid();
+            TempData["Warehouse"] = GetCurrentWarehouseId();
             var data = _fixedAssetHandler.GetAllFixedAssets();
             if (data != null && data.Count > 0)
                 data = data.OrderByDescending(x => x.CreatedDate).ToList();

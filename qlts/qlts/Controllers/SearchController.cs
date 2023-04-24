@@ -1,13 +1,11 @@
 ﻿using qlts.Handlers;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace qlts.Controllers
 {
-    public class SearchController : Controller
+    public class SearchController : BaseController
     {
         private readonly IFixedAssetHandler _fixedAssetHandler;
 
@@ -20,7 +18,7 @@ namespace qlts.Controllers
         }
         public ActionResult Index()
         {
-            TempData["Warehouse"] = Guid.NewGuid();
+            TempData["Warehouse"] = GetCurrentWarehouseId();
             GetData();
             var data = _fixedAssetHandler.GetAllFixedAssets();
             if (data != null && data.Count > 0)

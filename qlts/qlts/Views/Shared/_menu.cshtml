@@ -1,4 +1,5 @@
-﻿<div class="nav-container primary-menu">
+﻿@using qlts.Enums
+<div class="nav-container primary-menu">
     <div class="mobile-topbar-header">
         <div>
             <img src="~/Content/assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
@@ -20,37 +21,36 @@
                     <div class="menu-title">Trang chủ</div>
                 </a>
             </li>
-            <li class="nav-item dropdown">
-                <a href="javascript:;" class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown">
-                    <div class="parent-icon">
-                        <i class="bx bx-category"></i>
-                    </div>
-                    <div class="menu-title">Danh mục</div>
-                </a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a class="dropdown-item" href="app-emailbox.html"><i class="bx bx-right-arrow-alt"></i>Email</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="app-chat-box.html"><i class="bx bx-right-arrow-alt"></i>Chat Box</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="app-file-manager.html"><i class="bx bx-right-arrow-alt"></i>File Manager</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="app-contact-list.html"><i class="bx bx-right-arrow-alt"></i>Contatcs</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="app-to-do.html"><i class="bx bx-right-arrow-alt"></i>Todo List</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="app-invoice.html"><i class="bx bx-right-arrow-alt"></i>Invoice</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="app-fullcalender.html"><i class="bx bx-right-arrow-alt"></i>Calendar</a>
-                    </li>
-                </ul>
-            </li>
+            @if (User.Identity.IsAuthenticated && User.IsInRole(PositionType.AccountingManager.ToString()))
+            {
+
+                <li class="nav-item dropdown">
+                    <a href="javascript:;" class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown">
+                        <div class="parent-icon">
+                            <i class="bx bx-category"></i>
+                        </div>
+                        <div class="menu-title">Danh mục</div>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" href="@Url.Action( "Index", "Warehouses" )"><i class="bx bx-right-arrow-alt"></i>Kho</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="@Url.Action( "Index", "Users" )"><i class="bx bx-right-arrow-alt"></i>Người dùng</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="@Url.Action( "Index", "Manufacturers" )"><i class="bx bx-right-arrow-alt"></i>Hãng sản xuất</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="@Url.Action( "Index", "Fields" )"><i class="bx bx-right-arrow-alt"></i>Lĩnh vực</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="@Url.Action( "Index", "FixedAssetStatus" )"><i class="bx bx-right-arrow-alt"></i>Trạng thái tài sản</a>
+                        </li>
+
+                    </ul>
+                </li>
+            }
             <li class="nav-item dropdown">
                 <a href="javascript:;" class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown">
                     <div class="parent-icon">
@@ -60,95 +60,53 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a class="dropdown-item" href="ecommerce-products.html"><i class="bx bx-right-arrow-alt"></i>Products</a>
+                        <a class="dropdown-item" href="@Url.Action("Index","FixedAssets")"><i class="bx bx-right-arrow-alt"></i>Nhập</a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="ecommerce-products-details.html"><i class="bx bx-right-arrow-alt"></i>Product Details</a>
+                        <a class="dropdown-item" href="@Url.Action("Index","AssetsTransfer")"><i class="bx bx-right-arrow-alt"></i>Điều chuyển</a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="ecommerce-add-new-products.html"><i class="bx bx-right-arrow-alt"></i>Add New Products</a>
+                        <a class="dropdown-item" href="@Url.Action("Index","AssetsExport")"><i class="bx bx-right-arrow-alt"></i>Xuất</a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="ecommerce-orders.html"><i class="bx bx-right-arrow-alt"></i>Orders</a>
+                        <a class="dropdown-item" href="@Url.Action("Index","LiquidationAsset")"><i class="bx bx-right-arrow-alt"></i>Thanh lý</a>
                     </li>
                 </ul>
             </li>
-          
 
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
-                    <div class="parent-icon">
-                        <i class="bx bx-search"></i>
-                    </div>
-                    <div class="menu-title">Tìm kiếm</div>
-                </a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a class="dropdown-item" href="charts-apex-chart.html"><i class="bx bx-right-arrow-alt"></i>Apex</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="charts-chartjs.html"><i class="bx bx-right-arrow-alt"></i>Chartjs</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="charts-highcharts.html"><i class="bx bx-right-arrow-alt"></i>Highcharts</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
-                    <div class="parent-icon">
-                        <i class='bx bx-scan'></i>
-                    </div>
-                    <div class="menu-title">Báo cáo</div>
-                </a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a class="dropdown-item" href="widgets.html"><i class="bx bx-right-arrow-alt"></i>Widgets</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="component-alerts.html"><i class="bx bx-right-arrow-alt"></i>Alerts</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="component-accordions.html"><i class="bx bx-right-arrow-alt"></i>Accordions</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="component-buttons.html"><i class="bx bx-right-arrow-alt"></i>Buttons</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="component-cards.html"><i class="bx bx-right-arrow-alt"></i>Cards</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="component-list-groups.html"><i class="bx bx-right-arrow-alt"></i>List Groups</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="component-media-object.html"><i class="bx bx-right-arrow-alt"></i>Media Objects</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="component-modals.html"><i class="bx bx-right-arrow-alt"></i>Modals</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="component-navs-tabs.html"><i class="bx bx-right-arrow-alt"></i>Navs & Tabs</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="component-navbar.html"><i class="bx bx-right-arrow-alt"></i>Navbar</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="component-popovers-tooltips.html"><i class="bx bx-right-arrow-alt"></i>Popovers & Tooltips</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="component-progress-bars.html"><i class="bx bx-right-arrow-alt"></i>Progress</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="component-spinners.html"><i class="bx bx-right-arrow-alt"></i>Spinners</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="component-notifications.html"><i class="bx bx-right-arrow-alt"></i>Notifications</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="component-avtars-chips.html"><i class="bx bx-right-arrow-alt"></i>Avatrs & Chips</a>
-                    </li>
-                </ul>
-            </li>
+            @if (User.Identity.IsAuthenticated && User.IsInRole(PositionType.AccountingManager.ToString()))
+            {
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="@Url.Action( "Index", "Search" )" @*data-bs-toggle="dropdown"*@>
+                        <div class="parent-icon">
+                            <i class="bx bx-search"></i>
+                        </div>
+                        <div class="menu-title">Tìm kiếm</div>
+                    </a>
+                    @*<ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="charts-apex-chart.html"><i class="bx bx-right-arrow-alt"></i>Apex</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="charts-chartjs.html"><i class="bx bx-right-arrow-alt"></i>Chartjs</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="charts-highcharts.html"><i class="bx bx-right-arrow-alt"></i>Highcharts</a>
+                            </li>
+                        </ul>*@
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="@Url.Action( "Index", "Reports" )" @*data-bs-toggle="dropdown"*@>
+                        <div class="parent-icon">
+                            <i class='bx bx-scan'></i>
+                        </div>
+                        <div class="menu-title">Báo cáo</div>
+                    </a>
+                    @*<ul class="dropdown-menu">
+
+                        </ul>*@
+                </li>
+            }
             <li class="nav-item dropdown">
                 <a href="javascript:;" class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown">
                     <div class="parent-icon">
