@@ -56,8 +56,8 @@ namespace qlts.Handlers
 
         public List<ManufacturerIndexViewModel> GetAllManufacturers()
         {
-            var Manufacturers = _manufacturerStore.GetAllManufacturers();
-            return MapperConfig.Factory.Map<List<Manufacturer>, List<ManufacturerIndexViewModel>>(Manufacturers);
+            var manufacturers = _manufacturerStore.GetAllManufacturers();
+            return MapperConfig.Factory.Map<List<Manufacturer>, List<ManufacturerIndexViewModel>>(manufacturers);
         }
 
         public ManufacturerCreateUpdateViewModel GetManufacturerById(Guid? id)

@@ -9,8 +9,9 @@
     const string controller = "FixedAssets";
     var data = Model;
 }
+
 @section styles{
-    <link href="~/Content/assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    <link href="~/Content/assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet"/>
 }
 
 <div class="row">
@@ -18,9 +19,7 @@
         <div class="card">
 
             <div class="card-body">
-                @if (User.Identity.IsAuthenticated && User.IsInRole(PositionType.AccountingManager.ToString()))
-                {
-
+                @if ( User.Identity.IsAuthenticated && User.IsInRole ( PositionType.AccountingManager.ToString() ) ) {
                     <div class="row mb-2">
                         <div class="col-sm-10">
                             <a href="@Url.Action( "CreateUpdate", controller )" class="btn btn-primary mb-2">
@@ -35,66 +34,65 @@
                 <div class="table-responsive-lg">
                     <table id="datatable-buttons" class="table table-striped table-bordered mb-0 delete-container">
                         <thead class="table-light">
-                            <tr>
-                                <th class="text-center align-middle" style="min-width: 3px;">STT</th>
-                                <th class="text-center align-middle" style="min-width: 80px;">@Html.DisplayNameFor(n => n.FirstOrDefault().FieldName)</th>
-                                <th class="text-center align-middle" style="min-width: 111px;">@Html.DisplayNameFor(n => n.FirstOrDefault().ManufacturerName)</th>
-                                <th class="text-center align-middle" style="min-width: 110px;">@Html.DisplayNameFor(n => n.FirstOrDefault().ManufacturerDate)</th>
-                                <th class="text-center align-middle" style="min-width: 120px;">@Html.DisplayNameFor(n => n.FirstOrDefault().WarrantyPeriodDate)</th>
-                                <th class="text-center align-middle" style="min-width: 80px;">@Html.DisplayNameFor(n => n.FirstOrDefault().FixedAssetStatusName)</th>
-                                <th class="text-center align-middle" style="min-width: 110px;">@Html.DisplayNameFor(n => n.FirstOrDefault().FixedAssetDateFormatted)</th>
-                                <th class="text-center align-middle" style="min-width: 90px;">@Html.DisplayNameFor(n => n.FirstOrDefault().Code)</th>
-                                <th class="text-center align-middle" style="min-width: 90px;">@Html.DisplayNameFor(n => n.FirstOrDefault().Name)</th>
-                                <th class="text-center align-middle" style="min-width: 90px;">@Html.DisplayNameFor(n => n.FirstOrDefault().Description)</th>
-                                <th class="text-center align-middle" style="min-width: 110px;">@Html.DisplayNameFor(n => n.FirstOrDefault().Quantity)</th>
-                                <th class="text-center align-middle" style="min-width: 110px;">@Html.DisplayNameFor(n => n.FirstOrDefault().Unit)</th>
-                                <th class="text-center align-middle" style="min-width: 110px;">@Html.DisplayNameFor(n => n.FirstOrDefault().PartNumber)</th>
-                                <th class="text-center align-middle" style="min-width: 110px;">@Html.DisplayNameFor(n => n.FirstOrDefault().SerialNumber)</th>
-                                <th class="text-center align-middle" style="min-width: 80px;">@Html.DisplayNameFor(n => n.FirstOrDefault().CostFormatted)</th>
-                                <th class="text-center align-middle" style="min-width: 100px;">@Html.DisplayNameFor(n => n.FirstOrDefault().Total)</th>
-                                <th class="text-center align-middle" style="min-width: 110px;">@Html.DisplayNameFor(n => n.FirstOrDefault().Note)</th>
-                                @if (User.Identity.IsAuthenticated && User.IsInRole(PositionType.AccountingManager.ToString()))
-                                {
-
-                                    <th></th>
-                                }
-                            </tr>
+                        <tr>
+                            <th class="text-center align-middle" style="min-width: 3px;">STT</th>
+                            <th class="text-center align-middle" style="min-width: 80px;">@Html.DisplayNameFor( n => n.FirstOrDefault().FieldName )</th>
+                            <th class="text-center align-middle" style="min-width: 111px;">@Html.DisplayNameFor( n => n.FirstOrDefault().ManufacturerName )</th>
+                            <th class="text-center align-middle" style="min-width: 110px;">@Html.DisplayNameFor( n => n.FirstOrDefault().ManufacturerDate )</th>
+                            <th class="text-center align-middle" style="min-width: 120px;">@Html.DisplayNameFor( n => n.FirstOrDefault().WarrantyPeriodDate )</th>
+                            <th class="text-center align-middle" style="min-width: 80px;">@Html.DisplayNameFor( n => n.FirstOrDefault().FixedAssetStatusName )</th>
+                            <th class="text-center align-middle" style="min-width: 110px;">@Html.DisplayNameFor( n => n.FirstOrDefault().FixedAssetDateFormatted )</th>
+                            <th class="text-center align-middle" style="min-width: 90px;">@Html.DisplayNameFor( n => n.FirstOrDefault().Code )</th>
+                            <th class="text-center align-middle" style="min-width: 90px;">@Html.DisplayNameFor( n => n.FirstOrDefault().Name )</th>
+                            <th class="text-center align-middle" style="min-width: 90px;">@Html.DisplayNameFor( n => n.FirstOrDefault().Description )</th>
+                            <th class="text-center align-middle" style="min-width: 110px;">@Html.DisplayNameFor( n => n.FirstOrDefault().Quantity )</th>
+                            <th class="text-center align-middle" style="min-width: 110px;">@Html.DisplayNameFor( n => n.FirstOrDefault().Unit )</th>
+                            <th class="text-center align-middle" style="min-width: 110px;">@Html.DisplayNameFor( n => n.FirstOrDefault().PartNumber )</th>
+                            <th class="text-center align-middle" style="min-width: 110px;">@Html.DisplayNameFor( n => n.FirstOrDefault().SerialNumber )</th>
+                            <th class="text-center align-middle" style="min-width: 80px;">@Html.DisplayNameFor( n => n.FirstOrDefault().CostFormatted )</th>
+                            <th class="text-center align-middle" style="min-width: 100px;">@Html.DisplayNameFor( n => n.FirstOrDefault().Total )</th>
+                            <th class="text-center align-middle" style="min-width: 110px;">@Html.DisplayNameFor( n => n.FirstOrDefault().Note )</th>
+                            @if ( User.Identity.IsAuthenticated && User.IsInRole ( PositionType.AccountingManager.ToString() ) ) {
+                                <th></th>
+                            }
+                        </tr>
                         </thead>
 
 
                         <tbody>
-                            @foreach (var item in data)
-                            {
-                                <tr>
-                                    <td>@(stt++)</td>
-                                    <td>@item.FieldName</td>
-                                    <td>@item.ManufacturerName</td>
-                                    <td>@item.ManufacturerDate</td>
-                                    <td>@item.WarrantyPeriodDate</td>
-                                    <td>@item.FixedAssetStatusName</td>
-                                    <td>@item.FixedAssetDate</td>
-                                    <td>@item.Code</td>
-                                    <td>@item.Name</td>
-                                    <td>@item.Description</td>
-                                    <td>@item.Quantity</td>
-                                    <td>@item.Unit.GetDisplayName()</td>
-                                    <td>@item.PartNumber</td>
-                                    <td>@item.SerialNumber</td>
-                                    <td>@item.CostFormatted</td>
-                                    <td>@item.Total</td>
-                                    <td>@item.Note</td>
-                                    @if (User.Identity.IsAuthenticated && User.IsInRole(PositionType.AccountingManager.ToString()))
-                                    {
-
-                                        <td class="text-center">
-                                            <div class="d-flex order-actions justify-content-center">
-                                                <a href="@Url.Action( "CreateUpdate", controller, new { id = item.Id } )" class=""><i class='bx bxs-edit'></i></a>
-                                                <a data-url='@Url.Action( "Delete", controller, new { id = item.Id } )' class="ms-3 delete-button"><i class='bx bxs-trash'></i></a>
-                                            </div>
-                                        </td>
-                                    }
-                                </tr>
-                            }
+                        @foreach ( var item in data ) {
+                            <tr>
+                                <td>@(stt++)</td>
+                                <td>@item.FieldName</td>
+                                <td>@item.ManufacturerName</td>
+                                <td>@item.ManufacturerDate</td>
+                                <td>@item.WarrantyPeriodDate</td>
+                                <td>@item.FixedAssetStatusName</td>
+                                <td>@item.FixedAssetDate</td>
+                                <td>@item.Code</td>
+                                <td>@item.Name</td>
+                                <td>@item.Description</td>
+                                <td>@item.Quantity</td>
+                                <td>@item.Unit.GetDisplayName()</td>
+                                <td>@item.PartNumber</td>
+                                <td>@item.SerialNumber</td>
+                                <td>@item.CostFormatted</td>
+                                <td>@item.Total</td>
+                                <td>@item.Note</td>
+                                @if ( User.Identity.IsAuthenticated && User.IsInRole ( PositionType.AccountingManager.ToString() ) ) {
+                                    <td class="text-center">
+                                        <div class="d-flex order-actions justify-content-center">
+                                            <a href="@Url.Action( "CreateUpdate", controller, new { id = item.Id } )" class="">
+                                                <i class='bx bxs-edit'></i>
+                                            </a>
+                                            <a data-url='@Url.Action( "Delete", controller, new { id = item.Id } )' class="ms-3 delete-button">
+                                                <i class='bx bxs-trash'></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                }
+                            </tr>
+                        }
                         </tbody>
                     </table>
                 </div>
