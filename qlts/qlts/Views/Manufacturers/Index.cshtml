@@ -48,10 +48,10 @@
                             {
                                 <tr>
                                     <td>@(stt++)</td>
-                                    <td>@item.Note</td>
+                                    <td>@item.Name</td>
                                     <td>@item.DateFormatted</td>
                                     <td>@item.WarrantyPeriodDateFormatted</td>
-                                    
+                                    <td>@item.Note</td>
                                     <td class="text-center">
                                         <div class="d-flex order-actions justify-content-center">
                                             <a href="@Url.Action("CreateUpdate", controller, new { id = item.Id })" class=""><i class='bx bxs-edit'></i></a>

@@ -24,7 +24,7 @@ namespace qlts.Controllers
 
             return View(data);
         }
-
+        [HttpGet]
         public ActionResult CreateUpdate(Guid? id)
         {
             var data = _ManufacturerHandler.GetManufacturerById(id);

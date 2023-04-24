@@ -1,4 +1,5 @@
-﻿using qlts.Models;
+﻿using System.Configuration;
+using qlts.Models;
 using System.Data.Entity;
 
 namespace qlts.Datas
@@ -30,5 +31,6 @@ namespace qlts.Datas
         {
             return new AppDbContext();
         }
+
     }
 }

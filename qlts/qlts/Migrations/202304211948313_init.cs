@@ -93,7 +93,7 @@
                 "dbo.TBL_Warehouses",
                 c => new
                     {
-                        Id = c.Guid(nullable: false, identity: true),
+                        Id = c.Guid(nullable: false, identity: true, defaultValueSql: "newsequentialid()"),
                         Name = c.String(nullable: false, maxLength: 200),
                         Center = c.Int(nullable: false),
                         Unit = c.Int(nullable: false),
