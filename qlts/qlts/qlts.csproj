@@ -1108,7 +1108,6 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\CreateUpdate.cshtml" />
-    <Content Include="Views\FixedAssets\Index1.cshtml" />
     <Content Include="Views\Shared\_ErrorModal.cshtml" />
     <Content Include="Views\AssetsTransfer\CreateModal.cshtml" />
     <Content Include="Views\Fields\Index.cshtml" />
@@ -1129,6 +1128,10 @@
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Reports\Index.cshtml" />
     <Content Include="Views\Account\Profile.cshtml" />
+    <Content Include="Views\FixedAssets\ListFixedAssets.cshtml" />
+    <Content Include="Views\AssetsTransfer\ListAssetsTransfer.cshtml" />
+    <Content Include="Views\AssetsExport\ListAssetsExport.cshtml" />
+    <Content Include="Views\LiquidationAsset\ListLiquidationAsset.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

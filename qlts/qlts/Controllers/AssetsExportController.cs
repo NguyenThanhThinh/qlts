@@ -1,4 +1,5 @@
-﻿using qlts.Extensions;
+﻿using qlts.Enums;
+using qlts.Extensions;
 using qlts.Handlers;
 using qlts.ViewModels.AssetsTransfers;
 using System;
@@ -28,7 +29,16 @@ namespace qlts.Controllers
 
             return View(data);
         }
+        public ActionResult ListAssetsExport()
+        {
+            GetData();
+            TempData["Warehouse"] = GetCurrentWarehouseId();
+            var data = _fixedAssetHandler.GetAllFixedAssets().Where(n => n.FixedAssetType == FixedAssetType.AssetsExport).ToList();
+            if (data != null && data.Count > 0)
+                data = data.OrderByDescending(x => x.CreatedDate).ToList();
 
+            return View(data);
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Index(FormCollection form)
@@ -96,6 +106,7 @@ namespace qlts.Controllers
                 asset.FixedAssetDate = (DateTime)DateTimeExtensions.ToDateTime(model.FixedAssetDate);
                 asset.CreatedDate = DateTime.Now;
                 asset.FixedAssetType = Enums.FixedAssetType.AssetsExport;
+                model.ModifiedBy = GetCurrentUserName();
                 _fixedAssetHandler.CreateUpdateFixedAsset(asset);
             }
         }

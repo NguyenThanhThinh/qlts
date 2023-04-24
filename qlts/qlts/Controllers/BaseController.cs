@@ -40,6 +40,17 @@ namespace qlts.Controllers
 
             return value.ToUpper();
         }
+
+        protected string GetCurrentUserName()
+        {
+            var identity = (ClaimsPrincipal)Thread.CurrentPrincipal;
+            var value = identity.Claims.Where(c => c.Type == ClaimTypes.GivenName)
+                                .Select(c => c.Value).SingleOrDefault();
+
+            if (value == null) return string.Empty;
+
+            return value;
+        }
         protected void ShowError(Exception exception)
         {
 

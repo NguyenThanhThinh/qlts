@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using qlts.Enums;
 
 namespace qlts.Controllers
 {
@@ -36,6 +37,14 @@ namespace qlts.Controllers
             return View(data);
         }
 
+        public ActionResult ListFixedAssets()
+        {
+            var data = _fixedAssetHandler.GetAllFixedAssets().Where ( n=>n.FixedAssetType == FixedAssetType.UseAsset ).ToList();
+            if (data != null && data.Count > 0)
+                data = data.OrderByDescending(x => x.CreatedDate).ToList();
+
+            return View(data);
+        }
         public ActionResult CreateUpdate(Guid? id)
         {
             var data = _fixedAssetHandler.GetFixedAssetById(id);
@@ -65,6 +74,7 @@ namespace qlts.Controllers
                 model.FixedAssetType = Enums.FixedAssetType.UseAsset;
             }
 
+            model.CreatedBy = GetCurrentUserName();
             model.FixedAssetDate = model.Id != Guid.Empty
             ? (DateTime)DateTimeExtensions.ToDateTime(model.FixedAssetDateFormattedEdit)
             : (DateTime)DateTimeExtensions.ToDateTime(model.FixedAssetDateFormatted);

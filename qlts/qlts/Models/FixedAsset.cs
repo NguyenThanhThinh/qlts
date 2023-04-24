@@ -48,5 +48,6 @@ namespace qlts.Models
         public Warehouse Warehouse { get; set; }
 
         public string Note { get; set; }
+
     }
 }

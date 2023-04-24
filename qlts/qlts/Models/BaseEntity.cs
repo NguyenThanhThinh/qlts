@@ -14,6 +14,6 @@ namespace qlts.Models
 
         public string CreatedBy { get; set; }
 
-        public DateTime? ModifiedBy { get; set; }
+        public string ModifiedBy { get; set; }
     }
 }

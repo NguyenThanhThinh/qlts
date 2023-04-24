@@ -2,7 +2,7 @@
 
 namespace qlts.ViewModels.AssetsTransfers
 {
-    public class CreateTransferViewModel
+    public class CreateTransferViewModel :ViewModelBase
     {
         public string Note { get; set; }
 

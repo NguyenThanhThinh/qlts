@@ -4,6 +4,7 @@ using qlts.ViewModels.AssetsTransfers;
 using System;
 using System.Linq;
 using System.Web.Mvc;
+using qlts.Enums;
 
 namespace qlts.Controllers
 {
@@ -23,6 +24,16 @@ namespace qlts.Controllers
             GetData();
             TempData["Warehouse"] = GetCurrentWarehouseId();
             var data = _fixedAssetHandler.GetAllFixedAssets();
+            if (data != null && data.Count > 0)
+                data = data.OrderByDescending(x => x.CreatedDate).ToList();
+
+            return View(data);
+        }
+        public ActionResult ListAssetsTransfer()
+        {
+            GetData();
+            TempData["Warehouse"] = GetCurrentWarehouseId();
+            var data = _fixedAssetHandler.GetAllFixedAssets().Where ( n=>n.FixedAssetType ==FixedAssetType.AssetsTransfer ).ToList();
             if (data != null && data.Count > 0)
                 data = data.OrderByDescending(x => x.CreatedDate).ToList();
 
@@ -96,6 +107,7 @@ namespace qlts.Controllers
                 asset.FixedAssetDate = (DateTime)DateTimeExtensions.ToDateTime(model.FixedAssetDate);
                 asset.CreatedDate = DateTime.Now;
                 asset.FixedAssetType = Enums.FixedAssetType.AssetsTransfer;
+                model.ModifiedBy = GetCurrentUserName();
                 _fixedAssetHandler.CreateUpdateFixedAsset(asset);
             }
         }

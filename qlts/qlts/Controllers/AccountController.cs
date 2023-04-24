@@ -64,6 +64,7 @@ namespace qlts.Controllers
                 new[]
                 {
                     new Claim(ClaimTypes.Name, result.Name),
+                    new Claim(ClaimTypes.GivenName, result.UserName),
                     new Claim(ClaimTypes.SerialNumber, result.Warehouse.Id.ToString()),
                     new Claim(ClaimTypes.Role, roleName),
                     new Claim(ClaimTypes.UserData, JsonConvert.SerializeObject(result)),
