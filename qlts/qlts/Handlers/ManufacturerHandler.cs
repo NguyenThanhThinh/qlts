@@ -4,40 +4,40 @@ using qlts.Models;
 using qlts.Stores;
 using System;
 using System.Collections.Generic;
-using qlts.ViewModels.Manufacturers;
+using qlts.ViewModels.FixedAssetManufacturers;
 
 namespace qlts.Handlers
 {
-    public interface IManufacturerHandler
+    public interface IFixedAssetManufacturerHandler
     {
-        Manufacturer CreateUpdateManufacturer(ManufacturerCreateUpdateViewModel model);
-        ManufacturerCreateUpdateViewModel GetManufacturerById(Guid? id);
-        List<ManufacturerIndexViewModel> GetAllManufacturers();
-        bool DeleteManufacturer(Guid? id);
+        FixedAssetManufacturer CreateUpdateFixedAssetManufacturer(FixedAssetManufacturerCreateUpdateViewModel model);
+        FixedAssetManufacturerCreateUpdateViewModel GetFixedAssetManufacturerById(Guid? id);
+        List<FixedAssetManufacturerIndexViewModel> GetAllFixedAssetManufacturers();
+        bool DeleteFixedAssetManufacturer(Guid? id);
 
     }
 
-    public class ManufacturerHandler : IManufacturerHandler
+    public class FixedAssetManufacturerHandler : IFixedAssetManufacturerHandler
     {
-        private readonly IManufacturerStore _manufacturerStore;
+        private readonly IFixedAssetManufacturerStore _FixedAssetManufacturerStore;
 
-        public ManufacturerHandler(IManufacturerStore manufacturerStore)
+        public FixedAssetManufacturerHandler(IFixedAssetManufacturerStore FixedAssetManufacturerStore)
         {
-            this._manufacturerStore = manufacturerStore;
+            this._FixedAssetManufacturerStore = FixedAssetManufacturerStore;
         }
 
-        public Manufacturer CreateUpdateManufacturer( ManufacturerCreateUpdateViewModel model )
+        public FixedAssetManufacturer CreateUpdateFixedAssetManufacturer( FixedAssetManufacturerCreateUpdateViewModel model )
         {
-            var manufacturer = MapperConfig.Factory.Map<ManufacturerCreateUpdateViewModel, Manufacturer> ( model );
+            var FixedAssetManufacturer = MapperConfig.Factory.Map<FixedAssetManufacturerCreateUpdateViewModel, FixedAssetManufacturer> ( model );
 
             try
             {
-                if ( manufacturer != null && manufacturer.Id != Guid.Empty )
-                    manufacturer.ModifiedDate = DateTime.Now;
+                if ( FixedAssetManufacturer != null && FixedAssetManufacturer.Id != Guid.Empty )
+                    FixedAssetManufacturer.ModifiedDate = DateTime.Now;
 
-                manufacturer = manufacturer != null && manufacturer.Id != Guid.Empty ?
-                                       _manufacturerStore.UpdateManufacturer ( manufacturer ) : 
-                                       _manufacturerStore.CreateManufacturer ( manufacturer );
+                FixedAssetManufacturer = FixedAssetManufacturer != null && FixedAssetManufacturer.Id != Guid.Empty ?
+                                       _FixedAssetManufacturerStore.UpdateFixedAssetManufacturer ( FixedAssetManufacturer ) : 
+                                       _FixedAssetManufacturerStore.CreateFixedAssetManufacturer ( FixedAssetManufacturer );
             }
             catch ( Exception ex )
             {
@@ -46,27 +46,27 @@ namespace qlts.Handlers
                 throw ex;
             }
 
-            return manufacturer;
+            return FixedAssetManufacturer;
         }
 
-        public bool DeleteManufacturer(Guid? id)
+        public bool DeleteFixedAssetManufacturer(Guid? id)
         {
-            return _manufacturerStore.DeleteManufacturer(id);
+            return _FixedAssetManufacturerStore.DeleteFixedAssetManufacturer(id);
         }
 
-        public List<ManufacturerIndexViewModel> GetAllManufacturers()
+        public List<FixedAssetManufacturerIndexViewModel> GetAllFixedAssetManufacturers()
         {
-            var manufacturers = _manufacturerStore.GetAllManufacturers();
-            return MapperConfig.Factory.Map<List<Manufacturer>, List<ManufacturerIndexViewModel>>(manufacturers);
+            var FixedAssetManufacturers = _FixedAssetManufacturerStore.GetAllFixedAssetManufacturers();
+            return MapperConfig.Factory.Map<List<FixedAssetManufacturer>, List<FixedAssetManufacturerIndexViewModel>>(FixedAssetManufacturers);
         }
 
-        public ManufacturerCreateUpdateViewModel GetManufacturerById(Guid? id)
+        public FixedAssetManufacturerCreateUpdateViewModel GetFixedAssetManufacturerById(Guid? id)
         {
             if (id == null)
-                return new ManufacturerCreateUpdateViewModel();
+                return new FixedAssetManufacturerCreateUpdateViewModel();
 
-            var manufacturer = _manufacturerStore.GetManufacturerById(id);
-            return manufacturer == null ? null : MapperConfig.Factory.Map<Manufacturer, ManufacturerCreateUpdateViewModel>(manufacturer);
+            var FixedAssetManufacturer = _FixedAssetManufacturerStore.GetFixedAssetManufacturerById(id);
+            return FixedAssetManufacturer == null ? null : MapperConfig.Factory.Map<FixedAssetManufacturer, FixedAssetManufacturerCreateUpdateViewModel>(FixedAssetManufacturer);
         }
 
     }

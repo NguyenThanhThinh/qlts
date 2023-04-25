@@ -7,54 +7,54 @@ using System;
 
 namespace qlts.Stores
 {
-    public interface IManufacturerStore
+    public interface IFixedAssetManufacturerStore
     {
-        List<Manufacturer> GetAllManufacturers();
-        Manufacturer GetManufacturerById(Guid? id);
-        Manufacturer CreateManufacturer(Manufacturer manufacturer);
-        Manufacturer UpdateManufacturer(Manufacturer manufacturer);
-        bool DeleteManufacturer(Guid? id);
+        List<FixedAssetManufacturer> GetAllFixedAssetManufacturers();
+        FixedAssetManufacturer GetFixedAssetManufacturerById(Guid? id);
+        FixedAssetManufacturer CreateFixedAssetManufacturer(FixedAssetManufacturer FixedAssetManufacturer);
+        FixedAssetManufacturer UpdateFixedAssetManufacturer(FixedAssetManufacturer FixedAssetManufacturer);
+        bool DeleteFixedAssetManufacturer(Guid? id);
 
-        List<DropdownModel> GetManufacturerDropdown();
+        List<DropdownModel> GetFixedAssetManufacturerDropdown();
 
     }
 
-    public class ManufacturerStore : IManufacturerStore
+    public class FixedAssetManufacturerStore : IFixedAssetManufacturerStore
     {
         private readonly IUnitOfWork unitOfWork;
-        private readonly IRepository<Manufacturer> _manufacturerRepo;
+        private readonly IRepository<FixedAssetManufacturer> _FixedAssetManufacturerRepo;
 
-        public ManufacturerStore(IUnitOfWork unitOfWork)
+        public FixedAssetManufacturerStore(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
-            _manufacturerRepo = unitOfWork.Get<Manufacturer>();
+            _FixedAssetManufacturerRepo = unitOfWork.Get<FixedAssetManufacturer>();
         }
 
-        public Manufacturer CreateManufacturer(Manufacturer manufacturer)
+        public FixedAssetManufacturer CreateFixedAssetManufacturer(FixedAssetManufacturer FixedAssetManufacturer)
         {
-            var result = _manufacturerRepo.Create(manufacturer);
+            var result = _FixedAssetManufacturerRepo.Create(FixedAssetManufacturer);
             return unitOfWork.SaveChanges() > 0 ? result : null;
         }
 
-        public bool DeleteManufacturer(Guid? id)
+        public bool DeleteFixedAssetManufacturer(Guid? id)
         {
-            _manufacturerRepo.Delete(n => n.Id == id);
+            _FixedAssetManufacturerRepo.Delete(n => n.Id == id);
             return unitOfWork.SaveChanges() > 0;
         }
 
-        public List<Manufacturer> GetAllManufacturers()
+        public List<FixedAssetManufacturer> GetAllFixedAssetManufacturers()
         {
-            return _manufacturerRepo.GetAll(null);
+            return _FixedAssetManufacturerRepo.GetAll(null);
         }
 
-        public Manufacturer GetManufacturerById(Guid? id)
+        public FixedAssetManufacturer GetFixedAssetManufacturerById(Guid? id)
         {
-            return _manufacturerRepo.Get(n => n.Id == id);
+            return _FixedAssetManufacturerRepo.Get(n => n.Id == id);
         }
 
-        public List<DropdownModel> GetManufacturerDropdown()
+        public List<DropdownModel> GetFixedAssetManufacturerDropdown()
         {
-            return _manufacturerRepo.GetAll(null).OrderBy(x => x.Name)
+            return _FixedAssetManufacturerRepo.GetAll(null).OrderBy(x => x.Name)
                 .Select(x => new DropdownModel
                 {
                     Id = x.Id,
@@ -62,9 +62,9 @@ namespace qlts.Stores
                 }).ToList();
         }
 
-        public Manufacturer UpdateManufacturer(Manufacturer manufacturer)
+        public FixedAssetManufacturer UpdateFixedAssetManufacturer(FixedAssetManufacturer FixedAssetManufacturer)
         {
-            var result = _manufacturerRepo.Update(manufacturer);
+            var result = _FixedAssetManufacturerRepo.Update(FixedAssetManufacturer);
             return unitOfWork.SaveChanges() > 0 ? result : null;
         }
     }

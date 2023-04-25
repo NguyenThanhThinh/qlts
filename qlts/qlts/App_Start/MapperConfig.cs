@@ -1,12 +1,11 @@
 ﻿using AutoMapper;
-using qlts.Enums;
 using qlts.Extensions;
 using qlts.Models;
 using qlts.ViewModels.Accounts;
 using qlts.ViewModels.Fields;
+using qlts.ViewModels.FixedAssetManufacturers;
 using qlts.ViewModels.FixedAssets;
 using qlts.ViewModels.FixedAssetStatus;
-using qlts.ViewModels.Manufacturers;
 using qlts.ViewModels.Users;
 using qlts.ViewModels.Warehouses;
 using System;
@@ -58,13 +57,13 @@ namespace qlts
                          .ForMember(x => x.FieldName,
                         map => map.MapFrom(x => x.Field == null ? string.Empty : x.Field.Name))
                          .ForMember(x => x.ManufacturerName,
-                        map => map.MapFrom(x => x.Manufacturer == null ? string.Empty : x.Manufacturer.Name))
+                        map => map.MapFrom(x => x.FixedAssetManufacturer == null ? string.Empty : x.FixedAssetManufacturer.Name))
                          .ForMember(x => x.FixedAssetStatusName,
                         map => map.MapFrom(x => x.FixedAssetStatus == null ? string.Empty : x.FixedAssetStatus.Name))
                          .ForMember(x => x.ManufacturerDate,
-                        map => map.MapFrom(x => x.Manufacturer == null ? DateTime.Now : x.Manufacturer.Date))
+                        map => map.MapFrom(x => x.FixedAssetManufacturer == null ? DateTime.Now : x.FixedAssetManufacturer.Date))
                         .ForMember(x => x.WarrantyPeriodDate,
-                        map => map.MapFrom(x => x.Manufacturer == null ? DateTime.Now : x.Manufacturer.WarrantyPeriodDate));
+                        map => map.MapFrom(x => x.FixedAssetManufacturer == null ? DateTime.Now : x.FixedAssetManufacturer.WarrantyPeriodDate));
                 config.CreateMap<FixedAsset, FixedAssetCreateUpdateViewModel>()
                  .AfterMap((m, vm) =>
                  {
@@ -81,9 +80,9 @@ namespace qlts
                 config.CreateMap<Field, FieldCreateUpdateViewModel>();
                 config.CreateMap<FieldCreateUpdateViewModel, Field>();
 
-                config.CreateMap<Manufacturer, ManufacturerIndexViewModel>();
-                config.CreateMap<Manufacturer, ManufacturerCreateUpdateViewModel>();
-                config.CreateMap<ManufacturerCreateUpdateViewModel, Manufacturer>();
+                config.CreateMap<FixedAssetManufacturer, FixedAssetManufacturerIndexViewModel>();
+                config.CreateMap<FixedAssetManufacturer, FixedAssetManufacturerCreateUpdateViewModel>();
+                config.CreateMap<FixedAssetManufacturerCreateUpdateViewModel, FixedAssetManufacturer>();
 
                 config.CreateMap<FixedAssetStatus, FixedAssetStatusIndexViewModel>();
                 config.CreateMap<FixedAssetStatus, FixedAssetStatusCreateUpdateViewModel>();

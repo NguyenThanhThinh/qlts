@@ -31,7 +31,7 @@ namespace qlts.Models
 
         public Guid ManufacturerId { get; set; }
 
-        public Manufacturer Manufacturer { get; set; }
+        public FixedAssetManufacturer FixedAssetManufacturer { get; set; }
 
 
         public Guid FixedAssetStatusId { get; set; }

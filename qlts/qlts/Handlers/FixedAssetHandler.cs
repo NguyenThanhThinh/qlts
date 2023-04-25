@@ -31,19 +31,19 @@ namespace qlts.Handlers
         private readonly IFixedAssetStore _FixedAssetStore;
         private readonly IFieldStore _fieldStore;
         private readonly IFixedAssetStatusStore _fixedAssetStatusStore;
-        private readonly IManufacturerStore _manufacturerStore;
+        private readonly IFixedAssetManufacturerStore _FixedAssetManufacturerStore;
         private readonly IWarehouseStore _warehouseStore;
 
         public FixedAssetHandler(IFixedAssetStore FixedAssetStore,
             IFieldStore fieldStore,
             IFixedAssetStatusStore fixedAssetStatusStore,
-            IManufacturerStore manufacturerStore,
+            IFixedAssetManufacturerStore FixedAssetManufacturerStore,
             IWarehouseStore warehouseStore)
         {
             this._FixedAssetStore = FixedAssetStore;
             _fieldStore = fieldStore;
             _fixedAssetStatusStore = fixedAssetStatusStore;
-            _manufacturerStore = manufacturerStore;
+            _FixedAssetManufacturerStore = FixedAssetManufacturerStore;
             this._warehouseStore = warehouseStore;
         }
 
@@ -108,7 +108,7 @@ namespace qlts.Handlers
 
             model.Fields = _fieldStore.GetFieldDropdown();
             model.FixedAssetStatuss = _fixedAssetStatusStore.GetFixedAssetStatusDropdown();
-            model.Manufacturers = _manufacturerStore.GetManufacturerDropdown();
+            model.FixedAssetManufacturers = _FixedAssetManufacturerStore.GetFixedAssetManufacturerDropdown();
             model.Warehouses = _warehouseStore.GetWarehouseDropdown(centerUnit, true);
             return model;
         }

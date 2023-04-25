@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace qlts.ViewModels.Manufacturers
+namespace qlts.ViewModels.FixedAssetManufacturers
 {
-    public class ManufacturerCreateUpdateViewModel : ViewModelBase
+    public class FixedAssetManufacturerCreateUpdateViewModel : ViewModelBase
     {
         [Display(Name = "Hãng sản xuất")]
         [Required(ErrorMessage = ErrorMessageRequired)]

@@ -15,13 +15,13 @@ namespace qlts.Controllers
 
         private readonly IWarehouseHandler _warehouseHandler;
 
-        private readonly IManufacturerHandler _manufacturerHandler;
+        private readonly IFixedAssetManufacturerHandler _FixedAssetManufacturerHandler;
 
-        public FixedAssetsController( IFixedAssetHandler fixedAssetHandler, IWarehouseHandler warehouseHandler, IManufacturerHandler manufacturerHandler )
+        public FixedAssetsController( IFixedAssetHandler fixedAssetHandler, IWarehouseHandler warehouseHandler, IFixedAssetManufacturerHandler FixedAssetManufacturerHandler )
         {
             _fixedAssetHandler = fixedAssetHandler;
             _warehouseHandler = warehouseHandler;
-            _manufacturerHandler = manufacturerHandler;
+            _FixedAssetManufacturerHandler = FixedAssetManufacturerHandler;
         }
 
         public ActionResult Index( )
@@ -63,11 +63,11 @@ namespace qlts.Controllers
             var data = _fixedAssetHandler.GetAllFixedAssets().Where ( n => n.FixedAssetType == FixedAssetType.UseAsset ).ToList();
 
             var warehouse    = _warehouseHandler.GetWarehouseById ( model.WarehouseId );
-            var manufacturer = _manufacturerHandler.GetManufacturerById ( model.ManufacturerId );
+            var FixedAssetManufacturer = _FixedAssetManufacturerHandler.GetFixedAssetManufacturerById ( model.FixedAssetManufacturerId );
 
-            if ( warehouse != null && manufacturer != null && model.Id == Guid.Empty )
+            if ( warehouse != null && FixedAssetManufacturer != null && model.Id == Guid.Empty )
             {
-                model.Code = GenerateCode ( warehouse.Name, manufacturer.Name, data.Count == 0 ? 0 : data.Count );
+                model.Code = GenerateCode ( warehouse.Name, FixedAssetManufacturer.Name, data.Count == 0 ? 0 : data.Count );
                 model.FixedAssetType = FixedAssetType.UseAsset;
             }
 

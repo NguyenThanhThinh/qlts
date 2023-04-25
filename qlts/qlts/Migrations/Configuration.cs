@@ -25,7 +25,7 @@ namespace qlts.Migrations
 
             CreateFixedAssetStatus(context);
 
-            CreateManufacturer(context);
+            //CreateManufacturer(context);
 
             CreateField(context);
 
@@ -154,58 +154,58 @@ namespace qlts.Migrations
             }
         }
 
-        private void CreateManufacturer(Datas.AppDbContext context)
-        {
-            if (!context.Manufacturers.Any())
-            {
-                var listManufacturer = new List<Manufacturer>()
-                                       {
-                                           new Manufacturer()
-                                           {
+        //private void CreateManufacturer(Datas.AppDbContext context)
+        //{
+        //    if (!context.Manufacturers.Any())
+        //    {
+        //        var listManufacturer = new List<Manufacturer>()
+        //                               {
+        //                                   new Manufacturer()
+        //                                   {
 
-                                               Name = "CISCO",
-                                               Date = new DateTime ( 2023,1,1 ),
-                                               WarrantyPeriodDate = new DateTime ( 2024,1,1 ),
-                                               CreatedDate = DateTime.Now
-                                           },
-                                           new Manufacturer()
-                                           {
+        //                                       Name = "CISCO",
+        //                                       Date = new DateTime ( 2023,1,1 ),
+        //                                       WarrantyPeriodDate = new DateTime ( 2024,1,1 ),
+        //                                       CreatedDate = DateTime.Now
+        //                                   },
+        //                                   new Manufacturer()
+        //                                   {
 
-                                               Name = "IBM",
-                                               Date = new DateTime ( 2023,1,1 ),
-                                               WarrantyPeriodDate = new DateTime ( 2024,1,1 ),
-                                               CreatedDate = DateTime.Now
-                                           },
-                                           new Manufacturer()
-                                           {
-
-
-                                               Name = "JUNIPER",
-                                               Date = new DateTime ( 2023,1,1 ),
-                                               WarrantyPeriodDate = new DateTime ( 2024,1,1 ),
-                                               CreatedDate = DateTime.Now
-                                           },
-                                           new Manufacturer()
-                                           {
+        //                                       Name = "IBM",
+        //                                       Date = new DateTime ( 2023,1,1 ),
+        //                                       WarrantyPeriodDate = new DateTime ( 2024,1,1 ),
+        //                                       CreatedDate = DateTime.Now
+        //                                   },
+        //                                   new Manufacturer()
+        //                                   {
 
 
-                                               Name = "ALCATEL-LUCENT",
-                                               Date = new DateTime ( 2023,1,1 ),
-                                               WarrantyPeriodDate = new DateTime ( 2024,1,1 ),
-                                               CreatedDate = DateTime.Now
-                                           },
+        //                                       Name = "JUNIPER",
+        //                                       Date = new DateTime ( 2023,1,1 ),
+        //                                       WarrantyPeriodDate = new DateTime ( 2024,1,1 ),
+        //                                       CreatedDate = DateTime.Now
+        //                                   },
+        //                                   new Manufacturer()
+        //                                   {
 
-                                       };
 
-                foreach (var item in listManufacturer)
-                {
-                    item.Id = Guid.NewGuid();
-                    context.Manufacturers.Add(item);
-                    context.SaveChanges();
-                    Thread.Sleep(200);
-                }
-            }
-        }
+        //                                       Name = "ALCATEL-LUCENT",
+        //                                       Date = new DateTime ( 2023,1,1 ),
+        //                                       WarrantyPeriodDate = new DateTime ( 2024,1,1 ),
+        //                                       CreatedDate = DateTime.Now
+        //                                   },
+
+        //                               };
+
+        //        foreach (var item in listManufacturer)
+        //        {
+        //            item.Id = Guid.NewGuid();
+        //            context.Manufacturers.Add(item);
+        //            context.SaveChanges();
+        //            Thread.Sleep(200);
+        //        }
+        //    }
+        //}
 
 
         private void CreateField(Datas.AppDbContext context)

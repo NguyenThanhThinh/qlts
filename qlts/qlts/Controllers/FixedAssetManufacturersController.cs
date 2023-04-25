@@ -1,24 +1,24 @@
 ﻿using qlts.Extensions;
 using qlts.Handlers;
 using qlts.Models;
-using qlts.ViewModels.Manufacturers;
+using qlts.ViewModels.FixedAssetManufacturers;
 using System;
 using System.Linq;
 using System.Web.Mvc;
 
 namespace qlts.Controllers
 {
-    public class ManufacturersController : BaseController
+    public class FixedAssetManufacturersController : BaseController
     {
-        private readonly IManufacturerHandler _ManufacturerHandler;
+        private readonly IFixedAssetManufacturerHandler _FixedAssetManufacturerHandler;
 
-        public ManufacturersController(IManufacturerHandler _ManufacturerHandler)
+        public FixedAssetManufacturersController(IFixedAssetManufacturerHandler _FixedAssetManufacturerHandler)
         {
-            this._ManufacturerHandler = _ManufacturerHandler;
+            this._FixedAssetManufacturerHandler = _FixedAssetManufacturerHandler;
         }
         public ActionResult Index()
         {
-            var data = _ManufacturerHandler.GetAllManufacturers();
+            var data = _FixedAssetManufacturerHandler.GetAllFixedAssetManufacturers();
             if (data != null && data.Count > 0)
                 data = data.OrderByDescending(x => x.CreatedDate).ToList();
 
@@ -27,7 +27,7 @@ namespace qlts.Controllers
         [HttpGet]
         public ActionResult CreateUpdate(Guid? id)
         {
-            var data = _ManufacturerHandler.GetManufacturerById(id);
+            var data = _FixedAssetManufacturerHandler.GetFixedAssetManufacturerById(id);
             if (data == null)
                 return RedirectToAction("Login", "Account");
 
@@ -36,12 +36,12 @@ namespace qlts.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateUpdate(ManufacturerCreateUpdateViewModel model)
+        public ActionResult CreateUpdate(FixedAssetManufacturerCreateUpdateViewModel model)
         {
             if (!ModelState.IsValid)
                 return View(model);
 
-            Manufacturer manufacturer = null;
+            FixedAssetManufacturer FixedAssetManufacturer = null;
             if (model.Id != Guid.Empty)
             {
                 model.ModifiedBy = GetCurrentUserName();
@@ -55,7 +55,7 @@ namespace qlts.Controllers
                  : (DateTime)DateTimeExtensions.ToDateTime(model.WarrantyPeriodDateFormatted);
             try
             {
-                manufacturer = _ManufacturerHandler.CreateUpdateManufacturer(model);
+                FixedAssetManufacturer = _FixedAssetManufacturerHandler.CreateUpdateFixedAssetManufacturer(model);
             }
             catch (Exception ex)
             {
@@ -63,7 +63,7 @@ namespace qlts.Controllers
                 return View(model);
             }
 
-            if (manufacturer.IsSuccess())
+            if (FixedAssetManufacturer.IsSuccess())
             {
                 Alert("Lưu thành công!");
                 return RedirectToAction(nameof(Index));
@@ -80,7 +80,7 @@ namespace qlts.Controllers
 
             try
             {
-                success = _ManufacturerHandler.DeleteManufacturer(id);
+                success = _FixedAssetManufacturerHandler.DeleteFixedAssetManufacturer(id);
             }
             catch (Exception ex)
             {

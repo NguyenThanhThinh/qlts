@@ -19,13 +19,13 @@ namespace qlts.Datas
 
         public DbSet<FixedAssetStatus> FixedAssetStatus { get; set; }
 
-        public DbSet<Manufacturer> Manufacturers { get; set; }
+        public DbSet<FixedAssetManufacturer> FixedAssetManufacturers { get; set; }
 
         public DbSet<Warehouse> Warehouses { get; set; }
 
-        public DbSet<WareHouseAssetsTransfer> WareHouseAssetsTransfers { get; set; }
+        //public DbSet<WareHouseAssetsTransfer> WareHouseAssetsTransfers { get; set; }
 
-        public DbSet<WareHouseAssetsExport> WareHouseAssetsExport { get; set; }
+        //public DbSet<WareHouseAssetsExport> WareHouseAssetsExport { get; set; }
 
         public static AppDbContext Create()
         {

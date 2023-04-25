@@ -47,7 +47,7 @@ namespace qlts.Stores
         {
             return _fixedAssetRepo.All.Include(n => n.Field).
                                    Include(n => n.FixedAssetStatus).
-                                   Include(n => n.Manufacturer).
+                                   Include(n => n.FixedAssetManufacturer).
                                    Include(n => n.Warehouse).
                                    AsNoTracking().ToList();
         }

@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace qlts.Models
 {
  
-    public class Manufacturer : BaseEntity
+    public class FixedAssetManufacturer : BaseEntity
     {
         [StringLength(200)]
         [Required]

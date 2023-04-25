@@ -53,11 +53,11 @@ namespace qlts.ViewModels.FixedAssets
 
         [Display(Name = "Hãng sản xuất")]
         [Required(ErrorMessage = ErrorMessageRequired)]
-        public Guid ManufacturerId { get; set; }
-        public List<DropdownModel> Manufacturers { get; set; } = new List<DropdownModel>();
+        public Guid FixedAssetManufacturerId { get; set; }
+        public List<DropdownModel> FixedAssetManufacturers { get; set; } = new List<DropdownModel>();
 
-        public IEnumerable<SelectListItem> ManufacturerDropdown =>
-            new SelectList(Manufacturers, DropdownModel.ValueField, DropdownModel.DisplayField);
+        public IEnumerable<SelectListItem> FixedAssetManufacturerDropdown =>
+            new SelectList(FixedAssetManufacturers, DropdownModel.ValueField, DropdownModel.DisplayField);
 
 
         [Display(Name = "Tình trạng")]

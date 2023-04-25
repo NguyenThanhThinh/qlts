@@ -178,7 +178,7 @@
     <Compile Include="Controllers\FixedAssetStatusController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LiquidationAssetController.cs" />
-    <Compile Include="Controllers\ManufacturersController.cs" />
+    <Compile Include="Controllers\FixedAssetManufacturersController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -234,6 +234,10 @@
     <Compile Include="Migrations\202304240904054_init33322.designer.cs">
       <DependentUpon>202304240904054_init33322.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202304250815284_init333281.cs" />
+    <Compile Include="Migrations\202304250815284_init333281.designer.cs">
+      <DependentUpon>202304250815284_init333281.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseEntity.cs" />
     <Compile Include="Models\Field.cs" />
@@ -264,8 +268,8 @@
     <Compile Include="ViewModels\FixedAssetStatus\FixedAssetStatusIndexViewModel.cs" />
     <Compile Include="ViewModels\FixedAssets\FixedAssetCreateUpdateViewModel.cs" />
     <Compile Include="ViewModels\FixedAssets\FixedAssetIndexViewModel.cs" />
-    <Compile Include="ViewModels\Manufacturers\ManufacturerCreateUpdateViewModel.cs" />
-    <Compile Include="ViewModels\Manufacturers\ManufacturerIndexViewModel.cs" />
+    <Compile Include="ViewModels\FixedAssetManufacturers\ManufacturerCreateUpdateViewModel.cs" />
+    <Compile Include="ViewModels\FixedAssetManufacturers\ManufacturerIndexViewModel.cs" />
     <Compile Include="ViewModels\Users\UserCreateUpdateViewModel.cs" />
     <Compile Include="ViewModels\Users\UserIndexViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
@@ -1119,9 +1123,9 @@
     <Content Include="Views\FixedAssetStatus\Index.cshtml" />
     <Content Include="Views\FixedAssetStatus\CreateUpdate.cshtml" />
     <Content Include="Views\Warehouses\CreateUpdate.cshtml" />
-    <Content Include="Views\Manufacturers\CreateUpdate.cshtml" />
+    <Content Include="Views\FixedAssetManufacturers\CreateUpdate.cshtml" />
     <Content Include="Views\Warehouses\Index.cshtml" />
-    <Content Include="Views\Manufacturers\Index.cshtml" />
+    <Content Include="Views\FixedAssetManufacturers\Index.cshtml" />
     <Content Include="Views\FixedAssets\CreateUpdate.cshtml" />
     <Content Include="Views\FixedAssets\Index.cshtml" />
     <Content Include="Views\AssetsTransfer\Index.cshtml" />
@@ -1186,6 +1190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202304240904054_init33322.resx">
       <DependentUpon>202304240904054_init33322.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304250815284_init333281.resx">
+      <DependentUpon>202304250815284_init333281.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
