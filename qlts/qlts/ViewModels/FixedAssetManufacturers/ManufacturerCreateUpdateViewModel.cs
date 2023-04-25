@@ -1,4 +1,5 @@
-﻿using System;
+﻿using qlts.Enums;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace qlts.ViewModels.FixedAssetManufacturers
@@ -31,5 +32,29 @@ namespace qlts.ViewModels.FixedAssetManufacturers
 
         [Display(Name = "Ngày hết hạn")]
         public string WarrantyPeriodDateFormattedEdit { get; set; }
+
+
+        [Display(Name = "Mã tài sản")]
+        [Required(ErrorMessage = ErrorMessageRequired)]
+        [StringLength(100, MinimumLength = 2, ErrorMessage = ErrorMessageStringLength)]
+        public string FixedAssetCode { get; set; }
+
+        [Display(Name = "Tên tài sản")]
+        [Required(ErrorMessage = ErrorMessageRequired)]
+        [StringLength(200, MinimumLength = 2, ErrorMessage = ErrorMessageStringLength)]
+        public string FixedAssetName { get; set; }
+
+        [Display(Name = "Mô tả tài sản")]
+        [StringLength(1000, MinimumLength = 2, ErrorMessage = ErrorMessageStringLength)]
+        public string Description { get; set; }
+
+        [Display(Name = "Part Number")]
+        [StringLength(200, MinimumLength = 2, ErrorMessage = ErrorMessageStringLength)]
+        public string PartNumber { get; set; }
+
+        [Display(Name = "Đơn vị tính")]
+        [Required(ErrorMessage = ErrorMessageRequired)]
+        [Range(1, 5, ErrorMessage = "Vui lòng chọn đơn vị tính")]
+        public FixedAssetUnit Unit { get; set; }
     }
 }

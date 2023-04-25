@@ -32,11 +32,15 @@
                         <thead class="table-light">
                             <tr>
                                 <th class="text-center align-middle" style="min-width: 5px;">STT</th>
+                                <th class="text-center align-middle" style="min-width: 200px;">@Html.DisplayNameFor(n => n.FirstOrDefault().FixedAssetCode)</th>
+                                <th class="text-center align-middle" style="min-width: 200px;">@Html.DisplayNameFor(n => n.FirstOrDefault().FixedAssetName)</th>
+                                <th class="text-center align-middle" style="min-width: 200px;">@Html.DisplayNameFor(n => n.FirstOrDefault().Description)</th>
+                                <th class="text-center align-middle" style="min-width: 200px;">@Html.DisplayNameFor(n => n.FirstOrDefault().Unit)</th>
                                 <th class="text-center align-middle" style="min-width: 200px;">@Html.DisplayNameFor(n => n.FirstOrDefault().Name)</th>
                                 <th class="text-center align-middle" style="min-width: 200px;">@Html.DisplayNameFor(n => n.FirstOrDefault().DateFormatted)</th>
                                 <th class="text-center align-middle" style="min-width: 200px;">@Html.DisplayNameFor(n => n.FirstOrDefault().WarrantyPeriodDateFormatted)</th>
                                 <th class="text-center align-middle" style="min-width: 200px;">@Html.DisplayNameFor(n => n.FirstOrDefault().Note)</th>
-             
+
                                 <th></th>
 
                             </tr>
@@ -48,6 +52,10 @@
                             {
                                 <tr>
                                     <td>@(stt++)</td>
+                                    <td>@item.FixedAssetCode</td>
+                                    <td>@item.FixedAssetName</td>
+                                    <td>@item.Description</td>
+                                    <td>@item.Unit.GetDisplayName()</td>
                                     <td>@item.Name</td>
                                     <td>@item.DateFormatted</td>
                                     <td>@item.WarrantyPeriodDateFormatted</td>
