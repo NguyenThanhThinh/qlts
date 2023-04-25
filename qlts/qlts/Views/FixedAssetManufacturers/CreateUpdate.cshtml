@@ -6,7 +6,7 @@
 
     var isUpdate = Model != null && Model.Id != Guid.Empty;
     ViewBag.Title = isUpdate ? "hãng sản xuất " + Model.Name : "Thêm mới hãng sản xuất";
-    string controller = "Manufacturers";
+    string controller = "FixedAssetManufacturers";
 }
 
 @section styles {
@@ -50,16 +50,33 @@
                         @Html.TextBoxFor(x => x.FixedAssetName, new { @class = "form-control", autocomplete = "off" })
                         @Html.ValidationMessageFor(model => model.FixedAssetName, "", new { @class = "text-danger" })
                     </div>
-                    <div class="col-6">
-                        @Html.LabelFor(x => x.DateFormatted)
-                        @Html.TextBoxFor(x => x.DateFormatted, new { @class = "form-control datepicker", autocomplete = "off" })
-                        @Html.ValidationMessageFor(model => model.DateFormatted, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-6">
-                        @Html.LabelFor(x => x.WarrantyPeriodDateFormatted)
-                        @Html.TextBoxFor(x => x.WarrantyPeriodDateFormatted, new { @class = "form-control datepicker", autocomplete = "off" })
-                        @Html.ValidationMessageFor(model => model.WarrantyPeriodDateFormatted, "", new { @class = "text-danger" })
-                    </div>
+                    @if (Model.Id != Guid.Empty)
+                    {
+                        <div class="col-6">
+                            @Html.LabelFor(x => x.DateFormattedEdit)
+                            @Html.TextBoxFor(x => x.DateFormattedEdit, new { @class = "form-control datepicker", autocomplete = "off" })
+                            @Html.ValidationMessageFor(model => model.DateFormattedEdit, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-6">
+                            @Html.LabelFor(x => x.WarrantyPeriodDateFormattedEdit)
+                            @Html.TextBoxFor(x => x.WarrantyPeriodDateFormattedEdit, new { @class = "form-control datepicker", autocomplete = "off" })
+                            @Html.ValidationMessageFor(model => model.WarrantyPeriodDateFormattedEdit, "", new { @class = "text-danger" })
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-6">
+                            @Html.LabelFor(x => x.DateFormatted)
+                            @Html.TextBoxFor(x => x.DateFormatted, new { @class = "form-control datepicker", autocomplete = "off" })
+                            @Html.ValidationMessageFor(model => model.DateFormatted, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-6">
+                            @Html.LabelFor(x => x.WarrantyPeriodDateFormatted)
+                            @Html.TextBoxFor(x => x.WarrantyPeriodDateFormatted, new { @class = "form-control datepicker", autocomplete = "off" })
+                            @Html.ValidationMessageFor(model => model.WarrantyPeriodDateFormatted, "", new { @class = "text-danger" })
+                        </div>
+                    }
+
                     <div class="col-12">
                         @Html.LabelFor(x => x.Description)
                         @Html.TextAreaFor(x => x.Description, new { @class = "form-control", autocomplete = "off", @rows = 3 })
@@ -94,4 +111,4 @@
             });
         });
     </script>
-    }
+}

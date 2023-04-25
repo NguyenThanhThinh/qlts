@@ -66,7 +66,12 @@ namespace qlts.Handlers
                 return new FixedAssetManufacturerCreateUpdateViewModel();
 
             var FixedAssetManufacturer = _FixedAssetManufacturerStore.GetFixedAssetManufacturerById(id);
-            return FixedAssetManufacturer == null ? null : MapperConfig.Factory.Map<FixedAssetManufacturer, FixedAssetManufacturerCreateUpdateViewModel>(FixedAssetManufacturer);
+            var model = MapperConfig.Factory.Map<FixedAssetManufacturer, FixedAssetManufacturerCreateUpdateViewModel>(FixedAssetManufacturer);
+
+            model.DateFormattedEdit = model.Date.ToString("dd/MM/yyyy");
+            model.WarrantyPeriodDateFormattedEdit = model.WarrantyPeriodDate.ToString("dd/MM/yyyy");
+
+            return model;
         }
 
     }
