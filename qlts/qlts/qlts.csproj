@@ -238,12 +238,16 @@
     <Compile Include="Migrations\202304250815284_init333281.designer.cs">
       <DependentUpon>202304250815284_init333281.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202304250844512_init3332817.cs" />
+    <Compile Include="Migrations\202304250844512_init3332817.designer.cs">
+      <DependentUpon>202304250844512_init3332817.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseEntity.cs" />
     <Compile Include="Models\Field.cs" />
     <Compile Include="Models\FixedAsset.cs" />
     <Compile Include="Models\FixedAssetStatus.cs" />
-    <Compile Include="Models\Manufacturer.cs" />
+    <Compile Include="Models\FixedAssetManufacturer.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Warehouse.cs" />
     <Compile Include="Models\WareHouseAssetsExport.cs" />
@@ -1193,6 +1197,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202304250815284_init333281.resx">
       <DependentUpon>202304250815284_init333281.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304250844512_init3332817.resx">
+      <DependentUpon>202304250844512_init3332817.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

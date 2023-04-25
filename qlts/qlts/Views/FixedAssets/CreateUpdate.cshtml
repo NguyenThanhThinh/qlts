@@ -51,9 +51,9 @@
                         @Html.ValidationMessageFor(model => model.FieldId, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-md-6">
-                        @Html.LabelFor(x => x.ManufacturerId)
-                        @Html.DropDownListFor(x => x.ManufacturerId, Model.ManufacturerDropdown, "--Chọn--", new { @class = "form-control form-select" })
-                        @Html.ValidationMessageFor(model => model.ManufacturerId, "", new { @class = "text-danger" })
+                        @Html.LabelFor(x => x.FixedAssetManufacturerId)
+                        @Html.DropDownListFor(x => x.FixedAssetManufacturerId, Model.FixedAssetManufacturerDropdown, "--Chọn--", new { @class = "form-control form-select" })
+                        @Html.ValidationMessageFor(model => model.FixedAssetManufacturerId, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-md-6">
                         @Html.LabelFor(x => x.FixedAssetStatusId)
