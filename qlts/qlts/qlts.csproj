@@ -258,7 +258,7 @@
     <Compile Include="Stores\WareHouseAssetsTransferStore.cs" />
     <Compile Include="Stores\FixedAssetStore.cs" />
     <Compile Include="Stores\FixedAssetStatusStore.cs" />
-    <Compile Include="Stores\ManufacturerStore.cs" />
+    <Compile Include="Stores\FixedAssetManufacturerStore.cs" />
     <Compile Include="Stores\WarehouseStore.cs" />
     <Compile Include="Stores\UserStore.cs" />
     <Compile Include="Stores\FieldStore.cs" />

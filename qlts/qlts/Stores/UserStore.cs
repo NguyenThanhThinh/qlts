@@ -58,7 +58,7 @@ namespace qlts.Stores
             return _userRepo.GetAll(null).OrderBy(x => x.Name)
                 .Select(x => new DropdownModel
                 {
-                    Id = x.Id,
+                    Id = x.Id.ToString(),
                     Text = x.Name
                 }).ToList();
         }

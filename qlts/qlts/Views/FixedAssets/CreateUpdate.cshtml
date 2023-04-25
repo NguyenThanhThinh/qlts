@@ -27,9 +27,13 @@
                     @if (isUpdate)
                     {
                         @Html.HiddenFor(x => x.Id)
-                        @Html.HiddenFor(n=>n.Code)
+                        @Html.HiddenFor(n => n.Code)
                     }
-                   
+                    <div class="col-md-12">
+                        @Html.LabelFor(x => x.FixedAssetManufacturerId)
+                        @Html.DropDownListFor(x => x.FixedAssetManufacturerId, Model.FixedAssetManufacturerDropdown, "--Chọn--", new { @class = "form-control form-select" })
+                        @Html.ValidationMessageFor(model => model.FixedAssetManufacturerId, "", new { @class = "text-danger" })
+                    </div>
                     <div class="col-md-9">
                         @Html.LabelFor(x => x.Name)
                         @Html.TextBoxFor(x => x.Name, new { @class = "form-control", autocomplete = "off" })
@@ -50,11 +54,7 @@
                         @Html.DropDownListFor(x => x.FieldId, Model.FieldDropdown, "--Chọn--", new { @class = "form-control form-select" })
                         @Html.ValidationMessageFor(model => model.FieldId, "", new { @class = "text-danger" })
                     </div>
-                    <div class="col-md-6">
-                        @Html.LabelFor(x => x.FixedAssetManufacturerId)
-                        @Html.DropDownListFor(x => x.FixedAssetManufacturerId, Model.FixedAssetManufacturerDropdown, "--Chọn--", new { @class = "form-control form-select" })
-                        @Html.ValidationMessageFor(model => model.FixedAssetManufacturerId, "", new { @class = "text-danger" })
-                    </div>
+
                     <div class="col-md-6">
                         @Html.LabelFor(x => x.FixedAssetStatusId)
                         @Html.DropDownListFor(x => x.FixedAssetStatusId, Model.FixedAssetStatusDropdown, "--Chọn--", new { @class = "form-control form-select" })
@@ -131,5 +131,28 @@
                 placeholder: $(this).data('placeholder'),
             });
         });
+    </script>
+    <script>
+        $('#FixedAssetManufacturerId').on("change", function () {
+            var fixedAssetManufacturerId = $('#FixedAssetManufacturerId').val();
+
+            var obj = { codeFixedAsset: fixedAssetManufacturerId };
+            AjaxCall('/FixedAssets/GetFixedAssetManufacturerByCode', JSON.stringify(obj), 'POST').done(function (response) {
+                if (response.length > 0) {
+                    console.info(response)
+                }
+            }).fail(function (error) {
+                alert(error.StatusText);
+            });
+        });
+        function AjaxCall(url, data, type) {
+            return $.ajax({
+                url: url,
+                type: type ? type : 'GET',
+                data: data,
+                contentType: 'application/json'
+            });
+        }
+    
     </script>
 }

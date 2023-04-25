@@ -57,8 +57,8 @@ namespace qlts.Stores
             return _FixedAssetManufacturerRepo.GetAll(null).OrderBy(x => x.Name)
                 .Select(x => new DropdownModel
                 {
-                    Id = x.Id,
-                    Text = x.Name
+                    Id = x.FixedAssetCode,
+                    Text = x.FixedAssetCode
                 }).ToList();
         }
 

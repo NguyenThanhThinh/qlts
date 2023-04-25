@@ -68,7 +68,7 @@ namespace qlts.Stores
             {
                 var data = dataAll.Where(n => n.Center == centerUnit).Select(x => new DropdownModel
                 {
-                    Id = x.Id,
+                    Id = x.Id.ToString(),
                     Text = $"{x.Name} - {x.CreatedBy}"
                 }).ToList();
 
@@ -77,7 +77,7 @@ namespace qlts.Stores
             return _warehouseRepo.GetAll(null).OrderBy(x => x.Name)
                                  .Select(x => new DropdownModel
                                  {
-                                     Id = x.Id,
+                                     Id = x.Id.ToString(),
                                      Text = $"{x.Name} - {x.CreatedBy}"
                                  }).ToList();
         }
