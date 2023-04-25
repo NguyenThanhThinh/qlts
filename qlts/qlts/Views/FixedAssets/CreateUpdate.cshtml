@@ -36,7 +36,7 @@
                     </div>
                     <div class="col-md-9">
                         @Html.LabelFor(x => x.Name)
-                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control", autocomplete = "off" })
+                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control", autocomplete = "off", @readonly = "readonly" })
                         @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-md-3">
@@ -87,12 +87,12 @@
                         </div>
 
                     }
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         @Html.LabelFor(x => x.PartNumber)
-                        @Html.TextBoxFor(x => x.PartNumber, new { @class = "form-control", autocomplete = "off" })
+                        @Html.TextBoxFor(x => x.PartNumber, new { @class = "form-control", autocomplete = "off", @readonly = "readonly" })
                         @Html.ValidationMessageFor(model => model.PartNumber, "", new { @class = "text-danger" })
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         @Html.LabelFor(x => x.SerialNumber)
                         @Html.TextBoxFor(x => x.SerialNumber, new { @class = "form-control", autocomplete = "off" })
                         @Html.ValidationMessageFor(model => model.SerialNumber, "", new { @class = "text-danger" })
@@ -100,7 +100,7 @@
 
                     <div class="col-12">
                         @Html.LabelFor(x => x.Description)
-                        @Html.TextAreaFor(x => x.Description, new { @class = "form-control", autocomplete = "off", @rows = 3 })
+                        @Html.TextAreaFor(x => x.Description, new { @class = "form-control", autocomplete = "off", @rows = 3, @readonly = "readonly" })
                         @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-12">
@@ -138,9 +138,18 @@
 
             var obj = { codeFixedAsset: fixedAssetManufacturerId };
             AjaxCall('/FixedAssets/GetFixedAssetManufacturerByCode', JSON.stringify(obj), 'POST').done(function (response) {
-                if (response.length > 0) {
-                    console.info(response)
+
+                if (response != null) {
+                    $("#Name").val(response.FixedAssetName);
+                    $("#Unit").select2({
+                        theme: "bootstrap-5",
+                        width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+                        placeholder: $(this).data('placeholder'),
+                    }).val(response.Unit).trigger("change");
+                    $("#Description").val(response.Description);
+                    $("#PartNumber").val(response.PartNumber);
                 }
+
             }).fail(function (error) {
                 alert(error.StatusText);
             });
@@ -153,6 +162,6 @@
                 contentType: 'application/json'
             });
         }
-    
+
     </script>
 }

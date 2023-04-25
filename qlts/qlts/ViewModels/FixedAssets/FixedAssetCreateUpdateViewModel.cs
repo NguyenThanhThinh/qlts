@@ -51,7 +51,7 @@ namespace qlts.ViewModels.FixedAssets
             new SelectList(Fields, DropdownModel.ValueField, DropdownModel.DisplayField);
 
 
-        [Display(Name = "Hãng sản xuất")]
+        [Display(Name = "Mã tài sản")]
         [Required(ErrorMessage = ErrorMessageRequired)]
         public Guid FixedAssetManufacturerId { get; set; }
         public List<DropdownModel> FixedAssetManufacturers { get; set; } = new List<DropdownModel>();

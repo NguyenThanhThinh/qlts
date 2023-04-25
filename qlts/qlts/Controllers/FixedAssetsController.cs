@@ -6,6 +6,7 @@ using System;
 using System.Linq;
 using System.Web.Mvc;
 using qlts.Enums;
+using qlts.ViewModels.FixedAssetManufacturers;
 
 namespace qlts.Controllers
 {
@@ -119,11 +120,16 @@ namespace qlts.Controllers
         {
             var data = _fixedAssetManufacturerHandler.GetAllFixedAssetManufacturers();
 
-            if (!string.IsNullOrEmpty ( codeFixedAsset ))
+            if (!string.IsNullOrEmpty(codeFixedAsset))
             {
-                data = data.Where(n => n.FixedAssetCode == codeFixedAsset).ToList();
+                var objData = data.FirstOrDefault(n => n.FixedAssetCode == codeFixedAsset);
+
+                if (objData != null)
+                {
+                    return Json(objData, JsonRequestBehavior.AllowGet);
+                }
             }
-            return Json(data, JsonRequestBehavior.AllowGet);
+            return Json(new FixedAssetManufacturerIndexViewModel(), JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -1,8 +1,8 @@
 ﻿@using qlts.Extensions;
 @model List<qlts.ViewModels.FixedAssetManufacturers.FixedAssetManufacturerIndexViewModel>
 @{
-    ViewBag.Title = "Danh sách Hãng sản xuất";
-    ViewBag.pTitle = "Hãng sản xuất";
+    ViewBag.Title = "Danh sách Tên / Mã tài sản";
+    ViewBag.pTitle = "Hãng Tên / Mã tài sản";
     ViewBag.pageTitle = "Trang chủ";
     var stt = 1;
     const string controller = "FixedAssetManufacturers";
@@ -36,6 +36,7 @@
                                 <th class="text-center align-middle" style="min-width: 200px;">@Html.DisplayNameFor(n => n.FirstOrDefault().FixedAssetName)</th>
                                 <th class="text-center align-middle" style="min-width: 200px;">@Html.DisplayNameFor(n => n.FirstOrDefault().Description)</th>
                                 <th class="text-center align-middle" style="min-width: 200px;">@Html.DisplayNameFor(n => n.FirstOrDefault().Unit)</th>
+                                <th class="text-center align-middle" style="min-width: 200px;">@Html.DisplayNameFor(n => n.FirstOrDefault().PartNumber)</th>
                                 <th class="text-center align-middle" style="min-width: 200px;">@Html.DisplayNameFor(n => n.FirstOrDefault().Name)</th>
                                 <th class="text-center align-middle" style="min-width: 200px;">@Html.DisplayNameFor(n => n.FirstOrDefault().DateFormatted)</th>
                                 <th class="text-center align-middle" style="min-width: 200px;">@Html.DisplayNameFor(n => n.FirstOrDefault().WarrantyPeriodDateFormatted)</th>
@@ -56,6 +57,7 @@
                                     <td>@item.FixedAssetName</td>
                                     <td>@item.Description</td>
                                     <td>@item.Unit</td>
+                                    <td>@item.PartNumber</td>
                                     <td>@item.Name</td>
                                     <td>@item.DateFormatted</td>
                                     <td>@item.WarrantyPeriodDateFormatted</td>

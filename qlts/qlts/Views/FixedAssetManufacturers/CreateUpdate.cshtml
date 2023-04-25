@@ -1,11 +1,11 @@
 ﻿@using qlts.Enums
 @model qlts.ViewModels.FixedAssetManufacturers.FixedAssetManufacturerCreateUpdateViewModel
 @{
-    ViewBag.pTitle = "Thêm hãng sản xuất";
+    ViewBag.pTitle = "Thêm Tên / Mã tài sản";
     ViewBag.pageTitle = "Trang chủ";
 
     var isUpdate = Model != null && Model.Id != Guid.Empty;
-    ViewBag.Title = isUpdate ? "hãng sản xuất " + Model.Name : "Thêm mới hãng sản xuất";
+    ViewBag.Title = isUpdate ? "Tên / Mã tài sản " + Model.Name : "Thêm mới Tên / Mã tài sản";
     string controller = "FixedAssetManufacturers";
 }
 
@@ -77,6 +77,11 @@
                         </div>
                     }
 
+                    <div class="col-12">
+                        @Html.LabelFor(x => x.PartNumber)
+                        @Html.TextBoxFor(x => x.PartNumber, new { @class = "form-control", autocomplete = "off" })
+                        @Html.ValidationMessageFor(model => model.PartNumber, "", new { @class = "text-danger" })
+                    </div>
                     <div class="col-12">
                         @Html.LabelFor(x => x.Description)
                         @Html.TextAreaFor(x => x.Description, new { @class = "form-control", autocomplete = "off", @rows = 3 })
